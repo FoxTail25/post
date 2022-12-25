@@ -15,15 +15,16 @@ const Post = ({image, likes, comments, tags, isPublished, _id, title, author, te
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            {author.avatar}
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title={title}
+        // action={
+        //   <IconButton aria-label="settings">
+        //     <MoreVertIcon />
+        //   </IconButton>
+        // }
+        title={author.about + ' ' +  author.name + ' ' + author.email}
+        
         subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
       />
       <CardMedia
@@ -35,6 +36,9 @@ const Post = ({image, likes, comments, tags, isPublished, _id, title, author, te
         alt="(ЗахардКоженная картинка) => {Ну красивше же ж?! :) }"
       />
       <CardContent>
+        <Typography variant="h5" color="text.secondary">
+          {title}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
           {text}
         </Typography>

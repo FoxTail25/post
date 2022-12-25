@@ -11,7 +11,12 @@ const Header = () => {
                     opacity: [0.9, 0.8, 0.7],
                 }}
             } >
-                <AppBar position="static">
+                <AppBar position="static" sx={{
+                // maxWidth: '1200px',
+                // display: 'flex',
+                // justifyContent: "center"
+
+                }}>
                     <Toolbar>
                         {/* <IconButton
                             size="large"
