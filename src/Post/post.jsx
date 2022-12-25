@@ -8,7 +8,7 @@ import dayjs from "dayjs";
 
 const Post = ({image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v}) => {
 
-  console.log(author)
+  // console.log(author)
 
   return (
     <Card sx={{ maxWidth: 345 }}>

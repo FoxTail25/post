@@ -8,6 +8,7 @@ const PostList = ({postData}) => {
     
     return (
         <>
+        
             {postData.map(el => <Post key={el._id} {...el}/>)}
   
         </>

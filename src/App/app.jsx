@@ -2,7 +2,7 @@ import { Container, CssBaseline } from "@mui/material"
 import React from "react"
 import { Header } from "../Header/header"
 import { PostList } from "../PostList/post-list"
-import {postData} from "./posts"
+import { postData } from "./posts"
 
 
 // console.log(postData)
@@ -19,8 +19,8 @@ const App = () => {
                 justifyContent: "center",
                 gap: '10px',
                 marginTop: '10px'
-            }}>
-                <PostList postData={postData}/>
+            }} maxWidth='xl'>
+                <PostList postData={postData} />
             </Container>
             {/* <Button variant="contained" onClick={() => { console.log('Есть контакт!') }} >Добавить пост</Button> */}
 
