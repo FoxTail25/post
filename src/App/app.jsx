@@ -1,5 +1,6 @@
 import { Container, CssBaseline } from "@mui/material"
 import React from "react"
+import { Banner } from "../Banner/banner"
 import { Header } from "../Header/header"
 import { PostList } from "../PostList/post-list"
 import { postData } from "./posts"
@@ -20,6 +21,7 @@ const App = () => {
                 gap: '10px',
                 marginTop: '10px'
             }} maxWidth='xl'>
+                <Banner/>
                 <PostList postData={postData} />
             </Container>
             {/* <Button variant="contained" onClick={() => { console.log('Есть контакт!') }} >Добавить пост</Button> */}

@@ -21,5 +21,6 @@ body {
 
 
 #root {
-  background-color: rgb(251, 178, 178);
+  background: url('/public/img/Krasivye_kartinki_na_rabochiy_stol_zima_32_20063909.jpg') no-repeat center;
+  background-size: contain;
 }

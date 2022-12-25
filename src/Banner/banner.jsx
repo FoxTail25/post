@@ -1,15 +1,25 @@
-import { Button } from "@mui/material"
+import { Button, Container } from "@mui/material"
 import React from "react"
 
 const Banner = () => {
     return (
-        <>
-        <div>banner</div>
-        <Button onClick={() => {console.log("Есть контакт")}}>Добавить постЭ</Button>
+        <Container maxWidth='xl'
+            sx={{
+                height: '200px',
+                backgroundColor: 'aliceblue',
+                margin: '20px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}
+        >
 
-        </>
+            {/* <div>banner</div> */}
+            <Button variant="contained" onClick={() => { console.log("Есть контакт") }}>Добавить постЭ</Button>
+
+        </Container>
     )
 }
 
 
-export default Banner
+export { Banner }

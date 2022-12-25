@@ -3,14 +3,14 @@ import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 const Header = () => {
     return (
         <>
-            <Box sx={{
+            {/* <Box sx={{
                 flexGrow: 1,
                 backgroundColor: 'primary.dark',
                 '&:hover': {
                     backgroundColor: 'primary.main',
                     opacity: [0.9, 0.8, 0.7],
                 }}
-            } >
+            } > */}
                 <AppBar position="static" sx={{
                 // maxWidth: '1200px',
                 // display: 'flex',
@@ -33,7 +33,7 @@ const Header = () => {
                         <Button color="inherit">Login</Button>
                     </Toolbar>
                 </AppBar>
-    </Box>
+    {/* </Box> */}
         </>
     )
 }
