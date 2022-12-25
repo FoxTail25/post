@@ -5,7 +5,7 @@ const Banner = () => {
     return (
         <>
         <div>banner</div>
-        <Button>Добавить постЭ</Button>
+        <Button onClick={() => {console.log("Есть контакт")}}>Добавить постЭ</Button>
 
         </>
     )
