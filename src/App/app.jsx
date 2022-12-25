@@ -5,7 +5,7 @@ import { PostList } from "../PostList/post-list"
 import {postData} from "./posts"
 
 
-console.log(postData)
+// console.log(postData)
 
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
                 gap: '10px',
                 marginTop: '10px'
             }}>
-                <PostList />
+                <PostList postData={postData}/>
             </Container>
             {/* <Button variant="contained" onClick={() => { console.log('Есть контакт!') }} >Добавить пост</Button> */}
 
