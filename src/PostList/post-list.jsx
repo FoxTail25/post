@@ -11,13 +11,13 @@ const PostList = ({ postData }) => {
     let countedPost = [];
 
     function postCount(data, i=0) {
-        let count = i + 12;
+        let count = i + 12 > 27 ? 27: i + 12;
         for( i; i < count; i++) {
             countedPost.push(data[i])
         }
         return countedPost
     }
-    postCount(postData)
+    postCount(postData, 23)
 
 
 
