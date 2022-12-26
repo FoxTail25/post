@@ -1,18 +1,12 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Link, Typography } from '@mui/material';
-// import { ColorizeOutlined } from '@mui/icons-material';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 
 export const Footer = () => {
-    const [value, setValue] = React.useState(0);
+   
 
     return (
         <Box sx={{
@@ -48,7 +42,3 @@ export const Footer = () => {
         </Box>
     );
 }
-// retunr <a href=></a>
-
-
-{/* <Link to="mailto:reports.in19@gmail.com&subject=Письмос сайта"/> */ }
