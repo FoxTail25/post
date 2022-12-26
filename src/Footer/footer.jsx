@@ -21,19 +21,31 @@ export const Footer = () => {
             padding: '5px' 
         }}>
 
-            <Typography>Автор проекта: Шустиков Григорий</Typography>
+            <Typography noWrap={true} sx={{fontSize: '2vw'}}>Автор проекта: Шустиков Григорий</Typography>
 
             <div sx={{backgroundColor: 'inherit',
         }}>
 
 
-                <Link href="tel:+79057800777" sx={{padding: '10px'}}><ContactPhoneIcon/>
+                <Link href="tel:+79057800777" sx={{padding: '10px',
+                    opacity: 0.7,
+                    '&:hover': {
+                        opacity: [0.8, 0.9, 1],
+                    },}}><ContactPhoneIcon/>
                 </Link>
 
-                <Link href='https://t.me/Siverk'sx={{padding: '10px'}}><TelegramIcon />
+                <Link href='https://t.me/Siverk'sx={{padding: '10px',
+                    opacity: 0.7,
+                    '&:hover': {
+                        opacity: [0.8, 0.9, 1],
+                    },}}><TelegramIcon />
                 </Link>
 
-                <Link href='mailto:foxtail25@gmail.com&subject=От сайта с постами' sx={{padding: '10px'}}><AlternateEmailIcon />
+                <Link href='mailto:foxtail25@gmail.com&subject=От сайта с постами' sx={{padding: '10px',
+                    opacity: 0.7,
+                   '&:hover': {
+                    opacity: [0.8, 0.9, 1],
+                  },}}><AlternateEmailIcon />
 
                 </Link>
 

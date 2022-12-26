@@ -11,7 +11,7 @@ const Post = ({image, likes, comments, tags, isPublished, _id, title, author, te
   // console.log(author)
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
