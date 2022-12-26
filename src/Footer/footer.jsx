@@ -21,7 +21,7 @@ export const Footer = () => {
             padding: '5px' 
         }}>
 
-            <Typography>Develeped by FoxTail25 in 2022</Typography>
+            <Typography>Автор проекта: Шустиков Григорий</Typography>
 
             <div sx={{backgroundColor: 'inherit',
         }}>
