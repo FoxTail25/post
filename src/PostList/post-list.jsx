@@ -1,13 +1,17 @@
 // import { TableContainer } from "@mui/material";
 // import { Pagination, PaginationItem } from "@mui/material";
 // import { Stack } from "@mui/system";
-import React from "react";
+
+// import { useEffect } from "react";
 import { Post } from "../Post/post";
 
 
 const PostList = ({postData}) => {
 
-// console.log(postData)
+    // [posts, setPosts] = useStat()
+    
+
+console.log(postData)
 
     return (
         <>
