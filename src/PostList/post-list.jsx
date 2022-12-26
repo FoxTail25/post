@@ -1,16 +1,15 @@
-import React from "react"
+// import { TableContainer } from "@mui/material";
+import React from "react";
 import { Post } from "../Post/post";
-// import {postData} from "./posts"
-// console.log(postData)
 
-const PostList = () => {
+
+const PostList = ({ postData }) => {
+
+
+
     return (
         <>
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
+                {postData.map(el => <Post key={el._id} {...el} />)}
         </>
     )
 }
