@@ -1,4 +1,4 @@
-import { Container, CssBaseline } from "@mui/material"
+import { Container, CssBaseline, Pagination, PaginationItem } from "@mui/material"
 import React from "react"
 import { Banner } from "../Banner/banner"
 import { Footer } from "../Footer/footer"
@@ -10,7 +10,26 @@ import { postData } from "./posts"
 // console.log(postData)
 
 
+
+
+
 const App = () => {
+    
+    
+    let countedPost = [];
+    
+    function postCount(i = 0) {
+        let count = i + 12 > 27 ? 27 : i + 12;
+        for (i; i < count; i++) {
+            countedPost.push(postData[i])
+        }
+        return countedPost
+    }
+    
+    postCount(23)
+
+// console.log(countedPost)
+
     return (
         <>
             <CssBaseline />
@@ -24,11 +43,13 @@ const App = () => {
                 // height: '100vh',
 
             }} maxWidth='xl'>
-                <Banner/>
-                <PostList postData={postData} />
+                <Banner />
+                <PostList postData={countedPost} />
             </Container>
-            {/* <Button variant="contained" onClick={() => { console.log('Есть контакт!') }} >Добавить пост</Button> */}
-<Footer/>
+
+            <Pagination count={3} color="primary" />
+
+            <Footer />
         </>
     )
 }
