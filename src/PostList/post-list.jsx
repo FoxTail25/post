@@ -11,7 +11,7 @@ const PostList = ({postData}) => {
     // [posts, setPosts] = useStat()
     
 
-console.log(postData)
+// console.log(postData)
 
     return (
         <>

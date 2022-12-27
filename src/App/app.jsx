@@ -77,7 +77,7 @@ const App = () => {
                     padding: '15px'
                     }}>
 
-                    <Pagination count={pagePostCount} color="primary" onChange={(event, num) => {return console.log(num, postPage(num))}}/>
+                    <Pagination count={pagePostCount} color="primary" onChange={(event, num) => postPage(num)}/>
 
 
                 </Container>
