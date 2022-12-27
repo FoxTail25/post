@@ -4,9 +4,10 @@ import React from "react"
 import { useEffect, useState } from "react"
 import { Banner } from "../Banner/banner"
 import { Footer } from "../Footer/footer"
-import { Header } from "../Header/header"
+import Header from "../Header/header"
 import { PostList } from "../PostList/post-list"
 import api from "../utils/api"
+import { isLiked } from "../utils/constants"
 import { postData } from "./posts"
 
 
@@ -34,6 +35,22 @@ const App = () => {
                 setCurrentUser(newInfoUser)
             })
     }
+
+    function handlePostLike(post) {
+        const liked = isLiked(post.likes, currentUser._id)
+        api.changeLikePost(post._id, liked)
+
+            .then((newCardPost) => {
+                const newPosts = posts.map(cardPostState => {
+                    console.log('Карточка из стейта', cardPostState);
+                    console.log('Карточка c сервера', newCardPost);
+                    return cardPostState._id === newCardPost._id ? newCardPost : cardPostState
+                })
+
+                setPosts(newPosts);
+
+            })
+    }
     return (
         <>
             <CssBaseline />
@@ -51,6 +68,8 @@ const App = () => {
                 <PostList
                     //postData={postData} 
                     posts={posts}
+                    onPostLike={handlePostLike}
+                    currentUser={currentUser}
                 />
             </Container>
             {/* <Button variant="contained" onClick={() => { console.log('Есть контакт!') }} >Добавить пост</Button> */}

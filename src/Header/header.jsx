@@ -48,4 +48,4 @@ const Header = ({ user, onUpdateUserData }) => {
 }
 
 
-export { Header };
+export default Header;

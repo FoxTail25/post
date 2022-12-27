@@ -28,6 +28,14 @@ class Api {
 		}).then(onResponce)
 	}
 
+	changeLikePost(postId, isLike) {
+		return fetch(`${this._baseUrl}/posts/likes/${postId}`, {
+			method: isLike ? "DELETE" : "PUT",
+			headers: this._headers
+
+		}).then(onResponce)
+	}
+
 }
 const config = {
 	baseUrl: 'https://api.react-learning.ru/v2/group-7',
