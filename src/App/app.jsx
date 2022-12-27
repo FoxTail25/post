@@ -8,7 +8,7 @@ import Header from "../Header/header"
 import { PostList } from "../PostList/post-list"
 import api from "../utils/api"
 import { isLiked } from "../utils/constants"
-import { postData } from "./posts"
+// import { postData } from "./posts"
 
 
 // console.log(postData)
@@ -46,11 +46,11 @@ const App = () => {
                     console.log('Карточка c сервера', newCardPost);
                     return cardPostState._id === newCardPost._id ? newCardPost : cardPostState
                 })
-
-                setPosts(newPosts);
-
+           setPosts(newPosts);
             })
     }
+
+    
     return (
         <>
             <CssBaseline />

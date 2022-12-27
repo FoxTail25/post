@@ -1,16 +1,17 @@
 import cn from 'classnames';
 import "./index.css";
-import { Avatar, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
+import { Avatar, Card, CardContent, CardHeader, CardMedia, IconButton, Typography, Button } from "@mui/material"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { red } from '@mui/material/colors';
-import React from "react";
+import React, { useCallback } from "react";
 import { isLiked } from "../utils/constants";
+import api from '../utils/api';
 // import dayjs from "dayjs";
 
 
 
-const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v, onPostLike, currentUser }) => {
+const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v, onPostLike, currentUser, handleDeleteClick }) => {
 
   // console.log(author)
 
@@ -20,7 +21,14 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
     onPostLike({ _id, likes })
   }
 
+  const handleDeletePost = useCallback(() =>
+    api.deletePostCardById(_id)
+      .then(() => {
+        alert("Вы уверены, что хотите удалить пост?")
+      }), [_id]);
 
+      
+  
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -28,7 +36,9 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
             {author.avatar}
           </Avatar>
+
         }
+
         // action={
         //   <IconButton aria-label="settings">
         //     <MoreVertIcon />
@@ -60,6 +70,7 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
         aria-label="add to favorites" onClick={handleLikeClick} >
         <FavoriteIcon />{likes.length}
       </IconButton>
+      {author._id === currentUser._id && <Button onClick={handleDeletePost}>Удалить пост</Button>}
       {/* <CardActions disableSpacing>
           <IconButton aria-label="share">
             <ShareIcon />

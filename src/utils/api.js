@@ -14,6 +14,7 @@ class Api {
 		}).then(onResponce)
 	}
 
+	
 	getUserInfo() {
 		return fetch(`${this._baseUrl}/users/me`, {
 			headers: this._headers
@@ -27,12 +28,23 @@ class Api {
 			body: JSON.stringify(dataUser)
 		}).then(onResponce)
 	}
+	getPostById(idPost) {
+		return fetch(`${this._baseUrl}/products/${idPost}`, {
+			headers: this._headers
+		}).then(onResponce)
+	}
 
 	changeLikePost(postId, isLike) {
 		return fetch(`${this._baseUrl}/posts/likes/${postId}`, {
 			method: isLike ? "DELETE" : "PUT",
 			headers: this._headers
+		}).then(onResponce)
+	}
 
+	deletePostCardById(postId){
+		return fetch(`${this._baseUrl}/posts/${postId}`, {
+			method: "DELETE",
+			headers: this._headers,
 		}).then(onResponce)
 	}
 

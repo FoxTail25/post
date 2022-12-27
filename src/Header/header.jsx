@@ -4,7 +4,7 @@ const Header = ({ user, onUpdateUserData }) => {
 
     const handleClickButtonEdite = (e) => {
         e.preventDefault();
-        onUpdateUserData({ name: "Диана Сысоева", about: "Ментор" })
+        onUpdateUserData({ name: "Григорий Шустиков", about: "Student" })
     }
     return (
         <>
