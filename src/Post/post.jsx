@@ -3,7 +3,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { red } from '@mui/material/colors';
 import React from "react";
-import dayjs from "dayjs";
+// import dayjs from "dayjs";
 
 
 const Post = ({image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v}) => {
@@ -25,15 +25,15 @@ const Post = ({image, likes, comments, tags, isPublished, _id, title, author, te
         // }
         title={author.about + ' ' +  author.name + ' ' + author.email}
         
-        subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
+        // subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
       />
       <CardMedia
         component="img"
         height="194"
         //   image="logo192.png"
-        // src={image}
-        src="https://mobimg.b-cdn.net/v3/fetch/a7/a7a88f4e16d37240432d3ccdde6fe30c.jpeg?w=1470&r=0.5625"
-        alt="(ЗахардКоженная картинка) => {Ну красивше же ж?! :) }"
+        src={image}
+        // src="https://mobimg.b-cdn.net/v3/fetch/a7/a7a88f4e16d37240432d3ccdde6fe30c.jpeg?w=1470&r=0.5625"
+        // alt=""
       />
       <CardContent>
         <Typography variant="h5" color="text.secondary">

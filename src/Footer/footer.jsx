@@ -17,11 +17,14 @@ export const Footer = () => {
         flexDirection: 'column',
         alignItems: 'center',
         gap: '10px',
-        paddingTop: 5}}>
+        paddingTop: 5,
+        marginTop: 10
+        }}>
 
-            <Typography>Develeped by FoxTail25 in 25.12.2022</Typography>
+            <Typography
+            >Develeped by FoxTail25 in 25.12.2022</Typography>
 
-            <BottomNavigation
+            <BottomNavigation 
                 showLabels
                 value={value}
                 onChange={(event, newValue) => {
