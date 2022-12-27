@@ -22,7 +22,7 @@
   }
 
   to {
-    transform: translate(94.13635vw, 95vh) scale(0.6729);
+    transform: translate(94.13635vw, 90vh) scale(0.6729);
   }
 }
  .s2 {
@@ -35,7 +35,7 @@
     transform: translate(25.9107vw, 33.831vh) scale(0.6334);
   }
   to {
-    transform: translate(22.63885vw, 95vh) scale(0.6334);
+    transform: translate(22.63885vw, 90vh) scale(0.6334);
   }
 }
 .s3 {
@@ -48,7 +48,7 @@
     transform: translate(4.1592vw, 45.734vh) scale(0.8636);
   }
   to {
-    transform: translate(2.7881vw, 95vh) scale(0.8636);
+    transform: translate(2.7881vw, 90vh) scale(0.8636);
   }
 }
 .s4 {
@@ -61,7 +61,7 @@
     transform: translate(34.0613vw, 59.683vh) scale(0.372);
   }
   to {
-    transform: translate(36.3337vw, 95vh) scale(0.372);
+    transform: translate(36.3337vw, 90vh) scale(0.372);
   }
 }
 .s5 {
@@ -74,7 +74,7 @@
     transform: translate(39.3774vw, 78.296vh) scale(0.3677);
   }
   to {
-    transform: translate(38.51645vw, 95vh) scale(0.3677);
+    transform: translate(38.51645vw, 90vh) scale(0.3677);
   }
 } 
  .s6 {
@@ -87,7 +87,7 @@
     transform: translate(30.0121vw, 30.366vh) scale(0.042);
   }
   to {
-    transform: translate(33.06235vw, 95vh) scale(0.042);
+    transform: translate(33.06235vw, 90vh) scale(0.042);
   }
 }
 .s7 {
@@ -100,7 +100,7 @@
     transform: translate(80.1685vw, 73.398vh) scale(0.1821);
   }
   to {
-    transform: translate(76.22415vw, 95vh) scale(0.1821);
+    transform: translate(76.22415vw, 90vh) scale(0.1821);
   }
 }
 .s8 {
@@ -113,7 +113,7 @@
     transform: translate(21.9829vw, 77.273vh) scale(0.2326);
   }
   to {
-    transform: translate(25.37915vw, 95vh) scale(0.2326);
+    transform: translate(25.37915vw, 90vh) scale(0.2326);
   }
 }
 .s9 {
@@ -126,7 +126,7 @@
     transform: translate(31.8617vw, 71.45vh) scale(0.381);
   }
   to {
-    transform: translate(29.9502vw, 95vh) scale(0.381);
+    transform: translate(29.9502vw, 90vh) scale(0.381);
   }
 }
 .s10 {
@@ -136,10 +136,10 @@
 }
 @keyframes fall-10 {
   57.397% {
-    transform: translate(40.5554vw, 57.395vh) scale(0.5621);
+    transform: translate(40.5554vw, 57.390vh) scale(0.5621);
   }
   to {
-    transform: translate(36.2278vw, 95vh) scale(0.5621);
+    transform: translate(36.2278vw, 90vh) scale(0.5621);
   }
 }
 .s11 {
@@ -152,7 +152,7 @@
     transform: translate(92.635vw, 33.92vh) scale(0.3172);
   }
   to {
-    transform: translate(92.16965vw, 95vh) scale(0.3172);
+    transform: translate(92.16965vw, 90vh) scale(0.3172);
   }
 }
 .s12 {
@@ -165,7 +165,7 @@
     transform: translate(69.8382vw, 55.123vh) scale(0.8374);
   }
   to {
-    transform: translate(70.0631vw, 95vh) scale(0.8374);
+    transform: translate(70.0631vw, 90vh) scale(0.8374);
   }
 }
 .s13 {
@@ -178,7 +178,7 @@
     transform: translate(84.9384vw, 65.675vh) scale(0.8689);
   }
   to {
-    transform: translate(88.18205vw, 95vh) scale(0.8689);
+    transform: translate(88.18205vw, 90vh) scale(0.8689);
   }
 }
 .s14 {
@@ -191,7 +191,7 @@
     transform: translate(2.119vw, 63.667vh) scale(0.5813);
   }
   to {
-    transform: translate(2.2814vw, 95vh) scale(0.5813);
+    transform: translate(2.2814vw, 90vh) scale(0.5813);
   }
 }
 .s15 {
@@ -204,7 +204,7 @@
     transform: translate(4.4964vw, 76.425vh) scale(0.9811);
   }
   to {
-    transform: translate(8.02365vw, 95vh) scale(0.9811);
+    transform: translate(8.02365vw, 90vh) scale(0.9811);
   }
 } 
 .s16 {
@@ -217,7 +217,7 @@
     transform: translate(62.0229vw, 72.18vh) scale(0.4069);
   }
   to {
-    transform: translate(58.5132vw, 95vh) scale(0.4069);
+    transform: translate(58.5132vw, 90vh) scale(0.4069);
   }
 }
 .s17 {
@@ -230,7 +230,7 @@
     transform: translate(20.6389vw, 70.427vh) scale(0.0574);
   }
   to {
-    transform: translate(24.25855vw, 95vh) scale(0.0574);
+    transform: translate(24.25855vw, 90vh) scale(0.0574);
   }
 }
 .s18 {
@@ -243,7 +243,7 @@
     transform: translate(83.6515vw, 77.599vh) scale(0.364);
   }
   to {
-    transform: translate(84.1768vw, 95vh) scale(0.364);
+    transform: translate(84.1768vw, 90vh) scale(0.364);
   }
 }
 .s19 {
@@ -256,7 +256,7 @@
     transform: translate(35.4658vw, 69.064vh) scale(0.8971);
   }
   to {
-    transform: translate(32.77325vw, 95vh) scale(0.8971);
+    transform: translate(32.77325vw, 90vh) scale(0.8971);
   }
 }
 .s20 {
@@ -269,7 +269,7 @@
     transform: translate(68.5271vw, 73.811vh) scale(0.6315);
   }
   to {
-    transform: translate(69.39365vw, 95vh) scale(0.6315);
+    transform: translate(69.39365vw, 90vh) scale(0.6315);
   }
 }
 .s21 {
@@ -282,7 +282,7 @@
     transform: translate(74.8125vw, 34.461vh) scale(0.4197);
   }
   to {
-    transform: translate(73.3649vw, 95vh) scale(0.4197);
+    transform: translate(73.3649vw, 90vh) scale(0.4197);
   }
 }
 .s22 {
@@ -295,7 +295,7 @@
     transform: translate(13.3402vw, 65.002vh) scale(0.2197);
   }
   to {
-    transform: translate(11.012vw, 95vh) scale(0.2197);
+    transform: translate(11.012vw, 90vh) scale(0.2197);
   }
 }
 .s23 {
@@ -308,7 +308,7 @@
     transform: translate(86.3533vw, 38.05vh) scale(0.1892);
   }
   to {
-    transform: translate(85.81915vw, 95vh) scale(0.1892);
+    transform: translate(85.81915vw, 90vh) scale(0.1892);
   }
 }
 .s24 {
@@ -321,7 +321,7 @@
     transform: translate(23.8055vw, 56.631vh) scale(0.8114);
   }
   to {
-    transform: translate(28.0262vw, 95vh) scale(0.8114);
+    transform: translate(28.0262vw, 90vh) scale(0.8114);
   }
 }
 .s25 {
@@ -334,7 +334,7 @@
     transform: translate(54.1743vw, 48.352vh) scale(0.6388);
   }
   to {
-    transform: translate(53.93205vw, 95vh) scale(0.6388);
+    transform: translate(53.93205vw, 90vh) scale(0.6388);
   }
 }
 .s26 {
@@ -347,7 +347,7 @@
     transform: translate(60.2459vw, 68.225vh) scale(0.0828);
   }
   to {
-    transform: translate(59.9215vw, 95vh) scale(0.0828);
+    transform: translate(59.9215vw, 90vh) scale(0.0828);
   }
 }
 .s27 {
@@ -357,10 +357,10 @@
 }
 @keyframes fall-27 {
   62.495% {
-    transform: translate(72.9871vw, 62.495vh) scale(0.2901);
+    transform: translate(72.9871vw, 62.490vh) scale(0.2901);
   }
   to {
-    transform: translate(68.2261vw, 95vh) scale(0.2901);
+    transform: translate(68.2261vw, 90vh) scale(0.2901);
   }
 }
 .s28 {
@@ -373,7 +373,7 @@
     transform: translate(19.2166vw, 48.03vh) scale(0.2743);
   }
   to {
-    transform: translate(19.71175vw, 95vh) scale(0.2743);
+    transform: translate(19.71175vw, 90vh) scale(0.2743);
   }
 }
 .s29 {
@@ -386,7 +386,7 @@
     transform: translate(11.9255vw, 67.976vh) scale(0.5893);
   }
   to {
-    transform: translate(12.94435vw, 95vh) scale(0.5893);
+    transform: translate(12.94435vw, 90vh) scale(0.5893);
   }
 }
 .s30 {
@@ -399,7 +399,7 @@
     transform: translate(41.827vw, 42.447vh) scale(0.5409);
   }
   to {
-    transform: translate(37.2612vw, 95vh) scale(0.5409);
+    transform: translate(37.2612vw, 90vh) scale(0.5409);
   }
 }
 .s31 {
@@ -412,7 +412,7 @@
     transform: translate(38.345vw, 66.706vh) scale(0.8486);
   }
   to {
-    transform: translate(33.82705vw, 95vh) scale(0.8486);
+    transform: translate(33.82705vw, 90vh) scale(0.8486);
   }
 }
 .s32 {
@@ -425,7 +425,7 @@
     transform: translate(22.0978vw, 37.848vh) scale(0.7598);
   }
   to {
-    transform: translate(26.9087vw, 95vh) scale(0.7598);
+    transform: translate(26.9087vw, 90vh) scale(0.7598);
   }
 }
 .s33 {
@@ -438,7 +438,7 @@
     transform: translate(106.2148vw, 33.037vh) scale(0.4466);
   }
   to {
-    transform: translate(101.5188vw, 95vh) scale(0.4466);
+    transform: translate(101.5188vw, 90vh) scale(0.4466);
   }
 }
 .s34 {
@@ -451,7 +451,7 @@
     transform: translate(81.9239vw, 35.565vh) scale(0.8731);
   }
   to {
-    transform: translate(78.5955vw, 95vh) scale(0.8731);
+    transform: translate(78.5955vw, 90vh) scale(0.8731);
   }
 }
 .s35 {
@@ -464,7 +464,7 @@
     transform: translate(37.3748vw, 30.149vh) scale(0.7633);
   }
   to {
-    transform: translate(40.84185vw, 95vh) scale(0.7633);
+    transform: translate(40.84185vw, 90vh) scale(0.7633);
   }
 }
 .s36 {
@@ -477,7 +477,7 @@
     transform: translate(35.8085vw, 58.959vh) scale(0.1547);
   }
   to {
-    transform: translate(36.14705vw, 95vh) scale(0.1547);
+    transform: translate(36.14705vw, 90vh) scale(0.1547);
   }
 }
 .s37 {
@@ -490,7 +490,7 @@
     transform: translate(54.5349vw, 56.001vh) scale(0.5869);
   }
   to {
-    transform: translate(50.32205vw, 95vh) scale(0.5869);
+    transform: translate(50.32205vw, 90vh) scale(0.5869);
   }
 }
 .s38 {
@@ -503,7 +503,7 @@
     transform: translate(82.6039vw, 66.722vh) scale(0.9089);
   }
   to {
-    transform: translate(80.72345vw, 95vh) scale(0.9089);
+    transform: translate(80.72345vw, 90vh) scale(0.9089);
   }
 }
 .s39 {
@@ -516,7 +516,7 @@
     transform: translate(100.3983vw, 54.753vh) scale(0.4113);
   }
   to {
-    transform: translate(97.4157vw, 95vh) scale(0.4113);
+    transform: translate(97.4157vw, 90vh) scale(0.4113);
   }
 }
 .s40 {
@@ -529,7 +529,7 @@
     transform: translate(74.7762vw, 35.279vh) scale(0.6236);
   }
   to {
-    transform: translate(76.36065vw, 95vh) scale(0.6236);
+    transform: translate(76.36065vw, 90vh) scale(0.6236);
   }
 }
 .s41 {
@@ -542,7 +542,7 @@
     transform: translate(17.4442vw, 77.571vh) scale(0.6817);
   }
   to {
-    transform: translate(18.3242vw, 95vh) scale(0.6817);
+    transform: translate(18.3242vw, 90vh) scale(0.6817);
   }
 }
 .s42 {
@@ -555,7 +555,7 @@
     transform: translate(89.0601vw, 72.253vh) scale(0.1992);
   }
   to {
-    transform: translate(91.2729vw, 95vh) scale(0.1992);
+    transform: translate(91.2729vw, 90vh) scale(0.1992);
   }
 }
 .s43 {
@@ -568,7 +568,7 @@
     transform: translate(86.4257vw, 54.42vh) scale(0.496);
   }
   to {
-    transform: translate(90.53745vw, 95vh) scale(0.496);
+    transform: translate(90.53745vw, 90vh) scale(0.496);
   }
 }
 .s44 {
@@ -581,7 +581,7 @@
     transform: translate(81.0443vw, 30.964vh) scale(0.0764);
   }
   to {
-    transform: translate(76.7776vw, 95vh) scale(0.0764);
+    transform: translate(76.7776vw, 90vh) scale(0.0764);
   }
 }
 .s45 {
@@ -594,7 +594,7 @@
     transform: translate(18.9385vw, 52.913vh) scale(0.2621);
   }
   to {
-    transform: translate(17.5433vw, 95vh) scale(0.2621);
+    transform: translate(17.5433vw, 90vh) scale(0.2621);
   }
 }
 .s46 {
@@ -607,7 +607,7 @@
     transform: translate(16.9486vw, 35.582vh) scale(0.8169);
   }
   to {
-    transform: translate(19.5119vw, 95vh) scale(0.8169);
+    transform: translate(19.5119vw, 90vh) scale(0.8169);
   }
 }
 .s47 {
@@ -620,7 +620,7 @@
     transform: translate(66.9446vw, 62.298vh) scale(0.1273);
   }
   to {
-    transform: translate(67.81625vw, 95vh) scale(0.1273);
+    transform: translate(67.81625vw, 90vh) scale(0.1273);
   }
 }
 .s48 {
@@ -633,7 +633,7 @@
     transform: translate(77.1669vw, 72.796vh) scale(0.252);
   }
   to {
-    transform: translate(74.2008vw, 95vh) scale(0.252);
+    transform: translate(74.2008vw, 90vh) scale(0.252);
   }
 }
 .s49 {
@@ -646,7 +646,7 @@
     transform: translate(42.2293vw, 73.083vh) scale(0.6629);
   }
   to {
-    transform: translate(41.24705vw, 95vh) scale(0.6629);
+    transform: translate(41.24705vw, 90vh) scale(0.6629);
   }
 }
 .s50 {
@@ -659,6 +659,6 @@
     transform: translate(79.2007vw, 49.673vh) scale(0.1075);
   }
   to {
-    transform: translate(78.7258vw, 95vh) scale(0.1075);
+    transform: translate(78.7258vw, 90vh) scale(0.1075);
   }
 }
