@@ -15,9 +15,6 @@ import { postData } from "./posts"
 
 const App = () => {
     const [posts, setPosts] = useState([]);
-    const [query, setQuery] = useState('');
-    const [page, setPage] = useState(1);
-    const [pageQuantity, setPageQuantity] = useState(0);
     const [currentUser, setCurrentUser] = useState(null);
 
 
@@ -29,14 +26,7 @@ const App = () => {
             })
     }, [])
 
-    // useEffect(() => {
-    //     api.getPaginatePagesList()
-    //         .then(({ data }) => {
-    //             console.log(data)
-    //             setPosts(data)
-    //         }
-    //         )
-    // }, [query, page])
+
 
     function handleUpdateUserInfo(updateUserInfo) {
         api.setUserInfo(updateUserInfo)
@@ -47,7 +37,7 @@ const App = () => {
     return (
         <>
             <CssBaseline />
-            <Header user={currentUser} onUpdateUserData = {handleUpdateUserInfo}/>
+            <Header user={currentUser} onUpdateUserData={handleUpdateUserInfo} />
             <Container sx={{
                 display: "flex",
                 flexWrap: 'wrap',
