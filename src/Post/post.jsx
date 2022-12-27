@@ -55,10 +55,10 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
         </Typography>
       </CardContent>
       <IconButton
+
         style={!liked ? { color: "grey" } : { color: "red" }}
-        // className= {liked? 'post__favorite_is-active' : 'post__favorite'}
         aria-label="add to favorites" onClick={handleLikeClick} >
-        <FavoriteIcon />
+        <FavoriteIcon />{likes.length}
       </IconButton>
       {/* <CardActions disableSpacing>
           <IconButton aria-label="share">
