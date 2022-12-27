@@ -12,16 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url(/public/img/pattern-christmas-slim-snowflakes-2color.svg) 
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
 
-
-/* #root {
-  background: url('/public/img/Krasivye_kartinki_na_rabochiy_stol_zima_32_20063909.jpg') no-repeat center;
-  background-size: contain;
-  position: absolute;
-} */

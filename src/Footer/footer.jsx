@@ -10,15 +10,18 @@ export const Footer = () => {
 
     return (
         <Box sx={{
+            position: 'fixed',
+            bottom: 0,
+            width:'100%',
             maxWidth: '100%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             gap: '10px',
             backgroundColor: 'aliceblue',
-            marginTop: '10px',
+            // marginTop: '10px',
             marginBottom: 0,
-            padding: '5px' 
+            padding: '5px', 
         }}>
 
             <Typography noWrap={true} sx={{fontSize: '2vw'}}>Автор проекта: Шустиков Григорий</Typography>
