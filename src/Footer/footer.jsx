@@ -9,6 +9,7 @@ export const Footer = () => {
 
 
     return (
+
         <Box sx={{
             position: 'fixed',
             bottom: 0,
@@ -62,6 +63,7 @@ export const Footer = () => {
 
 
             </div>
+
         </Box>
     );
 }

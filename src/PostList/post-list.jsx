@@ -6,7 +6,11 @@
 import { Post } from "../Post/post";
 
 
-const PostList = ({postData}) => {
+//<<<<<<< ficha-background
+//const PostList = ({postData}) => {
+//=======
+const PostList = ({ posts, onPostLike, currentUser}) => {
+//>>>>>>> develop
 
     // [posts, setPosts] = useStat()
     
@@ -15,9 +19,15 @@ const PostList = ({postData}) => {
 
     return (
         <>
+//<<<<<<< ficha-background
 
-         {postData.map(el => <Post key={el._id} {...el} />)}
+       //  {postData.map(el => <Post key={el._id} {...el} />)}
 
+//=======
+        {
+            posts.map((el) => <Post key={el._id} {...el} onPostLike = {onPostLike} currentUser = {currentUser}/>)
+        }
+//>>>>>>> develop
         </>
     )
 }
