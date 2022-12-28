@@ -9,6 +9,7 @@ export const Footer = () => {
    
 
     return (
+
         <Box sx={{
             maxWidth: '100%',
             display: 'flex',
@@ -39,6 +40,7 @@ export const Footer = () => {
 
 
             </div>
+
         </Box>
     );
 }
