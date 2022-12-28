@@ -1,42 +1,66 @@
 import React from "react";
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
-const Header = () => {
+import { AppBar, Box, Button, Container, Toolbar, Typography } from "@mui/material";
+
+
+
+
+export const Header = ({ userInfo }) => {
+
+    // console.log(userInfo)
+    // console.log(typeof userInfo)
+
+
+
     return (
         <>
-            {/* <Box sx={{
-                flexGrow: 1,
-                backgroundColor: 'primary.dark',
-                '&:hover': {
-                    backgroundColor: 'primary.main',
-                    opacity: [0.9, 0.8, 0.7],
-                }}
-            } > */}
-                <AppBar position="static" sx={{
-                // maxWidth: '1200px',
-                // display: 'flex',
-                // justifyContent: "center"
 
+            <AppBar position="static" sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                // justifyContent: 'space-between',
+                alignItems: 'center'
+            }}>
+                <Container >
+
+                    <Typography variant="h6" component="div">
+                        Проект "Посты"
+                    </Typography>
+
+
+                    {/* <Button color="inherit">Login</Button> */}
+                </Container>
+
+                <Container sx={{
+                    display: 'flex',
+                    height: '60px',
+                    alignItems: 'center',
+                    justifyContent: 'end'
                 }}>
-                    <Toolbar>
-                        {/* <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            sx={{ mr: 2 }}
-                        >
-                            <MenuIcon />
-                        </IconButton> */}
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                            Посты
-                        </Typography>
-                        <Button color="inherit">Login</Button>
-                    </Toolbar>
-                </AppBar>
-    {/* </Box> */}
+
+                    <Typography variant="h6" component="div" >
+
+                        {userInfo?.about}:
+
+                    </Typography>
+
+                    <Typography variant="h6" component="div" noWrap sx={{padding: '10px'}}>
+
+                        {userInfo?.name}
+
+                    </Typography>
+
+                    <Typography variant="h6" component="div" noWrap>
+
+                        {userInfo?.email}
+
+                    </Typography>
+
+                </Container>
+
+            </AppBar>
+            {/* </Box> */}
         </>
     )
 }
 
 
-export { Header };

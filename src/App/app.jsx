@@ -17,11 +17,22 @@ import api from "../utils/api"
 
 
 
-console.log(api.getUserInfo())
-console.log(api.getAllPosts())
+
+
+
 
 
 const App = () => {
+    
+    
+    
+    const[userData, setUserData] = useState([]);
+    
+    useEffect(() => {api.getUserInfo().then((data) => setUserData(data))},[])
+    
+    // console.log(userData)
+
+
 
     let countedPost = [];
 
@@ -65,7 +76,7 @@ const App = () => {
         <>
             <CssBaseline />
 
-            <Header />
+            <Header userInfo={userData}/>
                 <Snow/>
             <Stack>
 
