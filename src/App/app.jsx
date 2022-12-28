@@ -9,8 +9,7 @@ import { Header } from "../Header/header"
 import { PostList } from "../PostList/post-list"
 import { postData } from "./posts"
 // import s from './app.module.css'
-import { } from './app.css'
-
+import {} from './app.css'
 
 
 const App = () => {
@@ -33,8 +32,11 @@ const App = () => {
         return setDataState(countedPost)
     }
 
+   
 
     function postPage(num) {  //Посты, которые будут отражены в зависимости от выбранной страницы
+
+       
 
         switch (num) {
             case 1: return postCount();
@@ -46,6 +48,8 @@ const App = () => {
 
 
     let pagePostCount = Math.ceil(postData.length / 12) // Количество страниц пагинации
+
+   
 
 
     return (
@@ -118,6 +122,31 @@ const App = () => {
 
                 }} maxWidth='xl'>
                     <Banner />
+
+                </Container>
+                <Container sx={{
+                    display: "flex",
+                    flexWrap: 'wrap',
+                    justifyContent: "center",
+                    padding: '15px',
+                    mb: '1%',
+                }}>
+
+                    <Pagination count={pagePostCount} color="primary" onChange={(event, num) => postPage(num)} sx={{
+                        background: 'white',
+                        borderRadius: '10px'
+                    }} />
+
+                </Container>
+                <Container sx={{
+                    display: "flex",
+                    flexWrap: 'wrap',
+                    justifyContent: "center",
+                    gap: '10px',
+                    marginTop: '10px',
+                    // height: '100vh',
+
+                }} maxWidth='xl'>
                     <PostList postData={dataState} />
                 </Container>
 
@@ -129,10 +158,10 @@ const App = () => {
                     mb: '10%',
                 }}>
 
-                    <Pagination count={pagePostCount} color="primary" onChange={(event, num) => postPage(num)} sx={{
+                    {/* <Pagination count={pagePostCount} color="primary" onChange={(event, num) => postPage(num)} sx={{
                         background: 'white',
                         borderRadius: '10px'
-                    }} />
+                    }} /> */}
 
 
                 </Container >
