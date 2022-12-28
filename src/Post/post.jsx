@@ -1,7 +1,9 @@
+
 import cn from 'classnames';
 import "./index.css";
 import { Avatar, Card, CardContent, CardHeader, CardMedia, IconButton, Typography, Button } from "@mui/material"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { red } from '@mui/material/colors';
 import React, { useCallback } from "react";
@@ -11,7 +13,11 @@ import api from '../utils/api';
 
 
 
+//const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v }) => {
+
+
 const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v, onPostLike, currentUser, handleDeleteClick }) => {
+
 
   // console.log(author)
 
@@ -30,7 +36,11 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
       
   
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{
+      maxWidth: 345,
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -46,7 +56,9 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
         // }
         title={author.about + ' ' + author.name + ' ' + author.email}
 
+
       // subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
+
       />
       <CardMedia
         component="img"
@@ -56,7 +68,7 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
       // src="https://mobimg.b-cdn.net/v3/fetch/a7/a7a88f4e16d37240432d3ccdde6fe30c.jpeg?w=1470&r=0.5625"
       // alt=""
       />
-      <CardContent>
+      <CardContent sx={{ flex: 1 }}>
         <Typography variant="h5" color="text.secondary">
           {title}
         </Typography>
@@ -64,6 +76,13 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
           {text}
         </Typography>
       </CardContent>
+//<<<<<<< ficha-background
+//      <div>
+ //       <IconButton aria-label="add to favorites" >
+//          <FavoriteIcon />
+//        </IconButton>
+ //     </div>
+//=======
       <IconButton
 
         style={!liked ? { color: "grey" } : { color: "red" }}
@@ -71,6 +90,7 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
         <FavoriteIcon />{likes.length}
       </IconButton>
       {author._id === currentUser._id && <Button onClick={handleDeletePost}>Удалить пост</Button>}
+//>>>>>>> develop
       {/* <CardActions disableSpacing>
           <IconButton aria-label="share">
             <ShareIcon />

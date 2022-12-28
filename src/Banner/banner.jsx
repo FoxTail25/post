@@ -1,5 +1,6 @@
-import { Button, Container } from "@mui/material"
+import { Container } from "@mui/material"
 import React from "react"
+import ButtonJsx from "../Button/button"
 
 const Banner = () => {
     return (
@@ -14,8 +15,7 @@ const Banner = () => {
             }}
         >
 
-            {/* <div>banner</div> */}
-            <Button variant="contained" onClick={() => { console.log("Есть контакт") }}>Добавить постЭ</Button>
+            <ButtonJsx title='Добавить пост'/>
 
         </Container>
     )
