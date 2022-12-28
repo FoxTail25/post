@@ -454,32 +454,7 @@
     transform: translate(78.5955vw, 90vh) scale(0.8731);
   }
 }
-.s35 {
-  opacity: 0.8633;
-  transform: translate(44.3089vw, 1px) scale(0.7633);
-  animation: fall-35 23s -6s linear infinite;
-}
-@keyframes fall-35 {
-  30.149% {
-    transform: translate(37.3748vw, 30.149vh) scale(0.7633);
-  }
-  to {
-    transform: translate(40.84185vw, 90vh) scale(0.7633);
-  }
-}
-.s36 {
-  opacity: 0.8688;
-  transform: translate(36.4856vw, 1px) scale(0.1547);
-  animation: fall-36 19s -7s linear infinite;
-}
-@keyframes fall-36 {
-  58.959% {
-    transform: translate(35.8085vw, 58.959vh) scale(0.1547);
-  }
-  to {
-    transform: translate(36.14705vw, 90vh) scale(0.1547);
-  }
-}
+
 .s37 {
   opacity: 0.5344;
   transform: translate(46.1092vw, 1px) scale(0.5869);

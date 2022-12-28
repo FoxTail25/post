@@ -89,12 +89,7 @@ const App = () => {
             <div className='snow s29'></div>
             <div className='snow s31'></div>
             <div className='snow s34'></div>
-            {/* <div className='snow s30'></div>
-            <div className='snow s32'></div> */}
-            {/* <div className='snow s33'></div>
-            <div className='snow s35'></div> */}
-            {/* <div className='snow s36'></div>
-        <div className='snow s39'></div> */}
+      
             <div className='snow s37'></div>
             <div className='snow s38'></div>
             <div className='snow s40'></div>
