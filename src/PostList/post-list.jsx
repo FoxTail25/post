@@ -1,22 +1,24 @@
-// import { TableContainer } from "@mui/material";
-// import { Pagination, PaginationItem } from "@mui/material";
-// import { Stack } from "@mui/system";
 
-// import { useEffect } from "react";
+import { useContext } from "react";
+import { AllContextData } from "../context/context";
 import { Post } from "../Post/post";
 
 
 const PostList = ({postData}) => {
-
-    // [posts, setPosts] = useStat()
     
+    const countedPost = useContext(AllContextData)
+    // console.log(countedPost)
+    
+// console.log(!!countedPost[0])
 
-// console.log(postData)
+    let post = (!!countedPost[0]) ? countedPost[0]: [];
+
 
     return (
         <>
 
-         { postData.map(el => <Post key={el._id} {...el} />)}
+         {/* { postData.map(el => <Post key={el._id} {...el} />)} */}
+         {post.map(el => <Post key={el._id} {...el} />)}
 
         </>
     )

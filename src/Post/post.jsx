@@ -1,21 +1,26 @@
 import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import React, { useContext } from "react";
 import dayjs from "dayjs";
-import { Container } from "@mui/system";
-import {} from './post.css'
+import { } from './post.css'
+import { useContext } from "react";
 import { AllContextData } from "../context/context";
+
 
 
 const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v }) => {
 
-  // console.log(likes)
+  console.log(author)
 
-  const contextPost = useContext(AllContextData)
-  console.log(contextPost.allPost)
+
+  const data = useContext(AllContextData)
+  const changeStateLikedPost = data[1]
+  const deletePost = data[2]
+
+
 
   let color;
-  if (likes.length > 0) {color = 'warning'}
+
+  if (likes.length > 0) { color = 'warning' }
 
   return (
     <Card sx={{
@@ -23,7 +28,7 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
       minWidth: 345,
       display: 'flex',
       flexDirection: 'column',
-      
+
     }}>
       <CardHeader
         avatar={
@@ -40,12 +45,14 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
 
         subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
       />
+
       <CardMedia
         component="img"
         height="194"
         src={image}
         alt="Изображение"
-      />
+      >
+      </CardMedia>
       <CardContent sx={{ flex: 1 }}>
         <Typography variant="h5" color="text.secondary">
           {title}
@@ -56,12 +63,12 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
       </CardContent>
 
       <div className="cart-bottom">
-        <IconButton aria-label="add to favorites" color={color}>
-        <Badge badgeContent={likes.length} color="primary">
-          <FavoriteIcon />
+        <IconButton aria-label="add to favorites" color={color} onClick={() => changeStateLikedPost(likes, _id)} >
+          <Badge badgeContent={likes.length} color="primary">
+            <FavoriteIcon />
           </Badge>
         </IconButton>
-        <Button variant="outlined">Удалить пост</Button>
+        <Button variant="outlined" onClick={() => deletePost(author, _id)}>Удалить пост</Button>
       </div>
       {/* <CardActions disableSpacing>
           <IconButton aria-label="share">

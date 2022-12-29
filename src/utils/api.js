@@ -20,14 +20,22 @@ class Api {
         }).then(onResponce)
         // .then((e) => console.log(e.json))
     }
-
-
-
-    // getProductById(idProduct) {
-    //     return fetch(`${this._baseUrl}/products/${idProduct}`, {
-    //         headers: this._headers
-    //     }).then(onResponce)
-    // }
+    
+    changePostLike(postId, islike) {
+        return fetch(`${this._baseUrl}/posts/likes/${postId}`, {
+            method: islike ? "DELETE" : "PUT",
+            headers: this._headers
+        }).then(onResponce)
+            .catch((err) => { console.log(`ошибка ${err}`) })
+    }
+    
+    
+    getDeletePostById(idPost) {
+        return fetch(`${this._baseUrl}/posts/${idPost}`, {
+            method: 'DELETE',
+            headers: this._headers
+        }).then(onResponce)
+    }
 
 
     // setUserInfo(dataUser) {
@@ -55,13 +63,6 @@ class Api {
     //         .catch((err) => { console.log(`ошибка ${err}`) })
     // }
 
-    // changeLikeProd(prodId, islike) {
-    //     return fetch(`${this._baseUrl}/products/likes/${prodId}`, {
-    //         method: islike ? "DELETE" : "PUT",
-    //         headers: this._headers
-    //     }).then(onResponce)
-    //         .catch((err) => { console.log(`ошибка ${err}`) })
-    // }
 }
 
 const config = {

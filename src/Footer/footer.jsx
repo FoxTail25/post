@@ -10,26 +10,28 @@ export const Footer = () => {
 
     return (
         <Box sx={{
-            position: 'fixed',
+            position: 'sticked',
             bottom: 0,
             width: '100%',
             maxWidth: '100%',
             display: 'flex',
-            flexDirection: 'column',
+            // flexDirection: 'column',
             alignItems: 'center',
+            justifyContent: 'end',
             gap: '10px',
             backgroundColor: 'aliceblue',
             // marginTop: '10px',
             marginBottom: 0,
-            padding: '5px',
+            // padding: '10px',
         }}>
 
-            <Typography noWrap={true} sx={{ fontSize: '1.5vw' }}>Автор проекта: Шустиков Григорий</Typography>
 
-            <div sx={{
+            {/* <div sx={{
                 backgroundColor: 'inherit',
-            }}>
+                display: 'flex'
+            }}> */}
 
+            <Typography noWrap={true} sx={{ fontSize: '14px' }}> thisProjectAuthor: Foxtail25 </Typography>
 
                 <Link href="tel:+79057800777" sx={{
                     padding: '10px',
@@ -61,7 +63,7 @@ export const Footer = () => {
                 </Link>
 
 
-            </div>
+            {/* </div> */}
         </Box>
     );
 }
