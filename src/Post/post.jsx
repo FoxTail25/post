@@ -36,11 +36,7 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
             {author.avatar}
           </Avatar>
         } sx={{ minHeight: '7em' }}
-        // action={
-        //   <IconButton aria-label="settings">
-        //     <MoreVertIcon />
-        //   </IconButton>
-        // }
+
         title={author.about + ' ' + author.name}
 
         subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}

@@ -9,8 +9,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background: radial-gradient(ellipse at bottom, #090a0f 0%, #1b2735 100%);
-  /* overflow: hidden; */
   min-height: 100vh;
-  /* max-width: 100vw; */
-  /* filter: drop-shadow(0 0 10px white); */
+
 }

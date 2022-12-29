@@ -9,8 +9,6 @@ import { Banner } from "../Banner/banner"
 import { Footer } from "../Footer/footer"
 import { Header } from "../Header/header"
 import { PostList } from "../PostList/post-list"
-// import { postData } from "./posts"
-// import s from './app.module.css'
 import { } from './app.css'
 import { Snow } from "../Snow/snow"
 import api from "../utils/api"

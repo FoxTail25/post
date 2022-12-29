@@ -15,55 +15,48 @@ export const Footer = () => {
             width: '100%',
             maxWidth: '100%',
             display: 'flex',
-            // flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'end',
             gap: '10px',
             backgroundColor: 'aliceblue',
-            // marginTop: '10px',
             marginBottom: 0,
-            // padding: '10px',
         }}>
 
 
-            {/* <div sx={{
-                backgroundColor: 'inherit',
-                display: 'flex'
-            }}> */}
+
 
             <Typography noWrap={true} sx={{ fontSize: '14px' }}> thisProjectAuthor: Foxtail25 </Typography>
 
-                <Link href="tel:+79057800777" sx={{
-                    padding: '10px',
+            <Link href="tel:+79057800777" sx={{
+                padding: '10px',
 
-                    opacity: 0.7,
-                    '&:hover': {
-                        opacity: [0.8, 0.9, 1],
-                    },
-                }}><ContactPhoneIcon />
-                </Link>
+                opacity: 0.7,
+                '&:hover': {
+                    opacity: [0.8, 0.9, 1],
+                },
+            }}><ContactPhoneIcon />
+            </Link>
 
-                <Link href='https://t.me/Siverk' sx={{
-                    padding: '10px',
-                    opacity: 0.7,
-                    '&:hover': {
-                        opacity: [0.8, 0.9, 1],
-                    },
-                }}><TelegramIcon />
-                </Link>
+            <Link href='https://t.me/Siverk' sx={{
+                padding: '10px',
+                opacity: 0.7,
+                '&:hover': {
+                    opacity: [0.8, 0.9, 1],
+                },
+            }}><TelegramIcon />
+            </Link>
 
-                <Link href='mailto:foxtail25@gmail.com&subject=От сайта с постами' sx={{
-                    padding: '10px',
-                    opacity: 0.7,
-                    '&:hover': {
-                        opacity: [0.8, 0.9, 1],
-                    },
-                }}><AlternateEmailIcon />
+            <Link href='mailto:foxtail25@gmail.com&subject=От сайта с постами' sx={{
+                padding: '10px',
+                opacity: 0.7,
+                '&:hover': {
+                    opacity: [0.8, 0.9, 1],
+                },
+            }}><AlternateEmailIcon />
 
-                </Link>
+            </Link>
 
 
-            {/* </div> */}
         </Box>
     );
 }

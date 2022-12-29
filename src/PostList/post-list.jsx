@@ -7,9 +7,7 @@ import { Post } from "../Post/post";
 const PostList = ({postData}) => {
     
     const countedPost = useContext(AllContextData)
-    // console.log(countedPost)
-    
-// console.log(!!countedPost[0])
+
 
     let post = (!!countedPost[0]) ? countedPost[0]: [];
 
@@ -17,7 +15,6 @@ const PostList = ({postData}) => {
     return (
         <>
 
-         {/* { postData.map(el => <Post key={el._id} {...el} />)} */}
          {post.map(el => <Post key={el._id} {...el} />)}
 
         </>
