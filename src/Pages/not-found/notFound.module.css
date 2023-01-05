@@ -1,9 +1,16 @@
 .notFound {
-    height: 100%;
+    max-height: 30vh;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     align-items: center;
     justify-content: center;
-    color: red;
+    color: black;
+    background: rgba(255, 255, 255, 0.667);
+    padding: 30px;
+    border-radius: 10px;
+}
+.btn__home{
+    text-decoration: none;
+	color: currentColor;
 }

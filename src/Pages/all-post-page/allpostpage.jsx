@@ -6,7 +6,7 @@ import {PostList} from '../../components/PostList/post-list'
 
 
 
-export default function AllPost({pagePostCount, setPageNumbet, postData}) {
+export default function AllPost({pagePostCount, setPageNumber}) {
 
     return (
 
@@ -32,7 +32,7 @@ export default function AllPost({pagePostCount, setPageNumbet, postData}) {
                 mb: '1%',
             }}>
 
-                <Pagination count={pagePostCount} color="primary" onChange={(event, num) => setPageNumbet(num)} sx={{
+                <Pagination count={pagePostCount} color="primary" onChange={(event, num) => setPageNumber(num)} sx={{
                     background: 'white',
                     borderRadius: '10px'
                 }} />

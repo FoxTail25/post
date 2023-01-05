@@ -36,8 +36,8 @@ console.log(currentPost)
     {!singlePost ? console.log('stop'):
             <div className={s.mainpost}>
                 <div className={s.button__homepage}>
-                    <Link to="/">
-                        <Button variant="contained"  >Вернуться на главную страницу</Button>
+                    <Link to="/" className={s.btn__home}>
+                        <Button variant="contained" >Вернуться на главную страницу</Button>
                     </Link>
                 </div>
                 
@@ -80,7 +80,7 @@ console.log(currentPost)
                             </Typography>
                         </CardContent>
 
-                        <div className="cart-bottom">
+                        <div className={s.cart__bottom}>
                             <IconButton aria-label="add to favorites" color={color} onClick={function (e) { e.stopPropagation(); changeStateLikedPost(likes, _id)}}>
                                 <Badge badgeContent={likes?.length} color="primary">
                                     <FavoriteIcon />

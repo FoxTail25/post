@@ -1,7 +1,7 @@
 import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import dayjs from "dayjs";
-import { } from './post.css'
+import './post.css'
 import { useContext } from "react";
 import { AllContextData } from "../context/context";
 import { Link } from "react-router-dom";

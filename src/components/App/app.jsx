@@ -36,7 +36,7 @@ const App = () => {
     useEffect(() => { api.getUserInfo().then((data) => setUserData(data)) }, [])
     useEffect(() => { api.getAllPosts().then((data) => setPostData(data)) }, [])
 
-    const [pageNumber, setPageNumbet] = useState(1)
+    const [pageNumber, setPageNumber] = useState(1)
 
 
     //////////////////////////////////////////// функция изменения лайка ///////////////////////////////
@@ -68,7 +68,6 @@ const App = () => {
         for (i; i < count; i++) {
             countedPost.push(postData[i])
         }
-        // console.log(countedPost)
         return countedPost
 
     }
@@ -78,16 +77,15 @@ const App = () => {
 
     ///////////////////////////////// Функция удаления поста ///////////////////////////////////////
 
-    function deletePost(author, _id ) {
-        
+    function deletePost(author, _id) {
+
         (author._id !== userData._id) ? alert('Человек старался, писал, душу вкадывал. А ты удалять? Не хорошо...') : delet();
-        
+
         function delet() {
-            api.deletePost(_id) 
+            api.deletePost(_id)
         }
-    
-    
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
     return (
         <>
@@ -101,11 +99,10 @@ const App = () => {
                     <Routes>
 
 
-                        <Route path="/" element={<AllPost 
-                        postData={countedPost} pagePostCount={pagePostCount} setPageNumbet={setPageNumbet} 
-                        />} />
+                        <Route path="/" element={<AllPost
+                            pagePostCount={pagePostCount} setPageNumber={setPageNumber}/>} />
                         {/* <Route path="/post/:postId" element={<Postp2/>}/> */}
-                        <Route path='/post/:postId' element={<PostPage/>} />
+                        <Route path='/post/:postId' element={<PostPage />} />
                         <Route path="*" element={<NotFound />} />
 
                     </Routes>
