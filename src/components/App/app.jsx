@@ -1,19 +1,22 @@
 
-import { Container, CssBaseline, Pagination } from "@mui/material"
+import { CssBaseline, } from "@mui/material"
 
-import { Stack } from "@mui/system"
 import React from "react"
 import { useEffect } from "react"
 import { useState } from "react"
-import { Banner } from "../Banner/banner"
 import { Footer } from "../Footer/footer"
 import { Header } from "../Header/header"
-import { PostList } from "../PostList/post-list"
-import { } from './app.css'
+// import { PostList } from "../PostList/post-list"
+import './app.css'
 import { Snow } from "../Snow/snow"
-import api from "../utils/api"
+import api from "../../utils/api"
 import { AllContextData } from "../context/context"
-import { likeIsHer } from "../utils/postlike"
+import { likeIsHer } from "../../utils/postlike"
+import { Route, Routes } from 'react-router-dom';
+import { NotFound } from "../../Pages/not-found/notFound"
+import { PostPage } from "../../Pages/post-pages/postPages"
+import AllPost from "../../Pages/all-post-page/allpostpage"
+import { Postp2 } from "../../Pages/postp2/postp2"
 
 
 
@@ -22,6 +25,9 @@ import { likeIsHer } from "../utils/postlike"
 
 
 const App = () => {
+
+
+
 
 
     const [userData, setUserData] = useState([]);
@@ -52,9 +58,7 @@ const App = () => {
 
     let countedPost;
     if (postData.length >= 12) {
-
         postCounted()
-
     }
     function postCounted(num = pageNumber) {
 
@@ -64,7 +68,7 @@ const App = () => {
         for (i; i < count; i++) {
             countedPost.push(postData[i])
         }
-
+        // console.log(countedPost)
         return countedPost
 
     }
@@ -74,12 +78,15 @@ const App = () => {
 
     ///////////////////////////////// Функция удаления поста ///////////////////////////////////////
 
-    function deletePost(author, _id) {
-     
+    function deletePost(author, _id ) {
+        
         (author._id !== userData._id) ? alert('Человек старался, писал, душу вкадывал. А ты удалять? Не хорошо...') : delet();
+        
         function delet() {
-            alert('точно?') ? api.deletePost(_id) : alert('И правильно!))');
+            api.deletePost(_id) 
         }
+    
+    
     }
 
     return (
@@ -87,60 +94,23 @@ const App = () => {
             <CssBaseline />
             <AllContextData.Provider value={[countedPost, changeStateLikedPost, deletePost]}>
                 <Header userInfo={userData} />
+
                 <Snow />
-                <Stack>
+                <main className="main">
 
-                    <Container sx={{
-                        display: "flex",
-                        flexWrap: 'wrap',
-                        justifyContent: "center",
-                        gap: '10px',
-                        marginTop: '10px',
-                        // height: '100vh',
+                    <Routes>
 
-                    }} maxWidth='xl'>
-                        <Banner />
 
-                    </Container>
-                    <Container sx={{
-                        display: "flex",
-                        flexWrap: 'wrap',
-                        justifyContent: "center",
-                        padding: '15px',
-                        mb: '1%',
-                    }}>
+                        <Route path="/" element={<AllPost 
+                        postData={countedPost} pagePostCount={pagePostCount} setPageNumbet={setPageNumbet} 
+                        />} />
+                        {/* <Route path="/post/:postId" element={<Postp2/>}/> */}
+                        <Route path='/post/:postId' element={<PostPage/>} />
+                        <Route path="*" element={<NotFound />} />
 
-                        <Pagination count={pagePostCount} color="primary" onChange={(event, num) => setPageNumbet(num)} sx={{
-                            background: 'white',
-                            borderRadius: '10px'
-                        }} />
+                    </Routes>
 
-                    </Container>
-                    <Container sx={{
-                        display: "flex",
-                        flexWrap: 'wrap',
-                        justifyContent: "center",
-                        gap: '10px',
-                        marginTop: '10px',
-                        // height: '100vh',
-
-                    }} maxWidth='xl'>
-
-                        <PostList postData={postData} />
-
-                    </Container>
-
-                    <Container sx={{
-                        display: "flex",
-                        flexWrap: 'wrap',
-                        justifyContent: "center",
-                        padding: '15px',
-                        mb: '10%',
-                    }}>
-
-                    </Container >
-
-                </Stack>
+                </main>
 
                 <Footer />
             </AllContextData.Provider>

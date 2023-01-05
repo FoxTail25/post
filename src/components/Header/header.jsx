@@ -17,8 +17,7 @@ export const Header = ({ userInfo }) => {
             <AppBar position="static" sx={{
                 display: 'flex',
                 flexDirection: 'row',
-                // justifyContent: 'space-between',
-                alignItems: 'center'
+                alignItems: 'center',
             }}>
                 <Container >
 
@@ -32,9 +31,11 @@ export const Header = ({ userInfo }) => {
 
                 <Container sx={{
                     display: 'flex',
-                    height: '60px',
+                    // height: '60px',
                     alignItems: 'center',
-                    justifyContent: 'end'
+                    justifyContent: 'end',
+                    flexWrap: 'wrap'
+                    
                 }}>
 
                     <Typography variant="h6" component="div" >

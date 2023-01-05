@@ -36,7 +36,12 @@ class Api {
             headers: this._headers
         }).then(onResponce)
     }
-
+    
+    getPostById(idPost) {
+        return fetch(`${this._baseUrl}/posts/${idPost}`, {
+            headers: this._headers
+        }).then(onResponce)
+    }
 
 
 }
