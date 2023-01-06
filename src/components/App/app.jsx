@@ -42,7 +42,7 @@ const App = () => {
 
 
     function updatePostState(likedPost) {
-        console.log(likedPost)
+        // console.log(likedPost)
         let updatedPostData = postData.map(el => { return el._id !== likedPost._id ? el : likedPost; });
         setPostData(updatedPostData)
     }
