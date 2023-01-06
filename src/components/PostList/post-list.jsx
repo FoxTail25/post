@@ -8,7 +8,6 @@ const PostList = () => {
     
     const countedPost = useContext(AllContextData)
 
-    // console.log(countedPost)
 
     let post = (!!countedPost[0]) ? countedPost[0]: [];
 

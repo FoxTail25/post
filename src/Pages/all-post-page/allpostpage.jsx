@@ -18,7 +18,6 @@ export default function AllPost({pagePostCount, setPageNumber}) {
                 justifyContent: "center",
                 gap: '10px',
                 marginTop: '10px',
-                // height: '100vh',
 
             }} maxWidth='xl'>
                 <Banner/>
@@ -44,7 +43,6 @@ export default function AllPost({pagePostCount, setPageNumber}) {
                 justifyContent: "center",
                 gap: '10px',
                 marginTop: '10px',
-                // height: '100vh',
 
             }} maxWidth='xl'>
 

@@ -6,17 +6,16 @@ import { useEffect } from "react"
 import { useState } from "react"
 import { Footer } from "../Footer/footer"
 import { Header } from "../Header/header"
-// import { PostList } from "../PostList/post-list"
 import './app.css'
 import { Snow } from "../Snow/snow"
 import api from "../../utils/api"
 import { AllContextData } from "../context/context"
+import { allUserData } from "../context/context"
 import { likeIsHer } from "../../utils/postlike"
 import { Route, Routes } from 'react-router-dom';
 import { NotFound } from "../../Pages/not-found/notFound"
 import { PostPage } from "../../Pages/post-pages/postPages"
 import AllPost from "../../Pages/all-post-page/allpostpage"
-import { Postp2 } from "../../Pages/postp2/postp2"
 
 
 
@@ -91,26 +90,28 @@ const App = () => {
         <>
             <CssBaseline />
             <AllContextData.Provider value={[countedPost, changeStateLikedPost, deletePost]}>
-                <Header userInfo={userData} />
+                <allUserData.Provider value={userData}>
+                    <Header />
 
-                <Snow />
-                <main className="main">
+                    <Snow />
+                    <main className="main">
 
-                    <Routes>
+                        <Routes>
 
 
-                        <Route path="/" element={<AllPost
-                            pagePostCount={pagePostCount} setPageNumber={setPageNumber}/>} />
-                        {/* <Route path="/post/:postId" element={<Postp2/>}/> */}
-                        <Route path='/post/:postId' element={<PostPage />} />
-                        <Route path="*" element={<NotFound />} />
+                            <Route path="/" element={<AllPost
+                                pagePostCount={pagePostCount} setPageNumber={setPageNumber} />} />
+                            <Route path='/post/:postId' element={<PostPage />} />
+                            <Route path="*" element={<NotFound />} />
 
-                    </Routes>
+                        </Routes>
 
-                </main>
+                    </main>
 
-                <Footer />
+                    <Footer />
+                </allUserData.Provider>
             </AllContextData.Provider>
+
         </>
     )
 }

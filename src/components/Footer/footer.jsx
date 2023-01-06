@@ -10,8 +10,6 @@ export const Footer = () => {
 
     return (
         <Box sx={{
-            // position: 'fixed',
-            // bottom: 0,
             width: '100%',
             maxWidth: '100%',
             display: 'flex',

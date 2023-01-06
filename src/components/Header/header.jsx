@@ -1,13 +1,16 @@
 import React from "react";
 import { AppBar,  Container,  Typography } from "@mui/material";
+import { useContext } from "react";
+import { allUserData } from "../context/context";
 
 
 
 
-export const Header = ({ userInfo }) => {
+export const Header = () => {
 
-    // console.log(userInfo)
-    // console.log(typeof userInfo)
+
+    const userInfo = useContext(allUserData)
+    console.log(userInfo)
 
 
 
@@ -26,12 +29,10 @@ export const Header = ({ userInfo }) => {
                     </Typography>
 
 
-                    {/* <Button color="inherit">Login</Button> */}
                 </Container>
 
                 <Container sx={{
                     display: 'flex',
-                    // height: '60px',
                     alignItems: 'center',
                     justifyContent: 'end',
                     flexWrap: 'wrap'
@@ -59,7 +60,6 @@ export const Header = ({ userInfo }) => {
                 </Container>
 
             </AppBar>
-            {/* </Box> */}
         </>
     )
 }

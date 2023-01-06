@@ -18,7 +18,6 @@ class Api {
         return fetch(`${this._baseUrl}/posts`, {
             headers: this._headers
         }).then(onResponce)
-        // .then((e) => console.log(e.json))
     }
     
     changePostLike(postId, islike) {
@@ -57,4 +56,3 @@ const config = {
 const api = new Api(config);
 
 export default api;
-//GET https://api.react-learning.ru/v2/:groupId/posts
