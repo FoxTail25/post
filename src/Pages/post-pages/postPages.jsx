@@ -1,4 +1,4 @@
-import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, Container, IconButton, Typography } from "@mui/material"
+import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
 import { useContext, useEffect, useState } from "react"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { AllContextData } from "../../components/context/context"
@@ -16,7 +16,7 @@ export const PostPage = () => {
     const deletePost = data[2]
 
     const [singlePost, setSinglePost] = useState([])
-    useEffect(() => { api.getPostById(p).then((data) => {setSinglePost(data)}) }, [changeStateLikedPost])
+    useEffect(() => { api.getPostById(p).then((data) => {setSinglePost(data)}) }, [changeStateLikedPost, p])
 
     // console.log(currentPost)
 
