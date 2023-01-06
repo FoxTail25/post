@@ -10,7 +10,6 @@ export const Header = () => {
 
 
     const userInfo = useContext(allUserData)
-    // console.log(userInfo)
 
 
 

@@ -11,14 +11,12 @@ export const PostPage = () => {
 
     let p = window.location.pathname.slice(6)
     const data = useContext(AllContextData)
-    // const currentPost = data[0]
     const changeStateLikedPost = data[1]
     const deletePost = data[2]
 
     const [singlePost, setSinglePost] = useState([])
     useEffect(() => { api.getPostById(p).then((data) => {setSinglePost(data)}) }, [changeStateLikedPost, p])
 
-    // console.log(currentPost)
 
 
 
