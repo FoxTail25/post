@@ -5,7 +5,7 @@ import PostAddIcon from '@mui/icons-material/PostAdd';
 const ButtonJsx = ({title}) => {
     return (
         <>
-        <Button size="small" variant="contained" onClick={() => { console.log("Есть контакт") }} startIcon={<PostAddIcon />}>{title}</Button>
+        <Button size="small" variant="contained" onClick={() => { console.log("Есть контакт");  }} startIcon={<PostAddIcon />}>{title}</Button>
         
         </>
     )
