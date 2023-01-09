@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar,  Container,  Typography } from "@mui/material";
+import { AppBar, Container, Typography } from "@mui/material";
 import { useContext } from "react";
 import { allUserData } from "../context/context";
 
@@ -17,45 +17,55 @@ export const Header = () => {
         <>
 
             <AppBar position="static" sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
+                position: 'fixed',
+                top: '0',
+                width: '100%',
+               
+                zIndex: '2',
             }}>
-                <Container >
-
-                    <Typography variant="h6" component="div">
-                        Проект "Посты"
-                    </Typography>
-
-
-                </Container>
-
                 <Container sx={{
+                    maxwidth: '1600px',
+                    minWidth: '0px',
                     display: 'flex',
+                    flexDirection: 'row',
                     alignItems: 'center',
-                    justifyContent: 'end',
-                    flexWrap: 'wrap'
-                    
                 }}>
+                    <Container >
 
-                    <Typography variant="h6" component="div" >
+                        <Typography variant="h6" component="div">
+                            2й дипломный проект "Посты"
+                        </Typography>
 
-                        {userInfo?.about}:
 
-                    </Typography>
+                    </Container>
 
-                    <Typography variant="h6" component="div" noWrap sx={{padding: '10px'}}>
+                    <Container sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'end',
+                        flexWrap: 'wrap'
 
-                        {userInfo?.name}
+                    }}>
 
-                    </Typography>
+                        <Typography variant="h6" component="div" >
 
-                    <Typography variant="h6" component="div" noWrap>
+                            {userInfo?.about}:
 
-                        {userInfo?.email}
+                        </Typography>
 
-                    </Typography>
+                        <Typography variant="h6" component="div" noWrap sx={{ padding: '10px' }}>
 
+                            {userInfo?.name}
+
+                        </Typography>
+
+                        <Typography variant="h6" component="div" noWrap>
+
+                            {userInfo?.email}
+
+                        </Typography>
+
+                    </Container>
                 </Container>
 
             </AppBar>

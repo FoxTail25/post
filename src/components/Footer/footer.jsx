@@ -10,14 +10,17 @@ export const Footer = () => {
 
     return (
         <Box sx={{
+            position: 'fixed',
+            bottom: '0',
             width: '100%',
-            maxWidth: '100%',
+            // maxWidth: '100%',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'end',
+            justifyContent: 'center',
             gap: '10px',
             backgroundColor: 'aliceblue',
             marginBottom: 0,
+            zIndex: '2',
         }}>
 
 

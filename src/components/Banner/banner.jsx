@@ -13,7 +13,9 @@ const Banner = () => {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                borderRadius: '5px'
+                borderRadius: '5px',
+                marginTop: 16,
+
             }}
         >
             {/* <Typography>Дипломаная работа</Typography> */}
@@ -23,7 +25,7 @@ const Banner = () => {
                 <CardMedia
                     component="img"
                     height="100"
-                    src='./241-2419780_друзья-от-всей-души-поздравляю-вас-с-наступающим-новым-дед-мороз-с.png'
+                    src='./img/241-2419780_друзья-от-всей-души-поздравляю-вас-с-наступающим-новым-дед-мороз-с.png'
                     alt="Изображение"
                 >
                 </CardMedia>
@@ -35,7 +37,7 @@ const Banner = () => {
                 <CardMedia
                     component="img"
                     height="100"
-                    src='./elka2.png'
+                    src='./img/elka2.png'
                     alt="Изображение"
                 >
                 </CardMedia>
