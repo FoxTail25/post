@@ -1,4 +1,5 @@
 
+
 import { CssBaseline, } from "@mui/material"
 
 import React from "react"
@@ -12,7 +13,7 @@ import api from "../../utils/api"
 import { AllContextData } from "../context/context"
 import { allUserData } from "../context/context"
 import { likeIsHer } from "../../utils/postlike"
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { NotFound } from "../../Pages/not-found/notFound"
 import { PostPage } from "../../Pages/post-pages/postPages"
 import AllPost from "../../Pages/all-post-page/allpostpage"
@@ -20,14 +21,14 @@ import AllPost from "../../Pages/all-post-page/allpostpage"
 
 
 
-
-
-
 const App = () => {
 
 
-
-
+    // const navigate = useNavigate()
+    const location = useLocation()
+  
+    const backgroundLocation = location.state?.backgroundLocation;
+    const initialPath = location.state?.initialPath
 
     const [userData, setUserData] = useState([]);
     const [postData, setPostData] = useState([]);
@@ -35,20 +36,22 @@ const App = () => {
     useEffect(() => { api.getUserInfo().then((data) => setUserData(data)) }, [])
     useEffect(() => { api.getAllPosts().then((data) => setPostData(data)) }, [])
 
+
     const [pageNumber, setPageNumber] = useState(1)
 
 
     //////////////////////////////////////////// функция изменения лайка ///////////////////////////////
 
 
-    function updatePostState(likedPost) {
-        // console.log(likedPost)
-        let updatedPostData = postData.map(el => { return el._id !== likedPost._id ? el : likedPost; });
-        setPostData(updatedPostData)
-    }
     function changeStateLikedPost(likesArr, postId) {
 
         api.changePostLike(postId, likeIsHer(likesArr, userData._id)).then((res) => updatePostState(res));
+
+    }
+    function updatePostState(likedPost) {
+
+        let updatedPostData = postData.map(el => { return el._id !== likedPost._id ? el : likedPost; });
+        setPostData(updatedPostData)
 
     }
 
@@ -96,11 +99,12 @@ const App = () => {
                     <Snow />
                     <main className="main">
 
-                        <Routes>
+                        {/* <Routes> */}
+                        <Routes location={(backgroundLocation && { ...backgroundLocation, pathname: initialPath }) || location}>
 
-
-                            <Route path="/" element={<AllPost
+                            <Route index element={<AllPost
                                 pagePostCount={pagePostCount} setPageNumber={setPageNumber} />} />
+                                
                             <Route path='/post/:postId' element={<PostPage />} />
                             <Route path="*" element={<NotFound />} />
 
