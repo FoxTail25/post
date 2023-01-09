@@ -33,7 +33,7 @@ export const Header = () => {
                     <Container >
 
                         <Typography variant="h6" component="div">
-                            2й дипломный проект "Посты"
+                            "Посты" (2й дипломный проект)
                         </Typography>
 
 

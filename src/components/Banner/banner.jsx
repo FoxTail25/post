@@ -1,4 +1,4 @@
-import { CardMedia, Container, Typography } from "@mui/material"
+import { CardMedia, Container,  } from "@mui/material"
 import React from "react"
 import ButtonJsx from "../Button/button"
 
@@ -18,7 +18,7 @@ const Banner = () => {
 
             }}
         >
-            {/* <Typography>Дипломаная работа</Typography> */}
+           
 
             <div style={{ display: 'flex', }}>
 

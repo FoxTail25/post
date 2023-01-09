@@ -15,7 +15,7 @@ export const PostPage = () => {
     const deletePost = data[2]
 
     const [singlePost, setSinglePost] = useState([])
-    useEffect(() => { api.getPostById(p).then((data) => {setSinglePost(data)}) }, [changeStateLikedPost, p])
+    useEffect(() => { api.getPostById(p).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, p])
 
 
 
@@ -33,7 +33,7 @@ export const PostPage = () => {
         <>
             {!singlePost ? console.log('stop') :
                 <div className={s.mainpost}>
-                    <div className={s.button__homepage}>
+                    <div className={s.button__homepage_top}>
                         <Link to="/" className={s.btn__home}>
                             <Button variant="contained" >Вернуться на главную страницу</Button>
                         </Link>
@@ -88,8 +88,19 @@ export const PostPage = () => {
 
                         </Card>}
 
-                </div>
 
+
+                        <div className={s.button__homepage_bottom}>
+                        <Link to="/" className={s.btn__home}>
+                            <Button variant="contained" >Вернуться на главную страницу</Button>
+                        </Link>
+                    </div>
+
+
+                </div>
+                
+
+            
             }</>
 
     )
