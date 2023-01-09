@@ -1,5 +1,6 @@
 import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
 import FavoriteIcon from '@mui/icons-material/Favorite';
+// import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import dayjs from "dayjs";
 import './post.css'
 import { useContext } from "react";
@@ -27,6 +28,8 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
     <Card className="post" sx={{
       maxWidth: 345,
       minWidth: 345,
+      maxHeight: 550,
+      paddingBottom: 4,
 
     }} >
       <Link to={`/post/${_id}`} 
@@ -50,11 +53,11 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
           alt="Изображение"
         >
         </CardMedia>
-        <CardContent sx={{ flex: 1 }}>
+        <CardContent sx={{ flex: 1, }}>
           <Typography variant="h5" color="text.secondary">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" sx={{  overflow: 'hidden',  LineClamp: 4, maxHeight: '40px'}}>
             {text}
           </Typography>
         </CardContent>
@@ -65,6 +68,7 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
               <FavoriteIcon />
             </Badge>
           </IconButton>
+              {/* <QuestionAnswerIcon sx={{color:'blue', marginLeft: 2, }}/> */}
         </div>
         <div className="post__sticky post__sticky_type_bottom-right" >
           <Button variant="outlined" onClick={() => deletePost(author, _id)}>Удалить пост</Button>
