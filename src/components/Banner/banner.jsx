@@ -27,7 +27,7 @@ const Banner = () => {
                     <CardMedia
                         component="img"
                         height="100"
-                        image="/img/ded.png"
+                        image="/post/img/ded.png"
                         // src='/img/ded.png'
                         alt="Изображение ДедаМороза"
                     >
@@ -40,7 +40,7 @@ const Banner = () => {
                     <CardMedia
                         component="img"
                         height="100"
-                        src='/img/elka2.png'
+                        src='post/img/elka2.png'
                         alt="Изображение ёлки"
                     >
                     </CardMedia>
