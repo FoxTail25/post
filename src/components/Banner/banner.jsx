@@ -27,7 +27,7 @@ const Banner = () => {
                     <CardMedia
                         component="img"
                         height="100"
-                        image="./post/img/ded.png"
+                        image="img/ded.png"
                         // src='/img/ded.png'
                         alt="Изображение ДедаМороза"
                     >
