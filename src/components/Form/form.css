@@ -1,56 +1,54 @@
-form {
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: center;
-    background: #ffffffd8;
-    padding: 30px;
-    border-radius: 10px;
-  }
-  
-  
-  .form {
-    display: flex;
-    max-width: 400px;
-    margin: 0 auto;
-  }
- 
-  
-  p.form {
-    color: #df1d61;
-    margin-bottom: 0px;
-    margin-top: 15px;
-    line-height: 2;
-  }
-  
-  p.form::before {
-    display: inline;
-    content: "⚠ ";
-  }
-  
-  input.form {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    min-width: 320px;
-    border-radius: 4px;
-    border: 1px solid white;
-    padding: 10px 15px;
-    margin-bottom: 5px;
-    font-size: 14px;
-  }
-  
-  label.form {
-    line-height: 2;
-    text-align: left;
-    display: block;
-    margin-bottom: 10px;
-    margin-top: 15px;
-    color: black;
-    font-size: 14px;
-    font-weight: 200;
-  }
-  
-  /* button[type="submit"],
+.form {
+  /* margin: 0 auto; */
+  /* text-align: center; */
+  background: #ffffffe6;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+.paragrafor {
+  color: #df1d61;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  line-height: 2;
+  font-size: 16px;
+  text-align: center;
+}
+
+.paragrafor::before {
+  display: inline;
+  content: "⚠ ";
+}
+
+.inputfor {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 300px;
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.labelfor {
+  line-height: 2;
+  text-align: left;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 15px;
+  color: black;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+/* button[type="submit"],
   input[type="submit"] {
     background: #ec5990;
     color: white;
@@ -76,27 +74,27 @@ form {
     border: 1px solid transparent;
     opacity: 0.8;
   } */
-  
-  input:disabled {
-    opacity: 0.4;
-  }
-  
-  /* input[type="button"]:hover {
+
+/* .inputfor:disabled {
+  opacity: 0.4;
+} */
+
+/* input[type="button"]:hover {
     transition: 0.3s all;
   } */
-  
-  /* button[type="submit"],
+
+/* button[type="submit"],
   input[type="button"],
   input[type="submit"] {
     -webkit-appearance: none;
   } */
-  
-  /* .App {
+
+/* .App {
     max-width: 600px;
     margin: 0 auto;
   } */
-  
-  /* button[type="button"] {
+
+/* button[type="button"] {
     display: block;
     appearance: none;
     background: #333;
@@ -107,15 +105,15 @@ form {
     border-radius: 4px;
   }
    */
-  /* pre {
+/* pre {
     color: white;
   }
   
   hr {
     margin-top: 30px;
   } */
-  
-  /* button {
+
+/* button {
     display: block;
     appearance: none;
     margin-top: 40px;
@@ -125,4 +123,3 @@ form {
     padding: 10px 20px;
     border-radius: 4px;
   } */
-  

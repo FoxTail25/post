@@ -46,11 +46,12 @@ const Banner = () => {
 
                 </div>
 
-                <ButtonJsx title='Добавить пост' />
+                {/* <ButtonJsx title='Добавить пост' /> */}
+                
+                <BasicModal />
 
             </Container>
 
-            <BasicModal />
         </>
     )
 }

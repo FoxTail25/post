@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 // import React from "react";
 import { useForm } from "react-hook-form";
-import sf from './form.module.css'
+import  './form.css'
 
 
 export const Form = () => {
@@ -14,17 +14,19 @@ export const Form = () => {
         console.log(data);
     }
 
-    console.log(errors?.name?.message)
+    // console.log(errors?.name?.message)
 
 
 
     return (
         <>
 
-            <form onSubmit={handleSubmit(cbSubmit)}>
 
-                <label> {errors?.name?.message ? <p>{errors?.name?.message}</p> :'Ваше имя'}
-                    <input
+
+            <form onSubmit={handleSubmit(cbSubmit)} className='form'>
+
+                <label className="labelfor"> {errors?.name?.message ? <p className="paragrafor">{errors?.name?.message}</p> :'Ваше имя'}
+                    <input className="inputfor"
                         {...register('name', {
                             required: {
                                 value: true,
@@ -42,8 +44,8 @@ export const Form = () => {
                     </input>
                 </label>
 
-                <label> {errors?.url?.message ? <p>{errors?.url?.message}</p> :'Введите URL изображения'}
-                    <input
+                <label className="labelfor"> {errors?.url?.message ? <p className="paragrafor">{errors?.url?.message}</p> :'Введите URL изображения'}
+                    <input className="inputfor"
                         {...register('url', {
                             required: {
                                 value: true,
@@ -65,8 +67,8 @@ export const Form = () => {
                     ></input>
                 </label>
 
-                <label> {errors?.head?.message ? <p>{errors?.head?.message}</p> :'Введите заголовок поста'}
-                    <input
+                <label className="labelfor"> {errors?.head?.message ? <p className="paragrafor">{errors?.head?.message}</p> :'Введите заголовок поста'}
+                    <input className="inputfor"
                         {...register('head', {
                             required: {
                                 value: true,
@@ -83,8 +85,8 @@ export const Form = () => {
                     ></input>
                 </label>
 
-                <label> {errors?.body?.message ? <p>{errors?.body?.message}</p> :'Введите текст поста'}
-                    <input
+                <label className="labelfor"> {errors?.body?.message ? <p className="paragrafor">{errors?.body?.message}</p> :'Введите текст поста'}
+                    <input className="inputfor"
                         {...register('body', {
                             required: {
                                 value: true,
@@ -102,7 +104,7 @@ export const Form = () => {
                 </label>
 
 
-                <Button type="submit" variant="contained" className={sf.btn_submit}>Опубликовать пост</Button>
+                <Button type="submit" variant="contained" >Опубликовать пост</Button>
 
 
             </form>

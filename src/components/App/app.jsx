@@ -13,7 +13,7 @@ import api from "../../utils/api"
 import { AllContextData } from "../context/context"
 import { allUserData } from "../context/context"
 import { likeIsHer } from "../../utils/postlike"
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { NotFound } from "../../Pages/not-found/notFound"
 import { PostPage } from "../../Pages/post-pages/postPages"
 import AllPost from "../../Pages/all-post-page/allpostpage"
@@ -24,11 +24,6 @@ import AllPost from "../../Pages/all-post-page/allpostpage"
 const App = () => {
 
 
-    // const navigate = useNavigate()
-    const location = useLocation()
-  
-    const backgroundLocation = location.state?.backgroundLocation;
-    const initialPath = location.state?.initialPath
 
     const [userData, setUserData] = useState([]);
     const [postData, setPostData] = useState([]);
@@ -94,25 +89,35 @@ const App = () => {
             <CssBaseline />
             <AllContextData.Provider value={[countedPost, changeStateLikedPost, deletePost]}>
                 <allUserData.Provider value={userData}>
-                    <Header />
 
-                    <Snow />
+                    <Routes>
+                        <Route path="*" element={ <Header />} />
+                    </Routes>
+                    {/* <Routes> */}
+                   
+                    <Snow /> 
+                    {/* <Route path="*" element={} /> */}
+                    {/* </Routes> */}
+                    
+
                     <main className="main">
 
-                        {/* <Routes> */}
-                        <Routes location={(backgroundLocation && { ...backgroundLocation, pathname: initialPath }) || location}>
+                        <Routes>
 
                             <Route index element={<AllPost
                                 pagePostCount={pagePostCount} setPageNumber={setPageNumber} />} />
-                                
+                            <Route path="/" element={<AllPost
+                                pagePostCount={pagePostCount} setPageNumber={setPageNumber} />} />
+
                             <Route path='/post/:postId' element={<PostPage />} />
                             <Route path="*" element={<NotFound />} />
 
                         </Routes>
 
                     </main>
-
-                    <Footer />
+                    <Routes>
+                        <Route path="*" element={<Footer />} />
+                    </Routes>
                 </allUserData.Provider>
             </AllContextData.Provider>
 
