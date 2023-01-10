@@ -1,6 +1,6 @@
 import { CardMedia, Container, } from "@mui/material"
 import React from "react"
-import ButtonJsx from "../Button/button"
+// import ButtonJsx from "../Button/button"
 import BasicModal from "../Modal/modal"
 
 
@@ -27,7 +27,8 @@ const Banner = () => {
                     <CardMedia
                         component="img"
                         height="100"
-                        src='/img/241-2419780_друзья-от-всей-души-поздравляю-вас-с-наступающим-новым-дед-мороз-с.png'
+                        image="/img/ded.png"
+                        // src='/img/ded.png'
                         alt="Изображение ДедаМороза"
                     >
                     </CardMedia>
