@@ -4,16 +4,16 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { AllContextData } from "../../components/context/context"
 import api from "../../utils/api"
 import dayjs from "dayjs";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import s from './postPage.module.css'
 
 export const PostPage = () => {
 
-    let p = window.location.pathname.slice(6)
     const data = useContext(AllContextData)
     const changeStateLikedPost = data[1]
     const deletePost = data[2]
-
+    const m = useParams()
+    let p = m.postId
     const [singlePost, setSinglePost] = useState([])
     useEffect(() => { api.getPostById(p).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, p])
 
@@ -31,7 +31,7 @@ export const PostPage = () => {
     return (
 
         <>
-            {!singlePost ? console.log('stop') :
+            {!singlePost ? <></> :
                 <div className={s.mainpost}>
                     <div className={s.button__homepage_top}>
                         <Link to="/" className={s.btn__home}>

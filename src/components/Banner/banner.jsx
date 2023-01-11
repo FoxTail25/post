@@ -40,7 +40,7 @@ const Banner = () => {
                     <CardMedia
                         component="img"
                         height="100"
-                        src='/post/img/elka2.png'
+                        src='img/elka2.png'
                         alt="Изображение ёлки"
                     >
                     </CardMedia>

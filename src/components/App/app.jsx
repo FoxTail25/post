@@ -25,18 +25,17 @@ const App = () => {
 
 
 
-    const [userData, setUserData] = useState([]);
-    const [postData, setPostData] = useState([]);
+    const [userData, setUserData] = useState([]);     // Стейт данных пользователя
+    const [postData, setPostData] = useState([]);     // Стейт постов
+    const [pageNumber, setPageNumber] = useState(1)   // Стейт пагинации
 
-    useEffect(() => { api.getUserInfo().then((data) => setUserData(data)) }, [])
-    useEffect(() => { api.getAllPosts().then((data) => setPostData(data)) }, [])
+    useEffect(() => { api.getUserInfo().then((data) => setUserData(data)) }, [])   // апи запрос на получение постов с сервера
+    useEffect(() => { api.getAllPosts().then((data) => setPostData(data)) }, [])   // апи запрос на получение с сервера данных пользователя
 
 
-    const [pageNumber, setPageNumber] = useState(1)
 
 
     //////////////////////////////////////////// функция изменения лайка ///////////////////////////////
-
 
     function changeStateLikedPost(likesArr, postId) {
 
@@ -49,7 +48,6 @@ const App = () => {
         setPostData(updatedPostData)
 
     }
-
 
     ///////////////////////////////////////// Ниже блок пагинации //////////////////////////////////
 
@@ -86,28 +84,26 @@ const App = () => {
 
     return (
         <>
-            <CssBaseline />
+            <CssBaseline />  {/* сброс CSS стилий от MaterialUI */}
+            
             <AllContextData.Provider value={[countedPost, changeStateLikedPost, deletePost]}>
+
                 <allUserData.Provider value={userData}>
 
                     <Routes>
                         <Route path="*" element={ <Header />} />
                     </Routes>
-                    {/* <Routes> */}
-                   
+               
                     <Snow /> 
-                    {/* <Route path="*" element={} /> */}
-                    {/* </Routes> */}
-                    
-
+         
                     <main className="main">
 
                         <Routes>
 
                             <Route index element={<AllPost
                                 pagePostCount={pagePostCount} setPageNumber={setPageNumber} />} />
-                            <Route path="/" element={<AllPost
-                                pagePostCount={pagePostCount} setPageNumber={setPageNumber} />} />
+                            {/* <Route path="/" element={<AllPost
+                                pagePostCount={pagePostCount} setPageNumber={setPageNumber} />} /> */}
 
                             <Route path='/post/:postId' element={<PostPage />} />
                             <Route path="*" element={<NotFound />} />
@@ -115,10 +111,13 @@ const App = () => {
                         </Routes>
 
                     </main>
+
                     <Routes>
                         <Route path="*" element={<Footer />} />
                     </Routes>
+
                 </allUserData.Provider>
+                
             </AllContextData.Provider>
 
         </>
