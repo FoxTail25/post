@@ -1,3 +1,5 @@
+import { Post } from "../components/Post/post";
+
 const onResponce = (res) => {
     return res.ok ? res.json() : res.json().then(err => Promise.reject(res));
 }
@@ -7,9 +9,15 @@ class Api {
         this._headers = headers;
         this._baseUrl = baseUrl;
     }
-    
+
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
+            headers: this._headers
+        }).then(onResponce)
+    }
+
+    getUserInfoById(userId) {
+        return fetch(`${this._baseUrl}/users/${userId}`, {
             headers: this._headers
         }).then(onResponce)
     }
@@ -19,7 +27,7 @@ class Api {
             headers: this._headers
         }).then(onResponce)
     }
-    
+
     changePostLike(postId, islike) {
         return fetch(`${this._baseUrl}/posts/likes/${postId}`, {
             method: islike ? "DELETE" : "PUT",
@@ -27,20 +35,28 @@ class Api {
         }).then(onResponce)
             .catch((err) => { console.log(`ошибка ${err}`) })
     }
-    
-    
-    getDeletePostById(idPost) {
+
+
+    deletePostById(idPost) {
         return fetch(`${this._baseUrl}/posts/${idPost}`, {
             method: 'DELETE',
             headers: this._headers
         }).then(onResponce)
     }
-    
+
     getPostById(idPost) {
         return fetch(`${this._baseUrl}/posts/${idPost}`, {
             headers: this._headers
         }).then(onResponce)
     }
+
+    addNewPost(idPost) {
+        return fetch(`${this._baseUrl}/posts`, {
+            method: 'POST',
+            headers: this._headers
+        }).then(onResponce)
+    }
+
 
 
 }

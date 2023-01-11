@@ -77,7 +77,7 @@ const App = () => {
         (author._id !== userData._id) ? alert('Человек старался, писал, душу вкадывал. А ты удалять? Не хорошо...') : delet();
 
         function delet() {
-            api.deletePost(_id)
+            api.deletePostById(_id)
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -117,7 +117,7 @@ const App = () => {
                     </Routes>
 
                 </allUserData.Provider>
-                
+
             </AllContextData.Provider>
 
         </>

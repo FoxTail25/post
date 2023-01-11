@@ -6,22 +6,27 @@ import api from "../../utils/api"
 import dayjs from "dayjs";
 import { Link, useParams } from "react-router-dom";
 import s from './postPage.module.css'
+import { PostTag } from "../../components/PostTag/post-tag";
+import PostComment from "../../components/PostComments/PostComments";
+import parse from 'html-react-parser'
+
 
 export const PostPage = () => {
 
     const data = useContext(AllContextData)
     const changeStateLikedPost = data[1]
     const deletePost = data[2]
-    const m = useParams()
-    let p = m.postId
+    const postIdFromUrl = useParams()
+
     const [singlePost, setSinglePost] = useState([])
-    useEffect(() => { api.getPostById(p).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, p])
 
+    useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
 
+    const { _id, author, created_at, image, title, text, likes, comments, tags, } = singlePost
 
+// console.log(typeof text)
+// console.log(text)
 
-
-    const { _id, author, created_at, image, title, text, likes, } = singlePost
 
     let color
 
@@ -61,6 +66,13 @@ export const PostPage = () => {
                                 subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
                             />
 
+
+                            
+                                {tags
+                                    ? <PostTag tags={tags} />
+                                    : 0
+                                }
+                            
                             <CardMedia
                                 component="img"
                                 height="auto"
@@ -68,14 +80,20 @@ export const PostPage = () => {
                                 alt="Изображение"
                             >
                             </CardMedia>
+
+
                             <CardContent sx={{ flex: 1 }}>
                                 <Typography variant="h5" color="text.secondary">
                                     {title}
                                 </Typography>
                                 <Typography variant="body2" color="text.secondary">
-                                    {text}
+                                   {text}
+                                   {/* {parse(text, {
+  replace: ({ attribs }) => attribs && attribs.id === 'remove' && <></>
+})} */}
                                 </Typography>
                             </CardContent>
+
 
                             <div className={s.cart__bottom}>
                                 <IconButton aria-label="add to favorites" color={color} onClick={function (e) { e.stopPropagation(); changeStateLikedPost(likes, _id) }}>
@@ -86,11 +104,13 @@ export const PostPage = () => {
                                 <Button variant="outlined" onClick={function (e) { e.stopPropagation(); deletePost(author, _id) }}>Удалить пост</Button>
                             </div>
 
+                            <PostComment comments={comments}/>
+
                         </Card>}
 
 
 
-                        <div className={s.button__homepage_bottom}>
+                    <div className={s.button__homepage_bottom}>
                         <Link to="/" className={s.btn__home}>
                             <Button variant="contained" >Вернуться на главную страницу</Button>
                         </Link>
@@ -98,9 +118,9 @@ export const PostPage = () => {
 
 
                 </div>
-                
 
-            
+
+
             }</>
 
     )
