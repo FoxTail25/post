@@ -73,6 +73,7 @@ export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
                         background: 'white',
                         borderRadius: '10px'
                     }} />
+
             </Container >
 
         </Stack>

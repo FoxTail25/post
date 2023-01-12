@@ -8,7 +8,7 @@ import { Link, useParams } from "react-router-dom";
 import s from './postPage.module.css'
 import { PostTag } from "../../components/PostTag/post-tag";
 import PostComment from "../../components/PostComments/PostComments";
-import parse from 'html-react-parser';
+// import parse from 'html-react-parser';
 
 
 export const PostPage = () => {
@@ -23,19 +23,12 @@ export const PostPage = () => {
     useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
 
     const { _id, author, created_at, image, title, text, likes, comments, tags, } = singlePost
-    // console.log(typeof singlePost)
-
-// console.log(typeof text)
-// console.log(text)
-
 
     let color
 
     if (likes?.length > 0) { color = 'warning' }
 
-
     return (
-
         <>
             {!singlePost ? <></> :
                 <div className={s.mainpost}>
@@ -66,9 +59,7 @@ export const PostPage = () => {
 
                                 subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
                             />
-
-
-                            
+                    
                                 {tags
                                     ? <PostTag tags={tags} />
                                     : 0
@@ -96,7 +87,6 @@ export const PostPage = () => {
                                 {/* </Typography> */}
                             </CardContent>
 
-
                             <div className={s.cart__bottom}>
                                 <IconButton aria-label="add to favorites" color={color} onClick={function (e) { e.stopPropagation(); changeStateLikedPost(likes, _id) }}>
                                     <Badge badgeContent={likes?.length} color="primary">
@@ -110,21 +100,15 @@ export const PostPage = () => {
 
                         </Card>}
 
-
-
                     <div className={s.button__homepage_bottom}>
                         <Link to="/" className={s.btn__home}>
                             <Button variant="contained" >Вернуться на главную страницу</Button>
                         </Link>
                     </div>
 
-
                 </div>
 
-
-
             }</>
-
     )
 
 }

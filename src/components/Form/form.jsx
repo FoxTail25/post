@@ -25,23 +25,14 @@ export const Form = ({ handleClose }) => {
         mode: 'onBlur',
     });
 
-
     const cbSubmit = (data) => {
         api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
         handleClose()
     }
 
-
-
-
     return (
         <>
-
-
-
             <form onSubmit={handleSubmit(cbSubmit)} className='form'>
-
-
 
                 <label className="labelfor"> {errors?.url?.message ? <p className="paragrafor">{errors?.url?.message}</p> : 'Введите URL изображения'}
                     <input className="inputfor"
@@ -62,8 +53,7 @@ export const Form = ({ handleClose }) => {
                         })}
                         type='text'
                         placeholder="https://source.unsplash.com/random/500%C3%97400/?nature" // https://source.unsplash.com/random/?nature"
-                        
-
+      
                     ></input>
                 </label>
 
@@ -103,15 +93,9 @@ export const Form = ({ handleClose }) => {
                     ></input>
                 </label>
 
-
                 <Button type="submit" variant="contained" >Опубликовать пост</Button>
 
-
             </form>
-
-
-
-
 
         </>
     )
