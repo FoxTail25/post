@@ -57,10 +57,10 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
           <Typography variant="h5" color="text.secondary">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ overflow: 'hidden', LineClamp: 4, maxHeight: '40px' }}>
+          {/* <Typography variant="body2" color="text.secondary" sx={{ overflow: 'hidden', LineClamp: 4, maxHeight: '40px' }}> */}
             {/* {text} */}
-            <p dangerouslySetInnerHTML={{__html: text}} />
-          </Typography>
+            <div dangerouslySetInnerHTML={{__html: text}} style={{ overflow: 'hidden', LineClamp: 4, maxHeight: '50px' }}/>
+          {/* </Typography> */}
         </CardContent>
       </Link>
       <div className="post__sticky post__sticky_type_bottom-left" >
