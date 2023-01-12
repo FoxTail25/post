@@ -32,6 +32,6 @@
 
 .cart__bottom {
     display: flex;
-    padding: 20px;
+    padding: 0 5px 2px 5px;
     justify-content: space-between;
 }

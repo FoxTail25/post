@@ -1,4 +1,3 @@
-import { Post } from "../components/Post/post";
 
 const onResponce = (res) => {
     return res.ok ? res.json() : res.json().then(err => Promise.reject(res));
@@ -70,6 +69,13 @@ class Api {
         return fetch(`${this._baseUrl}/posts/${postid}`, {
             method: 'PATCH',
             body: JSON.stringify(post),
+            headers: this._headers
+        }).then(onResponce)
+    }
+
+    // https://api.react-learning.ru/v2/:groupId/posts/comments/:postId
+    getPostComments(postid) {
+        return fetch(`${this._baseUrl}/posts/comments/${postid}`, {
             headers: this._headers
         }).then(onResponce)
     }
