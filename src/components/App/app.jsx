@@ -25,18 +25,18 @@ const App = () => {
 
 
 
-    const [userData, setUserData] = useState([]);     // Стейт данных пользователя
-    const [postData, setPostData] = useState([]);     // Стейт постов
+    const [userData, setUserData] = useState([]);         // Стейт данных пользователя
+    const [postData, setPostData] = useState([]);         // Стейт постов
     const [allPostCount, setAllPostcount] = useState([]); //  Стейт общего количества постов
-    const [pageNumber, setPageNumber] = useState(1)   // Стейт пагинации
+    const [pageNumber, setPageNumber] = useState(1)       // Стейт пагинации
 
     useEffect(() => { api.getUserInfo().then((data) => setUserData(data)) }, [])   // апи запрос на получение с сервера данных пользователя
-    useEffect(() => { paginatePage(1) }, [])   // апи запрос на получение с сервера данных пользователя
+    useEffect(() => { paginatePage(1) }, [])   // апи запрос на получение постов с сервера.
 
 
 
 
-    //////////////////////////////////////////// функция изменения лайка ///////////////////////////////
+    //////////////////////////////////////////// функция изменения лайка ////////////////////////////////////
 
     function changeStateLikedPost(likesArr, postId) {
 
@@ -56,10 +56,9 @@ const App = () => {
 
         let updatedPostData = [...postData, newPost];
         setPostData(updatedPostData)
-
     }
-
-    ///////////////////////////////////////// Ниже блок пагинации //////////////////////////////////
+    
+    //////////////////////////////////////////////  блок пагинации //////////////////////////////////////////////
 
     let pagePostCount = Math.ceil(allPostCount / 12) // Количество страниц пагинации
     
@@ -70,9 +69,9 @@ const App = () => {
         {setPostData(data.posts); setAllPostcount(data.total); setPageNumber(page)})
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    ///////////////////////////////// Функция удаления поста ///////////////////////////////////////
+    /////////////////////////////////////////// Функция удаления поста /////////////////////////////////////////
     
     function deletePost(author, _id) {
         
@@ -132,23 +131,4 @@ const App = () => {
     )
 }
 
-
 export default App;
-
-// oldPagination/////////////////////////////////////////////////////////////////
-
-// let countedPost;
-// if (postData.length >= 12) {
-//     postCounted()
-// }
-// function postCounted(num = pageNumber) {
-
-//     countedPost = [];
-//     let count = 12 * num > postData.length ? postData.length : 12 * num;
-//     let i = (num === 1) ? 0 : (12 * num) - ((12 * (num - 1)))
-//     for (i; i < count; i++) {
-//         countedPost.push(postData[i])
-//     }
-//     return countedPost
-
-// }
