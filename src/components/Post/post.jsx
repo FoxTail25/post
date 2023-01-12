@@ -58,7 +58,8 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ overflow: 'hidden', LineClamp: 4, maxHeight: '40px' }}>
-            {text}
+            {/* {text} */}
+            <p dangerouslySetInnerHTML={{__html: text}} />
           </Typography>
         </CardContent>
       </Link>
