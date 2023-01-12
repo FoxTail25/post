@@ -27,6 +27,14 @@ class Api {
             headers: this._headers
         }).then(onResponce)
     }
+    
+    // posts/paginate?page=<номер страницы>&limit=<число ограничивающее вывод на страницу>
+    getPaginatePosts(page, number) {
+        return fetch(`${this._baseUrl}/posts/paginate?page=${page}&limit=${number}`, {
+            headers: this._headers
+        }).then(onResponce)
+    }
+
 
     changePostLike(postId, islike) {
         return fetch(`${this._baseUrl}/posts/likes/${postId}`, {
@@ -50,9 +58,18 @@ class Api {
         }).then(onResponce)
     }
 
-    addNewPost(idPost) {
+    addNewPost(post) {
         return fetch(`${this._baseUrl}/posts`, {
             method: 'POST',
+            body: JSON.stringify(post),
+            headers: this._headers
+        }).then(onResponce)
+    }
+
+    changePost(post, postid) {
+        return fetch(`${this._baseUrl}/posts/${postid}`, {
+            method: 'PATCH',
+            body: JSON.stringify(post),
             headers: this._headers
         }).then(onResponce)
     }

@@ -1,13 +1,13 @@
 import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
 import FavoriteIcon from '@mui/icons-material/Favorite';
-// import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import dayjs from "dayjs";
 import './post.css'
 import { useContext } from "react";
 import { AllContextData } from "../context/context";
 import { Link } from "react-router-dom";
-import { PostTag } from "../PostTag/post-tag";
-import parse from 'html-react-parser'
+import cN from "classnames";
+
 
 
 
@@ -21,9 +21,7 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
 
 
 
-  let color;
-
-  if (likes.length > 0) { color = 'warning' }
+ 
 
   return (
 
@@ -60,23 +58,32 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ overflow: 'hidden', LineClamp: 4, maxHeight: '40px' }}>
-            {parse(text)}
+            {text}
           </Typography>
         </CardContent>
       </Link>
       <div className="post__sticky post__sticky_type_bottom-left" >
-        <IconButton aria-label="add to favorites" color={color} onClick={() => changeStateLikedPost(likes, _id)} >
-          <Badge badgeContent={likes.length} color="primary">
+        <IconButton aria-label="add to favorites" color={cN({ 'gray': !likes.length }, { 'warning': likes.length })} onClick={() => changeStateLikedPost(likes, _id)} >
+          <Badge badgeContent={likes.length} color="primary" >
             <FavoriteIcon />
           </Badge>
         </IconButton>
-        {/* <QuestionAnswerIcon sx={{color:'blue', marginLeft: 2, }}/> */}
+
+        {comments.length ?
+          <Link to={`/post/${_id}`}>
+            <IconButton aria-label="go to comments" >
+              <Badge badgeContent={comments.length} color='primary'  >
+                <QuestionAnswerIcon color='gray' />
+              </Badge>
+            </IconButton>
+          </Link>
+          : null}
       </div>
       <div className="post__sticky post__sticky_type_bottom-right" >
         <Button variant="outlined" onClick={() => deletePost(author, _id)}>Удалить пост</Button>
       </div>
 
-    </Card>
+    </Card >
 
   );
 }

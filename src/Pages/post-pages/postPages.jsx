@@ -8,7 +8,7 @@ import { Link, useParams } from "react-router-dom";
 import s from './postPage.module.css'
 import { PostTag } from "../../components/PostTag/post-tag";
 import PostComment from "../../components/PostComments/PostComments";
-import parse from 'html-react-parser'
+import parse from 'html-react-parser';
 
 
 export const PostPage = () => {
@@ -18,11 +18,12 @@ export const PostPage = () => {
     const deletePost = data[2]
     const postIdFromUrl = useParams()
 
-    const [singlePost, setSinglePost] = useState([])
+    const [singlePost, setSinglePost] = useState({})
 
     useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
 
     const { _id, author, created_at, image, title, text, likes, comments, tags, } = singlePost
+    // console.log(typeof singlePost)
 
 // console.log(typeof text)
 // console.log(text)
@@ -86,12 +87,13 @@ export const PostPage = () => {
                                 <Typography variant="h5" color="text.secondary">
                                     {title}
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                   {text}
-                                   {/* {parse(text, {
-  replace: ({ attribs }) => attribs && attribs.id === 'remove' && <></>
-})} */}
-                                </Typography>
+                                {/* <Typography variant="body2" color="text.secondary"> */}
+                                   {/* {parse(toString(text))} */}
+                                   <p dangerouslySetInnerHTML={{__html: text}} />
+                                    {/* {parse(text, {
+        replace: ({ attribs }) => attribs && attribs.id === 'remove' && <></>
+        })} */}
+                                {/* </Typography> */}
                             </CardContent>
 
 

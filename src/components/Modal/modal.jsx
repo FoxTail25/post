@@ -25,7 +25,7 @@ export default function BasicModal() {
         // sx={style}
         className='modalstule'>
  
-          <Form />
+          <Form handleClose={handleClose}/>
         </Box>
       </Modal>
     </div>

@@ -27,10 +27,11 @@ const App = () => {
 
     const [userData, setUserData] = useState([]);     // Стейт данных пользователя
     const [postData, setPostData] = useState([]);     // Стейт постов
+    const [allPostCount, setAllPostcount] = useState([]); //  Стейт общего количества постов
     const [pageNumber, setPageNumber] = useState(1)   // Стейт пагинации
 
-    useEffect(() => { api.getUserInfo().then((data) => setUserData(data)) }, [])   // апи запрос на получение постов с сервера
-    useEffect(() => { api.getAllPosts().then((data) => setPostData(data)) }, [])   // апи запрос на получение с сервера данных пользователя
+    useEffect(() => { api.getUserInfo().then((data) => setUserData(data)) }, [])   // апи запрос на получение с сервера данных пользователя
+    useEffect(() => { paginatePage(1) }, [])   // апи запрос на получение с сервера данных пользователя
 
 
 
@@ -49,61 +50,68 @@ const App = () => {
 
     }
 
+    //////////////////////////// функция обновления стейта постов, после добавления нового поста ////////////////////
+
+    function addNewPostInState(newPost) {
+
+        let updatedPostData = [...postData, newPost];
+        setPostData(updatedPostData)
+
+    }
+
     ///////////////////////////////////////// Ниже блок пагинации //////////////////////////////////
 
-    let countedPost;
-    if (postData.length >= 12) {
-        postCounted()
+    let pagePostCount = Math.ceil(allPostCount / 12) // Количество страниц пагинации
+    
+    function paginatePage(page=1 ) {
+        // console.log(page)
+            let number = 12
+        api.getPaginatePosts(page, number).then((data) => 
+        {setPostData(data.posts); setAllPostcount(data.total); setPageNumber(page)})
     }
-    function postCounted(num = pageNumber) {
-
-        countedPost = [];
-        let count = 12 * num > postData.length ? postData.length : 12 * num;
-        let i = (num === 1) ? 0 : (12 * num) - ((12 * (num - 1)))
-        for (i; i < count; i++) {
-            countedPost.push(postData[i])
-        }
-        return countedPost
-
-    }
-    let pagePostCount = Math.ceil(postData.length / 12) // Количество страниц пагинации
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     ///////////////////////////////// Функция удаления поста ///////////////////////////////////////
-
+    
     function deletePost(author, _id) {
+        
+        (author._id !== userData._id) ? alert('Человек старался, писал, душу вкадывал. А ты удалять? Не хорошо...') : delPost(_id);
+        
+        function delPost(_id) {
 
-        (author._id !== userData._id) ? alert('Человек старался, писал, душу вкадывал. А ты удалять? Не хорошо...') : delet();
-
-        function delet() {
             api.deletePostById(_id)
+
+            let updatedPostData = postData.filter((e) => {return e._id !== _id})
+            setPostData(updatedPostData)
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     return (
         <>
             <CssBaseline />  {/* сброс CSS стилий от MaterialUI */}
-            
-            <AllContextData.Provider value={[countedPost, changeStateLikedPost, deletePost]}>
+
+            <AllContextData.Provider value={[
+                postData, changeStateLikedPost, deletePost, addNewPostInState ]}>
 
                 <allUserData.Provider value={userData}>
 
                     <Routes>
-                        <Route path="*" element={ <Header />} />
+                        <Route path="*" element={<Header />} />
                     </Routes>
-               
-                    <Snow /> 
-         
+
+                    <Snow />
+
                     <main className="main">
 
                         <Routes>
 
                             <Route index element={<AllPost
-                                pagePostCount={pagePostCount} setPageNumber={setPageNumber} />} />
-                            {/* <Route path="/" element={<AllPost
-                                pagePostCount={pagePostCount} setPageNumber={setPageNumber} />} /> */}
+                                pagePostCount={pagePostCount} 
+                                pageNumber={pageNumber} 
+                                paginatePage={paginatePage}/>} />
+                        
 
                             <Route path='/post/:postId' element={<PostPage />} />
                             <Route path="*" element={<NotFound />} />
@@ -126,3 +134,21 @@ const App = () => {
 
 
 export default App;
+
+// oldPagination/////////////////////////////////////////////////////////////////
+
+// let countedPost;
+// if (postData.length >= 12) {
+//     postCounted()
+// }
+// function postCounted(num = pageNumber) {
+
+//     countedPost = [];
+//     let count = 12 * num > postData.length ? postData.length : 12 * num;
+//     let i = (num === 1) ? 0 : (12 * num) - ((12 * (num - 1)))
+//     for (i; i < count; i++) {
+//         countedPost.push(postData[i])
+//     }
+//     return countedPost
+
+// }

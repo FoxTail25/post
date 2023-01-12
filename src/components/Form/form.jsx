@@ -1,20 +1,36 @@
 import { Button } from "@mui/material";
+import { useContext } from "react";
 // import React from "react";
 import { useForm } from "react-hook-form";
-import  './form.css'
+import api from "../../utils/api";
+import { AllContextData } from "../context/context";
+import './form.css'
 
 
-export const Form = () => {
+export const Form = ({ handleClose }) => {
 
+    const data = useContext(AllContextData)
+
+    const addNewPostInState = data[3]
+
+    useForm({
+        defaultValues: {
+            image: 'https://source.unsplash.com/random/?nature',
+            title: 'Природа - Мать наша!',
+            text: 'Хорошо там, где красиво и чисто'
+        }
+    })
+    
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'onBlur',
     });
 
+
     const cbSubmit = (data) => {
-        console.log(data);
+        api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
+        handleClose()
     }
 
-    // console.log(errors?.name?.message)
 
 
 
@@ -25,28 +41,11 @@ export const Form = () => {
 
             <form onSubmit={handleSubmit(cbSubmit)} className='form'>
 
-                <label className="labelfor"> {errors?.name?.message ? <p className="paragrafor">{errors?.name?.message}</p> :'Ваше имя'}
-                    <input className="inputfor"
-                        {...register('name', {
-                            required: {
-                                value: true,
-                                message: 'Поле обязательно для заполнения'
-                            },
-                            minLength: {
-                                value: 2,
-                                message: 'Имя должно состоять не менее чем из 2х символов'
-                            },
-                        })}
-                        type='text'
-                        placeholder="Anonimus"
-              
-                    >
-                    </input>
-                </label>
 
-                <label className="labelfor"> {errors?.url?.message ? <p className="paragrafor">{errors?.url?.message}</p> :'Введите URL изображения'}
+
+                <label className="labelfor"> {errors?.url?.message ? <p className="paragrafor">{errors?.url?.message}</p> : 'Введите URL изображения'}
                     <input className="inputfor"
-                        {...register('url', {
+                        {...register('image', {
                             required: {
                                 value: true,
                                 message: 'Поле обязательно для заполнения'
@@ -56,20 +55,21 @@ export const Form = () => {
                                 message: 'url адрес должен состоять не менее чем из 12 символов'
                             },
                             pattern: {
-                                value:/https:\/\//gm,
+                                value: /https:\/\//gm,
                                 message: 'url адрес должен начинаться с https://'
                             }
 
                         })}
                         type='text'
-                        placeholder="https://unsplash..."
-               
+                        placeholder="https://source.unsplash.com/random/500%C3%97400/?nature" // https://source.unsplash.com/random/?nature"
+                        
+
                     ></input>
                 </label>
 
-                <label className="labelfor"> {errors?.head?.message ? <p className="paragrafor">{errors?.head?.message}</p> :'Введите заголовок поста'}
+                <label className="labelfor"> {errors?.head?.message ? <p className="paragrafor">{errors?.head?.message}</p> : 'Введите заголовок поста'}
                     <input className="inputfor"
-                        {...register('head', {
+                        {...register('title', {
                             required: {
                                 value: true,
                                 message: 'Поле обязательно для заполнения'
@@ -81,13 +81,13 @@ export const Form = () => {
                         })}
                         type='text'
                         placeholder="Заголовок"
-              
+
                     ></input>
                 </label>
 
-                <label className="labelfor"> {errors?.body?.message ? <p className="paragrafor">{errors?.body?.message}</p> :'Введите текст поста'}
+                <label className="labelfor"> {errors?.body?.message ? <p className="paragrafor">{errors?.body?.message}</p> : 'Введите текст поста'}
                     <input className="inputfor"
-                        {...register('body', {
+                        {...register('text', {
                             required: {
                                 value: true,
                                 message: 'Поле обязательно для заполнения'
@@ -99,7 +99,7 @@ export const Form = () => {
                         })}
                         type='text'
                         placeholder="сам текст"
-          
+
                     ></input>
                 </label>
 
