@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import './post.css'
 import { useContext } from "react";
 import { AllContextData } from "../context/context";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import cN from "classnames";
 
 
@@ -21,14 +21,15 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
 
 
 
- 
+
+
 
   return (
 
     <Card className="post" sx={{
       maxWidth: 345,
       minWidth: 345,
-      maxHeight: 550,
+      // maxHeight: 550,
       paddingBottom: 4,
 
     }} >
@@ -37,7 +38,15 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
         <CardHeader
           avatar={
             <Avatar >
-              {author.avatar}
+
+              <CardMedia 
+                component="img"
+                height="60"
+                image={author?.avatar}
+                // src={}
+                alt="Изображение">
+              </CardMedia>
+
             </Avatar>
           } sx={{ minHeight: '7em' }}
 
@@ -45,24 +54,45 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
 
           subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
         />
-
+        {/* <div style={{margin: '0 auto'}}> */}
         <CardMedia
           component="img"
-          height="194"
+          height="200"
           src={image}
           alt="Изображение"
         >
         </CardMedia>
+        {/* </div> */}
+
+        {/* {(tags?.length && (tags[0] !== ''))
+          ? <div style={{
+            display: 'flex',
+            background: '#3f51b5'
+          }}>
+            <div style={{ paddingLeft: 10, color: 'white' }}>#tags:</div>{tags?.map((e, i) => <div key={i} style={{
+              padding: "0px 4px", color: 'white', overflow: 'hidden', display: 'flex', flexWrap: 'nowrap'
+            }}>{(e.length) > 10 ? '...' : e}</div>)}
+          </div>
+
+          : <div style={{
+            display: 'flex',
+            background: '#3f51b5'
+            }}>
+              <div style={{ paddingLeft: 10, color: 'white' }}>#tags: none</div>
+            
+          </div>
+
+        } */}
         <CardContent sx={{ flex: 1, }}>
           <Typography variant="h5" color="text.secondary">
             {title}
           </Typography>
           {/* <Typography variant="body2" color="text.secondary" sx={{ overflow: 'hidden', LineClamp: 4, maxHeight: '40px' }}> */}
-            {/* {text} */}
-            <div dangerouslySetInnerHTML={{__html: text}} style={{ overflow: 'hidden', LineClamp: 4, maxHeight: '50px' }}/>
+          {/* {text} */}
+          <div dangerouslySetInnerHTML={{ __html: text }} style={{ overflow: 'hidden', LineClamp: 4, maxHeight: '50px' }} />
           {/* </Typography> */}
         </CardContent>
-      </Link>
+      </Link >
       <div className="post__sticky post__sticky_type_bottom-left" >
         <IconButton aria-label="add to favorites" color={cN({ 'gray': !likes.length }, { 'warning': likes.length })} onClick={() => changeStateLikedPost(likes, _id)} >
           <Badge badgeContent={likes.length} color="primary" >

@@ -9,6 +9,15 @@ class Api {
         this._baseUrl = baseUrl;
     }
 
+    changeUserInfo(data) {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            body: JSON.stringify(data),
+            headers: this._headers
+        }).then(onResponce)
+    }
+
+
     getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: this._headers
@@ -79,6 +88,11 @@ class Api {
             headers: this._headers
         }).then(onResponce)
     }
+    // changeUserData(postid) {
+    //     return fetch(`${this._baseUrl}/me/${postid}`, {
+    //         headers: this._headers
+    //     }).then(onResponce)
+    // }
 
 
 

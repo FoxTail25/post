@@ -1,10 +1,16 @@
 import { CardMedia, Container, } from "@mui/material"
 import React from "react"
+import { useParams } from "react-router-dom"
 // import ButtonJsx from "../Button/button"
 import BasicModal from "../Modal/modal"
 
 
 const Banner = () => {
+
+    const urlpage = useParams()
+
+    // console.log(urlpage)
+
     return (
         <>
             <Container maxWidth='xl'
@@ -49,7 +55,7 @@ const Banner = () => {
 
                 {/* <ButtonJsx title='Добавить пост' /> */}
                 
-                <BasicModal />
+                <BasicModal urlpage={urlpage}/>
 
             </Container>
 

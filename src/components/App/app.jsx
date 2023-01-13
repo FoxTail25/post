@@ -29,9 +29,36 @@ const App = () => {
     const [postData, setPostData] = useState([]);         // Стейт постов
     const [allPostCount, setAllPostcount] = useState([]); //  Стейт общего количества постов
     const [pageNumber, setPageNumber] = useState(1)       // Стейт пагинации
-
+    
     useEffect(() => { api.getUserInfo().then((data) => setUserData(data)) }, [])   // апи запрос на получение с сервера данных пользователя
     useEffect(() => { paginatePage(1) }, [])   // апи запрос на получение постов с сервера.
+
+    console.log(userData)
+    
+    //////////////////////////////////////////////  блок пагинации //////////////////////////////////////////////
+
+    let pagePostCount = Math.ceil(allPostCount / 12) // Количество страниц пагинации
+    
+    function paginatePage(page=1 ) {
+        // console.log(page)
+            let number = 12
+        api.getPaginatePosts(page, number).then((data) => 
+        {setPostData(data.posts); setAllPostcount(data.total); setPageNumber(page)})
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    // https://source.unsplash.com/random/100x100/?cat
+
+    
+    // useEffect(() => {
+    //     const ava =
+    //      {
+    //         // "source":"body","keys":["avatar"]
+    //         "avatar": 'https://source.unsplash.com/random/100x100/?cat'
+    //     }
+    //     api.changeUserInfo(ava).then((data) => console.log(data))
+    // },[])
 
 
 
@@ -58,19 +85,6 @@ const App = () => {
         setPostData(updatedPostData)
     }
     
-    //////////////////////////////////////////////  блок пагинации //////////////////////////////////////////////
-
-    let pagePostCount = Math.ceil(allPostCount / 12) // Количество страниц пагинации
-    
-    function paginatePage(page=1 ) {
-        // console.log(page)
-            let number = 12
-        api.getPaginatePosts(page, number).then((data) => 
-        {setPostData(data.posts); setAllPostcount(data.total); setPageNumber(page)})
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
     /////////////////////////////////////////// Функция удаления поста /////////////////////////////////////////
     
     function deletePost(author, _id) {
@@ -92,7 +106,7 @@ const App = () => {
             <CssBaseline />  {/* сброс CSS стилий от MaterialUI */}
 
             <AllContextData.Provider value={[
-                postData, changeStateLikedPost, deletePost, addNewPostInState ]}>
+                postData, changeStateLikedPost, deletePost, addNewPostInState, updatePostState ]}>
 
                 <allUserData.Provider value={userData}>
 

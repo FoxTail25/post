@@ -4,14 +4,18 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { AllContextData } from "../../components/context/context"
 import { Link, useParams } from "react-router-dom";
-import { PostTag } from "../../components/PostTag/post-tag";
 import PostComment from "../../components/PostCommentsList/PostCommentsList";
 import api from "../../utils/api"
 import dayjs from "dayjs";
 import s from './postPage.module.css'
+import BasicModal from "../../components/Modal/modal";
 
 
 export const PostPage = () => {
+
+    const urlpage = useParams()
+
+    // console.log(urlpage)
 
     const data = useContext(AllContextData)
     const changeStateLikedPost = data[1]
@@ -24,6 +28,10 @@ export const PostPage = () => {
 
     const { _id, author, created_at, image, title, text, likes, comments, tags } = singlePost
 
+    console.log(singlePost)
+    // console.log(comments, author)
+    //  const ti = '622bd81b06c7d323b8ae4614';
+    // api.getUserInfoById(ti).then((data) => console.log(data))
 
 
     let color
@@ -52,9 +60,14 @@ export const PostPage = () => {
                         }} >
                             <CardHeader
                                 avatar={
-                                    <Avatar >
-                                        {author?.avatar}
-                                    </Avatar>
+                                    // <Avatar >
+                                    <CardMedia component="img"
+                                        height="60"
+                                        src={author?.avatar}
+                                        alt="Изображение">
+                                    </CardMedia>
+
+                                    // </Avatar>
                                 } sx={{ minHeight: '7em' }}
 
                                 title={author?.about + ' ' + author?.name}
@@ -62,10 +75,13 @@ export const PostPage = () => {
                                 subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
                             />
 
-
-                            <div style={{display: 'flex'}}>
-                                {tags.map(e => <div style={{padding:"0px 4px"}}>#{e}</div>)}
-                            </div>
+                            {/* 
+                            {(tags?.length && (tags[0] !== ''))
+                                ? <div style={{display: 'flex'}}>
+                                <div style={{paddingLeft: 10}}>#tags:</div>{tags?.map((e,i) => <div key={i} style={{padding:"0px 4px"}}>{e}</div>)}
+                                </div>
+                                : null
+                            } */}
                             <CardMedia
                                 component="img"
                                 height="auto"
@@ -93,9 +109,8 @@ export const PostPage = () => {
                                     </Badge>
                                 </IconButton>
 
-                                <IconButton aria-label="edit post" >
-                                    <DriveFileRenameOutlineIcon />
-                                </IconButton>
+
+                                <BasicModal urlpage={urlpage} singlePost={singlePost} />
 
                                 <Button variant="outlined" onClick={function (e) { e.stopPropagation(); deletePost(author, _id) }}>Удалить пост</Button>
 

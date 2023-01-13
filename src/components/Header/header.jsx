@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Container, Typography } from "@mui/material";
+import { AppBar, CardMedia, Container, Typography } from "@mui/material";
 import { useContext } from "react";
 import { allUserData } from "../context/context";
 
@@ -16,13 +16,7 @@ export const Header = () => {
     return (
         <>
 
-            <AppBar position="static" sx={{
-                position: 'fixed',
-                top: '0',
-                width: '100%',
-               
-                zIndex: '2',
-            }}>
+            <AppBar position="fixed" >
                 <Container sx={{
                     maxwidth: '1600px',
                     minWidth: '0px',
@@ -53,17 +47,31 @@ export const Header = () => {
 
                         </Typography>
 
+                        {/* <div style={{
+                            width: '60px',
+                            padding: '0 6px',
+                            borderRadius: '50%'
+                        }}>
+                            <CardMedia component="img"
+                            variant='rounded'
+                                height="50"
+                                src={userInfo?.avatar}
+                                alt="Изображение">
+
+                            </CardMedia>
+                        </div> */}
                         <Typography variant="h6" component="div" noWrap sx={{ padding: '10px' }}>
 
                             {userInfo?.name}
 
                         </Typography>
-
-                        <Typography variant="h6" component="div" noWrap>
+                        {/* <Typography variant="h6" component="div" noWrap>
 
                             {userInfo?.email}
 
-                        </Typography>
+                        </Typography> */}
+                        {/* <img src={userInfo?.avatar}> */}
+
 
                     </Container>
                 </Container>

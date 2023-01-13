@@ -7,26 +7,33 @@ import { AllContextData } from "../context/context";
 import './form.css'
 
 
-export const Form = ({ handleClose }) => {
+export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
+
+
 
     const data = useContext(AllContextData)
 
     const addNewPostInState = data[3]
+    const updatePostState = data[4]
 
-    useForm({
-        defaultValues: {
-            image: 'https://source.unsplash.com/random/?nature',
-            title: 'Природа - Мать наша!',
-            text: 'Хорошо там, где красиво и чисто'
-        }
-    })
-    
+console.log(rest)
+      
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'onBlur',
+            defaultValues: {
+            image: image,
+            title: title,
+            text: text,
+        }
     });
 
-    const cbSubmit = (data) => {
-        api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
+    const cbSubmit = (data ) => {
+
+        console.log( data)
+        Object.entries(rest).length 
+        ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
+        : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
+
         handleClose()
     }
 
@@ -52,7 +59,7 @@ export const Form = ({ handleClose }) => {
 
                         })}
                         type='text'
-                        placeholder="https://source.unsplash.com/random/500%C3%97400/?nature" // https://source.unsplash.com/random/?nature"
+                        placeholder="https://source.unsplash.com......." // https://source.unsplash.com/random/?nature"
       
                     ></input>
                 </label>
@@ -93,7 +100,7 @@ export const Form = ({ handleClose }) => {
                     ></input>
                 </label>
 
-                <Button type="submit" variant="contained" >Опубликовать пост</Button>
+                <Button type="submit" variant="contained" >{Object.entries(rest).length ? 'Сохранить изменения' : 'Опубликовать пост'}</Button>
 
             </form>
 
