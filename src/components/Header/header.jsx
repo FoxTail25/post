@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, CardMedia, Container, Typography } from "@mui/material";
+import { AppBar, Container, Typography } from "@mui/material";
 import { useContext } from "react";
 import { allUserData } from "../context/context";
 

@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import './post.css'
 import { useContext } from "react";
 import { AllContextData } from "../context/context";
-import { Link, useParams } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import cN from "classnames";
 
 
@@ -14,14 +14,9 @@ import cN from "classnames";
 const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v }) => {
 
 
-
   const data = useContext(AllContextData)
   const changeStateLikedPost = data[1]
   const deletePost = data[2]
-
-
-
-
 
 
   return (

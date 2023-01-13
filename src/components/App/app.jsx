@@ -33,7 +33,7 @@ const App = () => {
     useEffect(() => { api.getUserInfo().then((data) => setUserData(data)) }, [])   // апи запрос на получение с сервера данных пользователя
     useEffect(() => { paginatePage(1) }, [])   // апи запрос на получение постов с сервера.
 
-    console.log(userData)
+    // console.log(userData)
     
     //////////////////////////////////////////////  блок пагинации //////////////////////////////////////////////
 
@@ -48,20 +48,6 @@ const App = () => {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    // https://source.unsplash.com/random/100x100/?cat
-
-    
-    // useEffect(() => {
-    //     const ava =
-    //      {
-    //         // "source":"body","keys":["avatar"]
-    //         "avatar": 'https://source.unsplash.com/random/100x100/?cat'
-    //     }
-    //     api.changeUserInfo(ava).then((data) => console.log(data))
-    // },[])
-
-
-
 
     //////////////////////////////////////////// функция изменения лайка ////////////////////////////////////
 
