@@ -29,7 +29,7 @@ console.log(rest)
 
     const cbSubmit = (data ) => {
 
-        console.log( data)
+        // console.log( data)
         Object.entries(rest).length 
         ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
         : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))

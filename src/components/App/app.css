@@ -19,12 +19,12 @@
 
 .s1 {
   opacity: 0.8688;
-  transform: translate(91.2216vw, 0px) scale(0.6729);
+  transform: translate(88.2216vw, 0px) scale(0.6729);
   animation: fall-1 28s -16s linear infinite;
 }
 @keyframes fall-1 {
   72.414% {
-    transform: translate(97.0511vw, 72.414vh) scale(0.6729);
+    transform: translate(94.0511vw, 72.414vh) scale(0.6729);
   }
 
   to {

@@ -9,6 +9,7 @@ import api from "../../utils/api"
 import dayjs from "dayjs";
 import s from './postPage.module.css'
 import BasicModal from "../../components/Modal/modal";
+import checkAvatar from "../../utils/avatar";
 
 
 export const PostPage = () => {
@@ -28,7 +29,7 @@ export const PostPage = () => {
 
     const { _id, author, created_at, image, title, text, likes, comments, tags } = singlePost
 
-    console.log(singlePost)
+    // console.log(singlePost)
     // console.log(comments, author)
     //  const ti = '622bd81b06c7d323b8ae4614';
     // api.getUserInfoById(ti).then((data) => console.log(data))
@@ -60,21 +61,16 @@ export const PostPage = () => {
                         }} >
                             <CardHeader
                                 avatar={
-                                    // <Avatar >
-                                    <CardMedia component="img"
-                                        height="60"
-                                        src={author?.avatar}
-                                        alt="Изображение">
-                                    </CardMedia>
-
-                                    // </Avatar>
-                                } sx={{ minHeight: '7em' }}
-
+                                    author&&<Avatar aria-label="recipe" src={checkAvatar(author)}>
+                                        {checkAvatar(author)}
+                                    </Avatar>
+                                }
+                                sx={{ minHeight: '7em' }}
                                 title={author?.about + ' ' + author?.name}
-
                                 subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
-                            />
+                            >
 
+                            </CardHeader>
                             {/* 
                             {(tags?.length && (tags[0] !== ''))
                                 ? <div style={{display: 'flex'}}>

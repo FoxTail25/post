@@ -32,9 +32,7 @@ export default function BasicModal({ urlpage, singlePost }) {
         onClose={handleClose}
 
       >
-        <Box
-          // sx={style}
-          className='modalstule'>
+        <Box className='modalstule'>
 
           <Form handleClose={handleClose} {...singlePost}/>
         </Box>

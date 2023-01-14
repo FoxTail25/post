@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AllContextData } from "../context/context";
 import { Link, } from "react-router-dom";
 import cN from "classnames";
+import checkAvatar from "../../utils/avatar";
 
 
 
@@ -32,17 +33,11 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
         className="post__link">
         <CardHeader
           avatar={
-            <Avatar >
-
-              <CardMedia 
-                component="img"
-                height="60"
-                image={author?.avatar}
-                // src={}
-                alt="Изображение">
-              </CardMedia>
-
-            </Avatar>
+          
+              author&&<Avatar aria-label="recipe" src={checkAvatar(author)}>
+                  {checkAvatar(author)}
+              </Avatar>
+          
           } sx={{ minHeight: '7em' }}
 
           title={author.about + ' ' + author.name}
