@@ -16,7 +16,7 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
     const addNewPostInState = data[3]
     const updatePostState = data[4]
 
-console.log(rest)
+// console.log(rest)
       
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'onBlur',

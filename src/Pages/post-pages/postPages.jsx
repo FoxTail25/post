@@ -1,7 +1,7 @@
 import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
 import { useContext, useEffect, useState } from "react"
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+// import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { AllContextData } from "../../components/context/context"
 import { Link, useParams } from "react-router-dom";
 import PostComment from "../../components/PostCommentsList/PostCommentsList";
@@ -29,11 +29,7 @@ export const PostPage = () => {
 
     const { _id, author, created_at, image, title, text, likes, comments, tags } = singlePost
 
-    // console.log(singlePost)
-    // console.log(comments, author)
-    //  const ti = '622bd81b06c7d323b8ae4614';
-    // api.getUserInfoById(ti).then((data) => console.log(data))
-
+ 
 
     let color
 
@@ -105,7 +101,6 @@ export const PostPage = () => {
                                     </Badge>
                                 </IconButton>
 
-
                                 <BasicModal urlpage={urlpage} singlePost={singlePost} />
 
                                 <Button variant="outlined" onClick={function (e) { e.stopPropagation(); deletePost(author, _id) }}>Удалить пост</Button>
@@ -115,6 +110,9 @@ export const PostPage = () => {
                             {comments?.length
                                 ? <PostComment comments={comments} id={_id} />
                                 : null}
+                            {/* {tags?.length
+                                ? <PostComment comments={tags} id={_id} />
+                                : null} */}
 
                         </Card>}
 

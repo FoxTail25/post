@@ -1,15 +1,15 @@
-import React from 'react'
+// import React from 'react'
 
-export const AutorComment = ({ author }) => {
+// export const AutorComment = ({ author }) => {
 
-    console.log(author)
+//     console.log(author)
 
-    return (
+//     return (
 
-        <div>
-            {author?.map((e) => <div>{e.name}</div>)}
-        </div>
+//         <div>
+//             {author?.map((e) => <div>{e.name}</div>)}
+//         </div>
         
-    )
+//     )
 
-}
+// }

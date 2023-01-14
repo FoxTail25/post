@@ -74,6 +74,23 @@ class Api {
         }).then(onResponce)
     }
 
+    // POST https://api.react-learning.ru/v2/:groupId/posts/comments/
+
+    addNewComments(comment, postId) {
+        return fetch(`${this._baseUrl}/posts/comments/${postId}`, {
+            method: 'POST',
+            body: JSON.stringify(comment),
+            headers: this._headers
+        }).then(onResponce)
+    }
+
+    deleteComments(commentId, postId) {
+        return fetch(`${this._baseUrl}/posts/comments/${postId}/${commentId}`, {
+            method: 'DELETE',
+            headers: this._headers
+        }).then(onResponce)
+    }
+
     changePost(post, postid) {
         return fetch(`${this._baseUrl}/posts/${postid}`, {
             method: 'PATCH',
