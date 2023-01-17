@@ -1,15 +1,22 @@
 import { Pagination } from "@mui/material";
 import { Container, Stack } from "@mui/system";
-import { React, } from "react";
+import { React, useContext, } from "react";
 import { Banner } from '../../components/Banner/banner'
+import { allUserData } from "../../components/context/context";
 import { PostList } from '../../components/PostList/post-list'
 
 
 
 export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
 
-    return (
+    // const { autorozation:autohorized } = useContext({ ...allUserData })
 
+    const displayPaginate = pagePostCount > 1
+
+    return (
+        <>
+{/* { autohorized */}
+        {/* ?  */}
         <Stack>
 
             <Container sx={{
@@ -31,15 +38,18 @@ export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
                 mb: '1%',
             }}>
 
-                <Pagination
-                    // defaultPage={pageNumber} 
-                    page={pageNumber}
-                    count={pagePostCount} color="primary" onChange={(event, num) =>
-                        paginatePage(num)
-                    } sx={{
-                        background: 'white',
-                        borderRadius: '10px'
-                    }} />
+                {displayPaginate
+                    ? <Pagination
+                        // defaultPage={pageNumber} 
+                        page={pageNumber}
+                        count={pagePostCount} color="primary" onChange={(event, num) =>
+                            paginatePage(num)
+                        } sx={{
+                            background: 'white',
+                            borderRadius: '10px'
+                        }} />
+                    : null
+                }
 
             </Container>
             <Container sx={{
@@ -64,18 +74,24 @@ export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
                 mb: '10%',
             }}>
 
-                <Pagination
-                    // defaultPage={pageNumber} 
-                    page={pageNumber}
-                    count={pagePostCount} color="primary" onChange={(event, num) =>
-                        paginatePage(num)
-                    } sx={{
-                        background: 'white',
-                        borderRadius: '10px'
-                    }} />
+                {displayPaginate
+                    ? <Pagination
+                        // defaultPage={pageNumber} 
+                        page={pageNumber}
+                        count={pagePostCount} color="primary" onChange={(event, num) =>
+                            paginatePage(num)
+                        } sx={{
+                            background: 'white',
+                            borderRadius: '10px'
+                        }} />
+                    : null
+                }
 
             </Container >
 
         </Stack>
+        {/* : null */}
+    {/* } */}
+    </>
     )
 }

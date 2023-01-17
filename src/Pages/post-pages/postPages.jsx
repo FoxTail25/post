@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 // import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { AllContextData } from "../../components/context/context"
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import PostComment from "../../components/PostCommentsList/PostCommentsList";
 import api from "../../utils/api"
 import dayjs from "dayjs";
@@ -12,7 +12,7 @@ import BasicModal from "../../components/Modal/modal";
 import checkAvatar from "../../utils/avatar";
 
 
-export const PostPage = () => {
+export const PostPage = ({authToken}) => {
 
     const urlpage = useParams()
 
@@ -22,10 +22,11 @@ export const PostPage = () => {
     const changeStateLikedPost = data[1]
     const deletePost = data[2]
     const postIdFromUrl = useParams()
+    const navigate = useNavigate()
 
     const [singlePost, setSinglePost] = useState({})
 
-    useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
+    useEffect(() => { api.getPostById(postIdFromUrl.postId, authToken).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
 
     const { _id, author, created_at, image, title, text, likes, comments, tags } = singlePost
 
@@ -117,9 +118,11 @@ export const PostPage = () => {
                         </Card>}
 
                     <div className={s.button__homepage_bottom}>
-                        <Link to="/" className={s.btn__home}>
-                            <Button variant="contained" >Вернуться на главную страницу</Button>
-                        </Link>
+                        {/* <Link to="/" className={s.btn__home}> */}
+                            <Button variant="contained" 
+                            onClick={() => navigate(-1)}
+                            >Вернуться на главную страницу</Button>
+                        {/* </Link> */}
                     </div>
 
                 </div>

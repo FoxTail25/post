@@ -1,0 +1,31 @@
+
+
+.authfild {
+    text-align:left;
+    display: block;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.authBtn {
+position: static;
+left: 4px;
+top: 4px
+}
+
+.authTrtuBtn {
+z-index: 2;
+}
+
+
+
+.authIconTrue {
+    background: white;
+    color: inherit;
+    color: gold;
+    padding: 2px;
+    border-radius: 50%;
+}

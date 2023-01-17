@@ -1,7 +1,8 @@
 import React from "react";
-import { AppBar, Container, Typography } from "@mui/material";
+import { AppBar, Avatar,  CardHeader, Typography } from "@mui/material";
 import { useContext } from "react";
 import { allUserData } from "../context/context";
+import checkAvatar from "../../utils/avatar";
 
 
 
@@ -9,72 +10,61 @@ import { allUserData } from "../context/context";
 export const Header = () => {
 
 
-    const userInfo = useContext(allUserData)
+    const { userData: userInfo } = useContext({ ...allUserData })
+
 
 
 
     return (
         <>
 
-            <AppBar position="fixed" >
-                <Container sx={{
-                    maxwidth: '1600px',
-                    minWidth: '0px',
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                }}>
-                    <Container >
+            <AppBar position="fixed" 
+            sx={{alignItems: 'space-around'}}
+            >
 
-                        <Typography variant="h6" component="div">
-                            "Посты" (2й дипломный проект)
-                        </Typography>
-
-
-                    </Container>
-
-                    <Container sx={{
+                <div
+                    style={{
                         display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'end',
-                        flexWrap: 'wrap'
-
+                        // maxWidth: '1000px',
+                        minWidth: '0px',
+                        // flexDirection: 'row',
+                        justifyContent: 'space-around',
+                    }}
+                >
+                    <div style={{
+                        display: 'flex',
+                        padding: '5px 10px',
+                        // flex: 1
                     }}>
 
-                        <Typography variant="h6" component="div" >
-
-                            {userInfo?.about}:
-
+                        <Typography variant="h6" component="div">
+                            Project "Posts"
                         </Typography>
 
-                        {/* <div style={{
-                            width: '60px',
-                            padding: '0 6px',
-                            borderRadius: '50%'
-                        }}>
-                            <CardMedia component="img"
-                            variant='rounded'
-                                height="50"
-                                src={userInfo?.avatar}
-                                alt="Изображение">
 
-                            </CardMedia>
-                        </div> */}
-                        <Typography variant="h6" component="div" noWrap sx={{ padding: '10px' }}>
-
-                            {userInfo?.name}
-
-                        </Typography>
-                        {/* <Typography variant="h6" component="div" noWrap>
-
-                            {userInfo?.email}
-
-                        </Typography> */}
-                        {/* <img src={userInfo?.avatar}> */}
+                    </div>
 
 
-                    </Container>
-                </Container>
+
+                    <CardHeader sx={{padding: '5px',
+                    maxWidth: '300px'}}
+
+                        avatar={
+
+                            userInfo && <Avatar aria-label="recipe" src={checkAvatar(userInfo)}>
+                                {checkAvatar(userInfo)}
+                            </Avatar>
+
+                        } 
+
+                        title={userInfo?.about + ': ' + userInfo?.name}
+
+                    />
+
+
+                </div>
+
+
 
             </AppBar>
         </>

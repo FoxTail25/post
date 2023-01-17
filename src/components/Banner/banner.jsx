@@ -2,12 +2,12 @@ import { CardMedia, Container, } from "@mui/material"
 import React from "react"
 import { useParams } from "react-router-dom"
 import BasicModal from "../Modal/modal"
+import { Search } from "../Search/Search"
 
 
 const Banner = () => {
 
     const urlpage = useParams()
-
 
     return (
         <>
@@ -25,8 +25,10 @@ const Banner = () => {
                 }}
             >
 
-
-                <div style={{ display: 'flex', }}>
+                <div style={{
+                    display: 'flex',
+                    flexShrink: '2'
+                }}>
 
                     <CardMedia
                         component="img"
@@ -35,9 +37,6 @@ const Banner = () => {
                         alt="Изображение ДедаМороза"
                     >
                     </CardMedia>
-                </div>
-
-                <div style={{ flex: '.7' }}>
 
 
                     <CardMedia
@@ -49,8 +48,10 @@ const Banner = () => {
                     </CardMedia>
 
                 </div>
-                
-                <BasicModal urlpage={urlpage}/>
+
+                <Search />
+
+                <BasicModal urlpage={urlpage} />
 
             </Container>
 

@@ -39,10 +39,10 @@ export default function BasicModal({ urlpage, singlePost }) {
         ? <IconButton aria-label="Отрадакировать пост" onClick={handleOpen2}>
 
           
+          <PostAddIcon />
           <div style={{fontSize: '15px'}}>
             добавить комментарий...
           </div>
-          <DriveFileRenameOutlineIcon />
         </IconButton>
         : null
 

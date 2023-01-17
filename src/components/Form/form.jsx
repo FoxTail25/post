@@ -15,6 +15,7 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
 
     const addNewPostInState = data[3]
     const updatePostState = data[4]
+    const authToken = data[4]
 
 // console.log(rest)
       
@@ -31,8 +32,8 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
 
         // console.log( data)
         Object.entries(rest).length 
-        ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
-        : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
+        ? api.changePost(data, _id, authToken).then((newPost) => updatePostState(newPost))
+        : api.addNewPost(data, authToken).then((newPost) => addNewPostInState(newPost))
 
         handleClose()
     }
