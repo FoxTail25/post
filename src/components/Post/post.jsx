@@ -4,18 +4,22 @@ import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import dayjs from "dayjs";
 import './post.css'
 import { useContext } from "react";
-import { AllContextData } from "../context/context";
+import { AllContextData, allUserData } from "../context/context";
 import { Link, } from "react-router-dom";
 import cN from "classnames";
 import checkAvatar from "../../utils/avatar";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
 
 
 const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v }) => {
 
-
+  const user = useContext({ ...allUserData })
   const data = useContext(AllContextData)
+
+  // console.log(user.userData._id, author._id)
+
   const changeStateLikedPost = data[1]
   const deletePost = data[2]
 
@@ -33,11 +37,11 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
         className="post__link">
         <CardHeader
           avatar={
-          
-              author&&<Avatar aria-label="recipe" src={checkAvatar(author)}>
-                  {checkAvatar(author)}
-              </Avatar>
-          
+
+            author && <Avatar aria-label="recipe" src={checkAvatar(author)}>
+              {checkAvatar(author)}
+            </Avatar>
+
           } sx={{ minHeight: '7em' }}
 
           title={author.about + ' ' + author.name}
@@ -101,7 +105,15 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
           : null}
       </div>
       <div className="post__sticky post__sticky_type_bottom-right" >
-        <Button variant="outlined" onClick={() => deletePost(author, _id)}>Удалить пост</Button>
+        {/* <Button variant="outlined" onClick={() => deletePost(author, _id)}>Удалить пост</Button> */}
+
+        {
+          user.userData._id === author._id
+            ? <IconButton onClick={() => deletePost(author, _id)}>
+              <DeleteForeverIcon />
+            </IconButton>
+            : null
+        }
       </div>
 
     </Card >

@@ -15,19 +15,20 @@ const Banner = () => {
                 sx={{
                     height: '120px',
                     backgroundColor: 'aliceblue',
-                    margin: '20px',
+                    // margin: '20px',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    borderRadius: '5px',
+                    borderRadius: '10px',
                     marginTop: 16,
+                    minWidth: '345px'
 
                 }}
             >
 
                 <div style={{
                     display: 'flex',
-                    flexShrink: '2'
+                    flexShrink: '4'
                 }}>
 
                     <CardMedia

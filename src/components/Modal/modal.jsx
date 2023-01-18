@@ -9,11 +9,14 @@ import './modal.css'
 import { IconButton } from "@mui/material"
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import { FormComment } from '../FormComment/formComment';
+import { allUserData } from '../context/context';
 
 
-export default function BasicModal({ urlpage, singlePost }) {
+export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
 
-  // console.log(singlePost)
+  // console.log(singlePost?.author?._id)
+
+  const user = React.useContext({ ...allUserData })
 
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
@@ -24,19 +27,29 @@ export default function BasicModal({ urlpage, singlePost }) {
   const handleOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
 
+  // console.log(user?.userData._id === singlePost?.author?._id)
+
+
   return (
     <div>
-      {!urlpage.postId
+
+      {
+      !urlpage.postId 
         ? <Button variant='contained' onClick={handleOpen} startIcon={<PostAddIcon />}>добавить пост</Button>
-        : <IconButton aria-label="Отрадакировать пост" onClick={handleOpen}>
+        : user?.userData._id === singlePost?.author?._id
+        ?
+        <IconButton aria-label="Отрадакировать пост" onClick={handleOpen}>
           <div style={{fontSize: '15px'}}>
             редактировать пост...
           </div>
           <DriveFileRenameOutlineIcon />
         </IconButton>
+        : null
       }
+
+
       {urlpage.postId
-        ? <IconButton aria-label="Отрадакировать пост" onClick={handleOpen2}>
+        ? <IconButton aria-label="добавить коммент" onClick={handleOpen2}>
 
           
           <PostAddIcon />
@@ -47,6 +60,7 @@ export default function BasicModal({ urlpage, singlePost }) {
         : null
 
       }
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -62,7 +76,7 @@ export default function BasicModal({ urlpage, singlePost }) {
         onClose={handleClose2}
       >
         <Box className='modalstule'>
-          <FormComment handleClose2={handleClose2} {...singlePost} />
+          <FormComment handleClose2={handleClose2} {...singlePost} setSinglePost={setSinglePost}/>
         </Box>
       </Modal>
 

@@ -16,25 +16,19 @@ export const FormComment = ({ handleClose2, comments, _id, ...rest }) => {
     // const addNewPostInState = data[3]
     const updatePostState = data[4]
 
-console.log(_id)
-console.log(comments)
 
       
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'onBlur',
             defaultValues: {
             text: '',
-            // title: '',
-            // text: '',
         }
     });
 
-    const cbSubmit = (data ) => {
+    const cbSubmit = ( data ) => {
 
         console.log( data)
-        // Object.entries(rest).length 
-        api.addNewComments(data, _id).then((newPost) => updatePostState(newPost))
-        // : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
+        api.addNewComments(data, _id).then((newPost) => {updatePostState(newPost)})
 
         handleClose2()
     }
@@ -57,7 +51,7 @@ console.log(comments)
    
                         })}
                         type='text'
-                        placeholder="Вот что я хочу сказать..." // https://source.unsplash.com/random/?nature"
+                        placeholder="Вот что я хочу сказать..." 
       
                     ></input>
                 </label>

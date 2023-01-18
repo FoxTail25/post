@@ -8,16 +8,15 @@
     margin: 0;
 }
 
-
-
 .authBtn {
-position: static;
-left: 4px;
+position: absolute;
+left: 5px;
 top: 4px
 }
 
 .authTrtuBtn {
 z-index: 2;
+filter: drop-shadow(0 0 10px gold);
 }
 
 

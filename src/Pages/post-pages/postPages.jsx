@@ -1,8 +1,8 @@
 import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
 import { useContext, useEffect, useState } from "react"
 import FavoriteIcon from '@mui/icons-material/Favorite';
-// import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
-import { AllContextData } from "../../components/context/context"
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { AllContextData, allUserData } from "../../components/context/context"
 import { Link, useNavigate, useParams } from "react-router-dom";
 import PostComment from "../../components/PostCommentsList/PostCommentsList";
 import api from "../../utils/api"
@@ -12,13 +12,13 @@ import BasicModal from "../../components/Modal/modal";
 import checkAvatar from "../../utils/avatar";
 
 
-export const PostPage = ({authToken}) => {
+export const PostPage = () => {
 
     const urlpage = useParams()
 
-    // console.log(urlpage)
-
+    const user = useContext({ ...allUserData })
     const data = useContext(AllContextData)
+
     const changeStateLikedPost = data[1]
     const deletePost = data[2]
     const postIdFromUrl = useParams()
@@ -26,11 +26,11 @@ export const PostPage = ({authToken}) => {
 
     const [singlePost, setSinglePost] = useState({})
 
-    useEffect(() => { api.getPostById(postIdFromUrl.postId, authToken).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
+    useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
 
     const { _id, author, created_at, image, title, text, likes, comments, tags } = singlePost
 
- 
+
 
     let color
 
@@ -58,7 +58,7 @@ export const PostPage = ({authToken}) => {
                         }} >
                             <CardHeader
                                 avatar={
-                                    author&&<Avatar aria-label="recipe" src={checkAvatar(author)}>
+                                    author && <Avatar aria-label="recipe" src={checkAvatar(author)}>
                                         {checkAvatar(author)}
                                     </Avatar>
                                 }
@@ -101,10 +101,17 @@ export const PostPage = ({authToken}) => {
                                         <FavoriteIcon />
                                     </Badge>
                                 </IconButton>
-
-                                <BasicModal urlpage={urlpage} singlePost={singlePost} />
-
-                                <Button variant="outlined" onClick={function (e) { e.stopPropagation(); deletePost(author, _id) }}>Удалить пост</Button>
+                       
+                                         < BasicModal urlpage={urlpage} singlePost={singlePost} />
+                                        
+                                
+                                {
+                                    user?.userData._id === author?._id
+                                        ? <IconButton onClick={() => deletePost(author, _id)}>
+                                            <DeleteForeverIcon />
+                                        </IconButton>
+                                        : null
+                                }
 
                             </div>
 
@@ -118,11 +125,9 @@ export const PostPage = ({authToken}) => {
                         </Card>}
 
                     <div className={s.button__homepage_bottom}>
-                        {/* <Link to="/" className={s.btn__home}> */}
-                            <Button variant="contained" 
+                        <Button variant="contained"
                             onClick={() => navigate(-1)}
-                            >Вернуться на главную страницу</Button>
-                        {/* </Link> */}
+                        >Вернуться на главную страницу</Button>
                     </div>
 
                 </div>

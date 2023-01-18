@@ -12,8 +12,6 @@ import { AllContextData } from '../context/context';
 
 export const PostComments = ({ postId, author, created_at, text, ...rest }) => {
 
-  // console.log(postId)
-  console.log(rest)
 
   const data = useContext(AllContextData)
 

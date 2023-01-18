@@ -1,8 +1,9 @@
 import React from "react";
-import { AppBar, Avatar,  CardHeader, Typography } from "@mui/material";
+import { AppBar, Avatar, CardHeader, Typography } from "@mui/material";
 import { useContext } from "react";
 import { allUserData } from "../context/context";
 import checkAvatar from "../../utils/avatar";
+import './index.css';
 
 
 
@@ -10,34 +11,31 @@ import checkAvatar from "../../utils/avatar";
 export const Header = () => {
 
 
-    const { userData: userInfo } = useContext({ ...allUserData })
-
-
+    const { userData: userInfo, logOut } = useContext({ ...allUserData })
 
 
     return (
         <>
 
-            <AppBar position="fixed" 
-            sx={{alignItems: 'space-around'}}
+            <AppBar position="fixed"
+                sx={{ display: 'flex', alignItems: 'space-around' }}
             >
 
                 <div
                     style={{
                         display: 'flex',
-                        // maxWidth: '1000px',
-                        minWidth: '0px',
-                        // flexDirection: 'row',
+                        width: '100%',
                         justifyContent: 'space-around',
                     }}
                 >
                     <div style={{
                         display: 'flex',
                         padding: '5px 10px',
-                        // flex: 1
                     }}>
 
-                        <Typography variant="h6" component="div">
+                        <Typography
+                            className="project-name"
+                        >
                             Project "Posts"
                         </Typography>
 
@@ -45,28 +43,59 @@ export const Header = () => {
                     </div>
 
 
+                    {
+                        Object.entries(userInfo).length > 0
 
-                    <CardHeader sx={{padding: '5px',
-                    maxWidth: '300px'}}
+                            ? <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                paddingRight: '5vw'
+                            }}>
 
-                        avatar={
+                                <CardHeader className="header-user-data"
+                                    
 
-                            userInfo && <Avatar aria-label="recipe" src={checkAvatar(userInfo)}>
-                                {checkAvatar(userInfo)}
-                            </Avatar>
+                                    avatar={
 
-                        } 
+                                        userInfo && <Avatar aria-label="recipe" src={checkAvatar(userInfo)}
+                                        // classes={{width: '3vw'}}
+                                        //     sx = {{width: '4vw',
+                                        // height: '4vw'}}
+                                        >
+                                            {checkAvatar(userInfo)}
+                                        </Avatar>
 
-                        title={userInfo?.about + ': ' + userInfo?.name}
+                                    }
 
-                    />
+                                    titleTypographyProps={{
+                                        color: 'white',
+                                        //  fontSize: '1.2vw'
+                                    }}
+                                    title={userInfo?.name}
+                                    subheaderTypographyProps={{
+                                        color: 'whitesmoke',
+                                        // fontSize: '1.2vw'
+                                    }}
+                                    subheader={userInfo?.about}
+                                    onClick = {() => console.log('headClick')}
+
+                                />
+
+
+                                <button className="logOutBtn" onClick={() => logOut() }>Log Out</button>
+
+
+                            </div>
+                            : null
+                    }
 
 
                 </div>
 
 
 
-            </AppBar>
+
+            </AppBar >
         </>
     )
 }

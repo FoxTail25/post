@@ -15,11 +15,11 @@ export default function PostComment({ comments, id }) {
     
 const [postCommentState, setPostCommentState] = useState([])
 
-console.log(comments)
+// console.log(comments)
 
 useEffect(() => { 
     if(id) api.getPostComments(id).then((data) => setPostCommentState(data))
- }, [id])
+ }, [id, comments])
 
     return (
      
@@ -35,7 +35,7 @@ useEffect(() => {
 
                 <AccordionDetails>
 
-                    {postCommentState.map((e, ) => <PostComments key={e._id} postId={id}    {...e}/>)}
+                    {postCommentState.map((e, ) => <PostComments key={e._id} postId={id} {...e}/>)}
             
                 </AccordionDetails>
                 

@@ -19,6 +19,7 @@ import { PostPage } from "../../Pages/post-pages/postPages"
 import AllPost from "../../Pages/all-post-page/allpostpage"
 import { Attention } from "../Attention/Attention"
 import { AuthError } from "../AuthError/AuthError"
+import { POST_QUANTITY } from "../../utils/constants"
 
 
 const App = () => {
@@ -32,27 +33,45 @@ const App = () => {
     // useEffect(() => {api.changeUserInfo( data, authToken).then(( data ) => console.log( data ))})
 
 
-    const [autorozation, SetAutorization] = useState(false);         // Стейт авторизации
-    const [authErr, setAuthErr] = useState('');
-    const [authToken, setAuthToken] = useState('')
+    const [autorozation, SetAutorization] = useState(false);    // Стейт авторизации
+    const [authErr, setAuthErr] = useState('');   // стейт ошибок авторизации
 
-    
+
+    useEffect(() => {
+        if (localStorage.getItem('postApi') !== '' && localStorage.getItem('postApi')) {
+            SetAutorization(true)
+        }
+    }, [])
+
+
+    ///////////////////////////// Блок авторизации и регистрации /////////////////////////////
+
     function singIn(userData) {
         api.singInUser(userData).then((data) => authIsTru(data))
-        .catch((err) => setAuthErr(err.message))
-    } 
-    
+            .catch((err) => setAuthErr(err.message))
+    }
+    function singUp(userData) {
+        api.singUpUser(userData).then((data) => authIsTru(data))
+            .catch((err) => setAuthErr(err.message))
+    }
+    function logOut() {
+
+        const result = window.confirm('Уже уходите?')
+
+        if(result) {
+            localStorage.removeItem('postApi');
+            SetAutorization(false); 
+            setUserData({})
+        }
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////
+
     function authIsTru(data) {
-        console.log('display token', data.token)
-        setAuthToken(data.token)
-        console.log('display userData', data.data)
         setUserData(data.data)
-        localStorage.setItem('postApi', authToken)
+        localStorage.setItem('postApi', data.token)
         SetAutorization(true)
     }
 
-    // let token = localStorage.getItem('postApi')
-// console.log('display token from App', token)
 
 
     const [userData, setUserData] = useState([]);         // Стейт данных пользователя
@@ -61,19 +80,18 @@ const App = () => {
     const [pageNumber, setPageNumber] = useState(1)       // Стейт пагинации
 
     useEffect(() => {
+
         if (autorozation) {
 
-            api.getUserInfo(authToken).then((data) => setUserData(data))
+            api.getUserInfo().then((data) => setUserData(data))
         }
-    }, [autorozation])   // апи запрос на получение с сервера данных пользователя
 
-    useEffect(() => {
         if (autorozation) {
             paginatePage(1)
         }
-    }, [autorozation])
 
 
+    }, [autorozation])   // Хук useEffect (зависимость стейт авторизации) апи запрос на получение с сервера данных пользователя и массива с постами
 
 
 
@@ -82,8 +100,8 @@ const App = () => {
     let pagePostCount = Math.ceil(allPostCount / 12) // Количество страниц пагинации
 
     function paginatePage(currentPage = 1, search = '') {
-        let postQuantity = 12
-        api.getPaginatePosts(currentPage, postQuantity, authToken, search).then((data) =>       // апи запрос на получение постов с сервера.
+        let postQuantity = POST_QUANTITY  // Константа определяющая количество постов на странице
+        api.getPaginatePosts(currentPage, postQuantity, search).then((data) =>       // апи запрос на получение постов с сервера.
         { setPostData(data.posts); setAllPostcount(data.total); setPageNumber(currentPage) })
     }
 
@@ -93,7 +111,7 @@ const App = () => {
 
     function changeStateLikedPost(likesArr, postId) {
 
-        api.changePostLike(postId, likeIsHer(likesArr, userData._id), authToken).then((res) => updatePostState(res));
+        api.changePostLike(postId, likeIsHer(likesArr, userData._id)).then((res) => updatePostState(res));
     }
     function updatePostState(likedPost) {
 
@@ -110,15 +128,16 @@ const App = () => {
     /////////////////////////////////////////// Функция удаления поста /////////////////////////////////////////
 
     function deletePost(author, _id) {
-
-        (author._id !== userData._id) ? alert('Человек старался, писал, душу вкадывал. А ты удалять? Не хорошо...') : delPost(_id);
+        (author._id !== userData._id) ? alert('Нельзя удалять то, что не создавали') : delPost(_id);
 
         function delPost(_id) {
 
-            api.deletePostById(_id, authToken)
-
-            let updatedPostData = postData.filter((e) => { return e._id !== _id })
-            setPostData(updatedPostData)
+            const result = window.confirm('хорошо подумал?')
+            if (result) {
+                api.deletePostById(_id)
+                let updatedPostData = postData.filter((e) => { return e._id !== _id })
+                setPostData(updatedPostData)
+            }
         }
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -127,13 +146,20 @@ const App = () => {
         <>
             <CssBaseline />  {/* сброс CSS стилий от MaterialUI */}
 
-            <AllContextData.Provider value={[
-                postData, changeStateLikedPost, deletePost, addNewPostInState, updatePostState, paginatePage, authToken
+            <AllContextData.Provider value={[   // Контекс для работы с постами
+                postData,
+                changeStateLikedPost,
+                deletePost,
+                addNewPostInState,
+                updatePostState,
+                paginatePage
             ]}>
-                <allUserData.Provider value={{
+                <allUserData.Provider value={{  // Контекст данных пользователя
                     userData,
                     autorozation,
-                    singIn
+                    singIn,
+                    singUp,
+                    logOut,
                 }}>
 
                     <Routes>
@@ -149,11 +175,11 @@ const App = () => {
                                         <AllPost pagePostCount={pagePostCount} pageNumber={pageNumber} paginatePage={paginatePage} />
                                     } />
                                     <Route path='/post/:postId' element={
-                                        <PostPage authToken={authToken}/>
+                                        <PostPage />
                                     } />
                                     <Route path="*" element={
-                                <NotFound />
-                            } />
+                                        <NotFound />
+                                    } />
                                 </Routes>
                             </main>
 
@@ -162,8 +188,8 @@ const App = () => {
 
                     {
                         !autorozation & (authErr !== '')
-                        ? <AuthError authErr={authErr} setAuthErr={setAuthErr}/>
-                        :null
+                            ? <AuthError authErr={authErr} setAuthErr={setAuthErr} />
+                            : null
                     }
 
 

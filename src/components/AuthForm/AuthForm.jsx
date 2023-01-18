@@ -2,15 +2,19 @@ import { IconButton } from '@mui/material';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
-import './index.css'
-import cN from 'classnames';
 import { useContext } from 'react';
 import { allUserData } from '../context/context';
+import cN from 'classnames';
+import './index.css'
 
 
-export const AuthForm = () => {
+export const AuthForm = ({authReg}) => {
+
+
+    console.log(authReg)
 
     const {singIn} = useContext({...allUserData})
+    const {singUp} = useContext({...allUserData})
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'onBlur',
@@ -26,10 +30,10 @@ export const AuthForm = () => {
 
     const cbSubmit = (data ) => {
 
-        // console.log( data)
-        singIn(data)
- 
-
+        console.log( data)
+        authReg === 'auth' 
+        ? singIn(data)
+        : singUp(data)
     }
 
 
@@ -74,7 +78,7 @@ export const AuthForm = () => {
                 },
                 minLength: {
                     value: 3,
-                    message: 'слишком коротка'
+                    message: 'слишком коротко'
                 },
             })}
             type='text'

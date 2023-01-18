@@ -1,45 +1,43 @@
 
-let token = localStorage.getItem('postApi')
-console.log('display token from api', token)
+// let token = localStorage.getItem('postApi')
+// console.log('display token from api', token)
 
 
 const onResponce = (res) => {
     return res.ok ? res.json() : res.json().then(err => Promise.reject(err));
-    
+
 }
 
 class Api {
-    constructor({ baseUrl, headers }) {
-        this._headers = headers;
+    constructor({ baseUrl }) {
+        // this._headers = headers;
         this._baseUrl = baseUrl;
     }
 
-    changeUserInfo(data, token) {
+    changeUserInfo(data) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             body: JSON.stringify(data),
             headers: {
-                Authorization: `Bearer ${token}`
-              }  
-            // headers: this._headers
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
         }).then(onResponce)
     }
 
 
-    getUserInfo(token) {
+    getUserInfo() {
         return fetch(`${this._baseUrl}/users/me`, {
             headers: {
-                Authorization: `Bearer ${token}`
-              }  
-            // headers: this._headers
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
         }).then(onResponce)
     }
 
-    getUserInfoById(userId,  token) {
+    getUserInfoById(userId) {
         return fetch(`${this._baseUrl}/users/${userId}`, {
             headers: {
-                Authorization: `Bearer ${token}`
-              }  
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
             // headers: this._headers
         }).then(onResponce)
     }
@@ -52,100 +50,95 @@ class Api {
 
     // posts/paginate?page=<номер страницы>&limit=<число ограничивающее вывод на страницу>
 
-    getPaginatePosts(page, number, token ,query = '') {
+    getPaginatePosts(page, number, query = '') {
         return fetch(`${this._baseUrl}/posts/paginate?page=${page}&limit=${number}&query=${query}`, {
             headers: {
-                Authorization: `Bearer ${token}`
-              }            
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
             // headers: this._headers
 
         }).then(onResponce)
     }
 
 
-    changePostLike(postId, islike, token) {
+    changePostLike(postId, islike) {
         return fetch(`${this._baseUrl}/posts/likes/${postId}`, {
             method: islike ? "DELETE" : "PUT",
             headers: {
-                Authorization: `Bearer ${token}`
-              } 
-            // headers: this._headers
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
         }).then(onResponce)
             .catch((err) => { console.log(`ошибка ${err}`) })
     }
 
 
-    deletePostById(idPost, token) {
+    deletePostById( idPost ) {
         return fetch(`${this._baseUrl}/posts/${idPost}`, {
             method: 'DELETE',
             headers: {
-                Authorization: `Bearer ${token}`
-              } 
-            // headers: this._headers
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
         }).then(onResponce)
     }
 
-    getPostById(idPost, token) {
+    getPostById( idPost ) {
         return fetch(`${this._baseUrl}/posts/${idPost}`, {
             headers: {
-                Authorization: `Bearer ${token}`
-              } 
-            // headers: this._headers
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
         }).then(onResponce)
     }
 
-    addNewPost(post, token) {
+    addNewPost( post ) {
         return fetch(`${this._baseUrl}/posts`, {
             method: 'POST',
             body: JSON.stringify(post),
             headers: {
-                Authorization: `Bearer ${token}`
-              } 
-            // headers: this._headers
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
         }).then(onResponce)
     }
 
     // POST https://api.react-learning.ru/v2/:groupId/posts/comments/
 
-    addNewComments(comment, postId, token) {
+    addNewComments(comment, postId) {
         return fetch(`${this._baseUrl}/posts/comments/${postId}`, {
             method: 'POST',
             body: JSON.stringify(comment),
             headers: {
-                Authorization: `Bearer ${token}`
-              } 
-            // headers: this._headers
+                'content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
         }).then(onResponce)
     }
 
-    deleteComments(commentId, postId, token) {
+    deleteComments(commentId, postId) {
         return fetch(`${this._baseUrl}/posts/comments/${postId}/${commentId}`, {
             method: 'DELETE',
             headers: {
-                Authorization: `Bearer ${token}`
-              } 
-            // headers: this._headers
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
+           
         }).then(onResponce)
     }
 
-    changePost(post, postid, token) {
+    changePost(post, postid, ) {
         return fetch(`${this._baseUrl}/posts/${postid}`, {
             method: 'PATCH',
             body: JSON.stringify(post),
             headers: {
-                Authorization: `Bearer ${token}`
-              } 
-            // headers: this._headers
+                'content-type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
         }).then(onResponce)
     }
 
     // https://api.react-learning.ru/v2/:groupId/posts/comments/:postId
-    getPostComments(postid, token) {
+    getPostComments(postid) {
         return fetch(`${this._baseUrl}/posts/comments/${postid}`, {
             headers: {
-                Authorization: `Bearer ${token}`
-              } 
-            // headers: this._headers
+                Authorization: `Bearer ${localStorage.getItem('postApi')}`
+            }
         }).then(onResponce)
     }
 
@@ -154,17 +147,29 @@ class Api {
     singInUser(user) {
         return fetch('https://api.react-learning.ru/signin', {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user),
+        }).then(onResponce)
+    }
+    singUpUser(user) {
+        return fetch('https://api.react-learning.ru/signup', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            // headers: this._headers, ///???? Возможен косяк....
             body: JSON.stringify(user),
         }).then(onResponce)
     }
 
 
-    // changeUserData(user, token) {
+    // changeUserData(user) {
     //     return fetch(`${this._baseUrl}/me`, {
     //         method: 'PATCH',
     //         headers: {
-    //              Authorization: `Bearer ${token}`
+    //              Authorization: `Bearer ${localStorage.getItem('postApi')}`
     //          } 
     //         headers: this._headers
     //         body: JSON.stringify(user),
