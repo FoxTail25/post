@@ -159,7 +159,6 @@ class Api {
             headers: {
                 'content-type': 'application/json'
             },
-            // headers: this._headers, ///???? Возможен косяк....
             body: JSON.stringify(user),
         }).then(onResponce)
     }

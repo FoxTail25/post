@@ -6,7 +6,7 @@ export const Attention = () => {
 
   const [enter, setEnter] = useState(false)
   const [authReg, setAuthReg] = useState('')
-  const enterText = 'Для входа на ресурс необходима авторизация'
+  const enterText = 'Для входа на ресурс необходима авторизация или регистрация'
 
   
 
@@ -19,7 +19,7 @@ export const Attention = () => {
         <div className='attention'>
           {enter
             ? <AuthForm authReg={authReg}/>
-            : <p style={{ paddingTop: '20px' }}>{enterText}</p>
+            : <p>{enterText}</p>
           }
         </div>
         <div className='buttons-block'>

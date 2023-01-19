@@ -53,7 +53,7 @@ export const Header = () => {
                             }}>
 
                                 <CardHeader className="header-user-data"
-                                    
+
 
                                     avatar={
 
@@ -77,17 +77,17 @@ export const Header = () => {
                                         // fontSize: '1.2vw'
                                     }}
                                     subheader={userInfo?.about}
-                                    onClick = {() => console.log('headClick')}
+                                    onClick={() => console.log('headClick')}
 
                                 />
 
 
-                                <button className="logOutBtn" onClick={() => logOut() }>Log Out</button>
+                                <button className="logOutBtn" onClick={() => logOut()}>Log Out</button>
 
 
                             </div>
                             : null
-                    }
+                        }
 
 
                 </div>
