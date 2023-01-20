@@ -1,10 +1,9 @@
-
+import './snow.css'
 
 export const Snow = () => {
     return (
         <>
-        
-        <div className='snow s1'></div>
+            <div className='snow s1'></div>
             <div className='snow s2'></div>
             <div className='snow s3'></div>
             <div className='snow s4'></div>
@@ -35,7 +34,7 @@ export const Snow = () => {
             <div className='snow s29'></div>
             <div className='snow s31'></div>
             <div className='snow s34'></div>
-      
+
             <div className='snow s37'></div>
             <div className='snow s38'></div>
             <div className='snow s40'></div>
@@ -49,8 +48,6 @@ export const Snow = () => {
             <div className='snow s48'></div>
             <div className='snow s49'></div>
             <div className='snow s50'></div>
-
-
         </>
     )
 }

@@ -10,7 +10,6 @@ body {
 
   background: radial-gradient(ellipse at bottom, #090a0f 0%, #1b2735 100%);
   min-height: 100vh;
-  /* filter: drop-shadow(0 0 10px white); */
 
 }
 #root {

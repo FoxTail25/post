@@ -39,7 +39,6 @@ export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
 
                 {displayPaginate
                     ? <Pagination
-                        // defaultPage={pageNumber} 
                         page={pageNumber}
                         count={pagePostCount} color="primary" onChange={(event, num) =>
                             paginatePage(num)
@@ -75,7 +74,6 @@ export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
 
                 {displayPaginate
                     ? <Pagination
-                        // defaultPage={pageNumber} 
                         page={pageNumber}
                         count={pagePostCount} color="primary" onChange={(event, num) =>
                             paginatePage(num)
@@ -89,8 +87,6 @@ export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
             </Container >
 
         </Stack>
-        {/* : null */}
-    {/* } */}
     </>
     )
 }

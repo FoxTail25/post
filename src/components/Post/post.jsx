@@ -11,8 +11,6 @@ import checkAvatar from "../../utils/avatar";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
-
-
 const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v }) => {
 
   const user = useContext({ ...allUserData })
@@ -35,7 +33,6 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
     <Card className="post" sx={{
       maxWidth: 345,
       minWidth: 345,
-      // maxHeight: 550,
       paddingBottom: 4,
 
     }} >
@@ -54,7 +51,6 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
 
           subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
         />
-        {/* <div style={{margin: '0 auto'}}> */}
         <CardMedia
           component="img"
           height="200"
@@ -62,35 +58,12 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
           alt="Изображение"
         >
         </CardMedia>
-        {/* </div> */}
 
-        {/* {(tags?.length && (tags[0] !== ''))
-          ? <div style={{
-            display: 'flex',
-            background: '#3f51b5'
-          }}>
-            <div style={{ paddingLeft: 10, color: 'white' }}>#tags:</div>{tags?.map((e, i) => <div key={i} style={{
-              padding: "0px 4px", color: 'white', overflow: 'hidden', display: 'flex', flexWrap: 'nowrap'
-            }}>{(e.length) > 10 ? '...' : e}</div>)}
-          </div>
-
-          : <div style={{
-            display: 'flex',
-            background: '#3f51b5'
-            }}>
-              <div style={{ paddingLeft: 10, color: 'white' }}>#tags: none</div>
-            
-          </div>
-
-        } */}
         <CardContent sx={{ flex: 1, }}>
           <Typography variant="h5" color="text.secondary">
             {title}
           </Typography>
-          {/* <Typography variant="body2" color="text.secondary" sx={{ overflow: 'hidden', LineClamp: 4, maxHeight: '40px' }}> */}
-          {/* {text} */}
           <div dangerouslySetInnerHTML={{ __html: text }} style={{ overflow: 'hidden', LineClamp: 4, maxHeight: '50px' }} />
-          {/* </Typography> */}
         </CardContent>
       </Link >
       <div className="post__sticky post__sticky_type_bottom-left" >
@@ -111,7 +84,6 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
           : null}
       </div>
       <div className="post__sticky post__sticky_type_bottom-right" >
-        {/* <Button variant="outlined" onClick={() => deletePost(author, _id)}>Удалить пост</Button> */}
 
         {
           user.userData._id === author._id

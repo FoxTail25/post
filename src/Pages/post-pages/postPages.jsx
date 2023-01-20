@@ -28,7 +28,7 @@ export const PostPage = () => {
 
     useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
 
-    const { _id, author, created_at, image, title, text, likes, comments, tags } = singlePost
+    const { _id, author, created_at, image, title, text, likes, comments } = singlePost
 
 
 
@@ -68,13 +68,7 @@ export const PostPage = () => {
                             >
 
                             </CardHeader>
-                            {/* 
-                            {(tags?.length && (tags[0] !== ''))
-                                ? <div style={{display: 'flex'}}>
-                                <div style={{paddingLeft: 10}}>#tags:</div>{tags?.map((e,i) => <div key={i} style={{padding:"0px 4px"}}>{e}</div>)}
-                                </div>
-                                : null
-                            } */}
+
                             <CardMedia
                                 component="img"
                                 height="auto"
@@ -101,10 +95,10 @@ export const PostPage = () => {
                                         <FavoriteIcon />
                                     </Badge>
                                 </IconButton>
-                       
-                                         < BasicModal urlpage={urlpage} singlePost={singlePost} />
-                                        
-                                
+
+                                < BasicModal urlpage={urlpage} singlePost={singlePost} />
+
+
                                 {
                                     user?.userData._id === author?._id
                                         ? <IconButton onClick={() => deletePost(author, _id)}>
@@ -115,12 +109,12 @@ export const PostPage = () => {
 
                             </div>
 
-                            {comments?.length
+                            {
+                                comments?.length
                                 ? <PostComment comments={comments} id={_id} />
-                                : null}
-                            {/* {tags?.length
-                                ? <PostComment comments={tags} id={_id} />
-                                : null} */}
+                                : null
+                            }
+
 
                         </Card>}
 
