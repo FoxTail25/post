@@ -62,9 +62,7 @@ export const Header = () => {
                                     avatar={
 
                                         userInfo && <Avatar aria-label="recipe" src={checkAvatar(userInfo)}
-                                        // classes={{width: '3vw'}}
-                                        //     sx = {{width: '4vw',
-                                        // height: '4vw'}}
+      
                                         >
                                             {checkAvatar(userInfo)}
                                         </Avatar>
@@ -73,12 +71,10 @@ export const Header = () => {
 
                                     titleTypographyProps={{
                                         color: 'white',
-                                        //  fontSize: '1.2vw'
                                     }}
                                     title={userInfo?.about}
                                     subheaderTypographyProps={{
                                         color: 'whitesmoke',
-                                        // fontSize: '1.2vw'
                                     }}
                                     subheader={userInfo?.name}
                                     onClick={() => setOpenUserModal(!onpenUserModal)}

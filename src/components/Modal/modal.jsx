@@ -14,7 +14,6 @@ import { allUserData } from '../context/context';
 
 export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
 
-  // console.log(singlePost?.author?._id)
 
   const user = React.useContext({ ...allUserData })
 
@@ -27,7 +26,6 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
   const handleOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
 
-  // console.log(user?.userData._id === singlePost?.author?._id)
 
 
   return (

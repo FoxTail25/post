@@ -4,9 +4,6 @@
     display: flex;
     padding: 4px;
 }
-/* .post-header {
-    min-width: 30%;
-} */
 .comment-text {
     display: flex;
     background: whitesmoke;

@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
 import { useContext } from "react";
-// import React from "react";
 import { useForm } from "react-hook-form";
 import api from "../../utils/api";
 import { AllContextData } from "../context/context";
@@ -13,7 +12,6 @@ export const FormComment = ({ handleClose2, comments, _id, ...rest }) => {
 
     const data = useContext(AllContextData)
 
-    // const addNewPostInState = data[3]
     const updatePostState = data[4]
 
 
@@ -27,7 +25,6 @@ export const FormComment = ({ handleClose2, comments, _id, ...rest }) => {
 
     const cbSubmit = ( data ) => {
 
-        console.log( data)
         api.addNewComments(data, _id).then((newPost) => {updatePostState(newPost)})
 
         handleClose2()

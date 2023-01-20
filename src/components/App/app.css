@@ -1,9 +1,11 @@
+
 .main {
   display: flex;
   flex:1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+<<<<<<< HEAD
 }
 
 .snow {
@@ -643,3 +645,7 @@
     transform: translate(78.7258vw, 90vh) scale(0.1075);
   }
 }
+
+=======
+}
+>>>>>>> postDz11

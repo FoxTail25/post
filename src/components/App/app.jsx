@@ -2,7 +2,7 @@
 
 import { CssBaseline, } from "@mui/material"
 
-import React, { useMemo } from "react"
+import React from "react"
 import { useEffect } from "react"
 import { useState } from "react"
 import { Footer } from "../Footer/footer"
@@ -20,19 +20,14 @@ import AllPost from "../../Pages/all-post-page/allpostpage"
 import { Attention } from "../Attention/Attention"
 import { AuthError } from "../AuthError/AuthError"
 import { POST_QUANTITY } from "../../utils/constants"
-import { HelloMessage } from "../HelloMessage/HelloMessage"
+// import { HelloMessage } from "../HelloMessage/HelloMessage"
 
-// let message = true
 
 const App = () => {
 
 
-
     const [autorozation, SetAutorization] = useState(false);    // Стейт авторизации
     const [authErr, setAuthErr] = useState('');   // стейт ошибок авторизации
-
-
-
 
     useEffect(() => {
         if (localStorage.getItem('postApi') !== '' && localStorage.getItem('postApi')) {
@@ -49,15 +44,18 @@ const App = () => {
             .then((data) => authIsTru(data))
             .catch((err) => setAuthErr(err.message))
     }
+
     function singUp(userData) {  // регистрация
 
-        console.log(userData)
+        alert('Данный функционал находится в разработке')
+        const {email: userEmail, password: userPassword} = {...userData}
+        console.log(userEmail, userPassword, userData)
         api.singUpUser(userData)
-            .then((data) => singIn(data))
-            // authIsTru(data))
-            //  {console.log(data); singIn(data); })
+            .then((res) =>  {console.log(res); singIn({email: userEmail, password: userPassword});})
+
             .catch((err) => setAuthErr(err.message))
     }
+
     function authIsTru(data) {   // вход в приложение при успешной регистрации/авторизации
         setUserData(data.data)
         localStorage.setItem('postApi', data.token)
