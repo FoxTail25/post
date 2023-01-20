@@ -1,4 +1,4 @@
-import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
+import { Avatar, Badge, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import dayjs from "dayjs";
@@ -18,7 +18,13 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
   const user = useContext({ ...allUserData })
   const data = useContext(AllContextData)
 
-  // console.log(user.userData._id, author._id)
+  let dataAuthor
+
+  if (user.userData._id === author._id) {
+    dataAuthor = user.userData
+  } else {
+    dataAuthor = author
+  }
 
   const changeStateLikedPost = data[1]
   const deletePost = data[2]
@@ -38,13 +44,13 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
         <CardHeader
           avatar={
 
-            author && <Avatar aria-label="recipe" src={checkAvatar(author)}>
-              {checkAvatar(author)}
+            author && <Avatar aria-label="recipe" src={checkAvatar(dataAuthor)}>
+              {checkAvatar(dataAuthor)}
             </Avatar>
 
           } sx={{ minHeight: '7em' }}
 
-          title={author.about + ' ' + author.name}
+          title={dataAuthor.about + ' ' + dataAuthor.name}
 
           subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
         />

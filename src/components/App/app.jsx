@@ -2,7 +2,7 @@
 
 import { CssBaseline, } from "@mui/material"
 
-import React from "react"
+import React, { useMemo } from "react"
 import { useEffect } from "react"
 import { useState } from "react"
 import { Footer } from "../Footer/footer"
@@ -20,21 +20,18 @@ import AllPost from "../../Pages/all-post-page/allpostpage"
 import { Attention } from "../Attention/Attention"
 import { AuthError } from "../AuthError/AuthError"
 import { POST_QUANTITY } from "../../utils/constants"
+import { HelloMessage } from "../HelloMessage/HelloMessage"
 
+// let message = true
 
 const App = () => {
 
-    // const data = {
-    //     about: 'Frontend-developer',
-    //     name: 'Шустиков Григорий Владимирович'
-
-    // }
-
-    // useEffect(() => {api.changeUserInfo( data, authToken).then(( data ) => console.log( data ))})
 
 
     const [autorozation, SetAutorization] = useState(false);    // Стейт авторизации
     const [authErr, setAuthErr] = useState('');   // стейт ошибок авторизации
+
+
 
 
     useEffect(() => {
@@ -46,31 +43,38 @@ const App = () => {
 
     ///////////////////////////// Блок авторизации и регистрации /////////////////////////////
 
-    function singIn(userData) {
-        api.singInUser(userData).then((data) => authIsTru(data))
+    function singIn(userData) {  // авторизация
+
+        api.singInUser(userData)
+            .then((data) => authIsTru(data))
             .catch((err) => setAuthErr(err.message))
     }
-    function singUp(userData) {
-        api.singUpUser(userData).then((data) => authIsTru(data))
+    function singUp(userData) {  // регистрация
+
+        api.singUpUser(userData)
+            .then((data) => {
+                api.singInUser(data);
+            })
             .catch((err) => setAuthErr(err.message))
     }
-    function logOut() {
+    function authIsTru(data) {   // вход в приложение при успешной регистрации/авторизации
+        setUserData(data.data)
+        localStorage.setItem('postApi', data.token)
+        localStorage.setItem('group', data.data.group)
+        SetAutorization(true)
+    }
+    function logOut() {         // Выход из учётной записи приложения.
 
         const result = window.confirm('Уже уходите?')
 
-        if(result) {
+        if (result) {
             localStorage.removeItem('postApi');
-            SetAutorization(false); 
+            localStorage.removeItem('group');
+            SetAutorization(false);
             setUserData({})
         }
     }
     /////////////////////////////////////////////////////////////////////////////////////////
-
-    function authIsTru(data) {
-        setUserData(data.data)
-        localStorage.setItem('postApi', data.token)
-        SetAutorization(true)
-    }
 
 
 
@@ -101,8 +105,10 @@ const App = () => {
 
     function paginatePage(currentPage = 1, search = '') {
         let postQuantity = POST_QUANTITY  // Константа определяющая количество постов на странице
-        api.getPaginatePosts(currentPage, postQuantity, search).then((data) =>       // апи запрос на получение постов с сервера.
-        { setPostData(data.posts); setAllPostcount(data.total); setPageNumber(currentPage) })
+        api.getPaginatePosts(currentPage, postQuantity, search)
+            .then((data) =>       // апи запрос на получение постов с сервера.
+            { setPostData(data.posts); setAllPostcount(data.total); setPageNumber(currentPage) })
+            .catch((err) => console.log("ошибка при запросе постов:", err.message))
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -160,6 +166,7 @@ const App = () => {
                     singIn,
                     singUp,
                     logOut,
+                    setUserData,
                 }}>
 
                     <Routes>
@@ -188,10 +195,16 @@ const App = () => {
                     }
 
                     {
-                        !autorozation & (authErr !== '')
+                        (authErr !== '')
                             ? <AuthError authErr={authErr} setAuthErr={setAuthErr} />
                             : null
                     }
+                    {/* {
+                        helloMessage
+                            ? <HelloMessage changeMessage={changeMessage} />
+                            : null
+                    } */}
+
 
 
                     <Routes>

@@ -1,17 +1,17 @@
 import { Button } from '@mui/material'
 import React from 'react'
-import './index.css'
+import s from './authErr.module.css'
 
 export const AuthError = ({ authErr, setAuthErr }) => {
 
 
 
     return (
-        <div className='errorBlock'>
-            <div className='errorMessage'>
+        <div className={s.errorBlock}>
+            <div className={s.errorMessage}>
                 {authErr} :(
             </div>
-            <Button variant='outlined' onClick={() => setAuthErr('')}>Попробовать снова</Button>
+            <Button variant='contained' onClick={() => setAuthErr('')}>Попробовать снова</Button>
         </div>
 
     )

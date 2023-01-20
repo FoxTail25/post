@@ -1,8 +1,7 @@
 import { Pagination } from "@mui/material";
 import { Container, Stack } from "@mui/system";
-import { React, useContext, } from "react";
+import { React, } from "react";
 import { Banner } from '../../components/Banner/banner'
-import { allUserData } from "../../components/context/context";
 import { PostList } from '../../components/PostList/post-list'
 
 

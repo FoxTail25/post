@@ -21,7 +21,8 @@ const PostList = () => {
             {
             !!post.length
                 ? post.map(el => <Post key={el._id} {...el} />)
-                : <NotFound />
+                : null
+                // <NotFound />
 
             }
 

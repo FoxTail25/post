@@ -1,32 +1,38 @@
 import React, { useState } from 'react'
-import { AuthForm } from '../AuthForm/AuthForm'
-import './index.css'
+import { AuthForm } from '../AuthForm/form-auth'
+// import { RegForm } from '../RegForm/RegForm'
+import s from './attention.module.css'
 
 export const Attention = () => {
 
   const [enter, setEnter] = useState(false)
   const [authReg, setAuthReg] = useState('')
-  const enterText = 'Для входа на ресурс необходима авторизация или регистрация'
+  const enterText = 'Для входа на ресурс необходима авторизация'
 
-  
+
 
   return (
-    <div className='authPage'>
-      <div className='snowplace'>
-        ' '
-      </div>
-      <div className='snowman'>
-        <div className='attention'>
-          {enter
-            ? <AuthForm authReg={authReg}/>
-            : <p>{enterText}</p>
+    <div className={s.authPage}>
+
+      <div className={s.snowman}>
+        <div className={s.snowmanAttention}>
+          {(enter
+          )
+            ? <AuthForm authReg={authReg} setEnter={setEnter}/>
+            : `${enterText}`
           }
         </div>
-        <div className='buttons-block'>
-          <button className='auth-btn' onClick={() => { setEnter(!enter); setAuthReg('reg') }}>Регистарция</button>
-          <button className='auth-btn' onClick={() => { setEnter(!enter); setAuthReg('auth')}}>Авторизация</button>
-        </div>
+        {
+          !enter ?
+          <div className={s.buttonBlock}>
+              <button className={s.authBtn} onClick={() => { setEnter(!enter); setAuthReg('auth') }}>Авторизация</button>
+              или
+              <button className={s.authBtn} onClick={() => { setEnter(!enter); setAuthReg('reg') }}>Регистарция</button>
+            </div>
+            : null
+        }
       </div>
+
     </div>
   )
 }

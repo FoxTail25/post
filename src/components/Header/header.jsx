@@ -3,7 +3,9 @@ import { AppBar, Avatar, CardHeader, Typography } from "@mui/material";
 import { useContext } from "react";
 import { allUserData } from "../context/context";
 import checkAvatar from "../../utils/avatar";
-import './index.css';
+import TransitionsModal from "../TransitModal/transitModal";
+import { useState } from "react";
+import s from './header.module.css';
 
 
 
@@ -12,6 +14,8 @@ export const Header = () => {
 
 
     const { userData: userInfo, logOut } = useContext({ ...allUserData })
+
+    const [onpenUserModal, setOpenUserModal] = useState(false)
 
 
     return (
@@ -34,7 +38,7 @@ export const Header = () => {
                     }}>
 
                         <Typography
-                            className="project-name"
+                            className={s.projectName}
                         >
                             Project "Posts"
                         </Typography>
@@ -52,7 +56,7 @@ export const Header = () => {
                                 paddingRight: '5vw'
                             }}>
 
-                                <CardHeader className="header-user-data"
+                                <CardHeader className={s.headerUserData}
 
 
                                     avatar={
@@ -71,18 +75,18 @@ export const Header = () => {
                                         color: 'white',
                                         //  fontSize: '1.2vw'
                                     }}
-                                    title={userInfo?.name}
+                                    title={userInfo?.about}
                                     subheaderTypographyProps={{
                                         color: 'whitesmoke',
                                         // fontSize: '1.2vw'
                                     }}
-                                    subheader={userInfo?.about}
-                                    onClick={() => console.log('headClick')}
+                                    subheader={userInfo?.name}
+                                    onClick={() => setOpenUserModal(!onpenUserModal)}
 
                                 />
 
 
-                                <button className="logOutBtn" onClick={() => logOut()}>Log Out</button>
+                                <button className={s.logOutBtn} onClick={() => logOut()}>Log Out</button>
 
 
                             </div>
@@ -96,6 +100,9 @@ export const Header = () => {
 
 
             </AppBar >
+
+                <TransitionsModal onpenUserModal={onpenUserModal} setOpenUserModal={setOpenUserModal} />
+
         </>
     )
 }
