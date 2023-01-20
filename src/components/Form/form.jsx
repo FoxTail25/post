@@ -1,75 +1,116 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import { useContext } from "react";
+// import React from "react";
 import { useForm } from "react-hook-form";
-import s from './form.module.css'
+import api from "../../utils/api";
+import { AllContextData } from "../context/context";
+import './form.css'
 
 
-export const Form = () => {
-
-    const { register, handleSubmit, formState: { errors } } = useForm(); // register -  это функция, которую необходимо подключить к каждому полю ввода. Она будет принимать и проверять значение введенное пользователем в каождое поле инпюта. handleSubmit - это функция высшего порядка, вызываемая при отправке формы. Она собирает данные из полей ввода. fotmState - это объект в котором содержится информация о состоянии формы. Также там лежит объект ошибок errors.
+export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
 
 
 
+    const data = useContext(AllContextData)
+
+    const addNewPostInState = data[3]
+    const updatePostState = data[4]
+    
+
+// console.log(rest)
+      
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        mode: 'onBlur',
+            defaultValues: {
+            image: image,
+            title: title,
+            text: text,
+        }
+    });
+
+    const cbSubmit = (data ) => {
+
+        // console.log( data)
+        Object.entries(rest).length 
+        ? api.changePost(data, _id ).then((newPost) => updatePostState(newPost))
+        : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
+
+        handleClose()
+    }
 
     return (
         <>
-            <div style={{
-                textAlign: 'center',
-                color: "AppWorkspace",
-                padding: '20px',
-            }}>Добавить новый пост</div>
+            <form onSubmit={handleSubmit(cbSubmit)} className='form'>
 
-            <form>
+                <label className="labelfor"> {errors?.url?.message ? <p className="paragrafor">{errors?.url?.message}</p> : 'Введите URL изображения'}
+                    <input className="inputfor"
+                        {...register('image', {
+                            required: {
+                                value: true,
+                                message: 'Поле обязательно для заполнения'
+                            },
+                            minLength: {
+                                value: 12,
+                                message: 'url адрес должен состоять не менее чем из 12 символов'
+                            },
+                            pattern: {
+                                value: /https:\/\//gm,
+                                message: 'url адрес должен начинаться с https://'
+                            }
 
-                <label> Введите имя
-                    <input type='text'
-                        name='name'
-                        placeholder="Anonimus"
-                    // value={formData.name}
-                    // onChange={inputChange}
-                    >
-                    </input>
-                </label>
-
-                <label> Введите URL изображения
-                    <input type='text'
-                        name='url'
-                        placeholder="url"
-                    // value={formData.url}
-                    // onChange={inputChange}
+                        })}
+                        type='text'
+                        placeholder="https://source.unsplash.com......." // https://source.unsplash.com/random/?nature"
+      
                     ></input>
                 </label>
 
-                <label> Введите заголовок поста
-                    <input type='text'
-                        name='postHead'
+                <label className="labelfor"> {errors?.head?.message ? <p className="paragrafor">{errors?.head?.message}</p> : 'Введите заголовок поста'}
+                    <input className="inputfor"
+                        {...register('title', {
+                            required: {
+                                value: true,
+                                message: 'Поле обязательно для заполнения'
+                            },
+                            minLength: {
+                                value: 3,
+                                message: 'Заголовок должно состоять не менее чем из 3х символов'
+                            },
+                        })}
+                        type='text'
                         placeholder="Заголовок"
-                    // value={formData.postHead}
-                    // onChange={inputChange}
+
                     ></input>
                 </label>
 
-                <label> Введите текст поста
-                    <input type='text'
-                        name='postBody'
+                <label className="labelfor"> {errors?.body?.message ? <p className="paragrafor">{errors?.body?.message}</p> : 'Введите текст поста'}
+                    <input className="inputfor"
+                        {...register('text', {
+                            required: {
+                                value: true,
+                                message: 'Поле обязательно для заполнения'
+                            },
+                            minLength: {
+                                value: 10,
+                                message: 'Имя должно состоять не менее чем из 10 символов'
+                            },
+                        })}
+                        type='text'
                         placeholder="сам текст"
-                    // value={formData.postBody}
-                    // onChange={inputChange}
+
                     ></input>
                 </label>
 
-
-
+                <Button type="submit" variant="contained" >{Object.entries(rest).length ? 'Сохранить изменения' : 'Опубликовать пост'}</Button>
 
             </form>
-
-
-
-            <Button type="submit" variant="contained" className={s.btn_submit}>Опубликовать пост</Button>
-
 
         </>
     )
 
 
 }
+
+
+
+// register -  это функция, которую необходимо подключить к каждому полю ввода. Она будет принимать и проверять значение введенное пользователем в каождое поле инпюта. handleSubmit - это функция высшего порядка, вызываемая при отправке формы. Она собирает данные из полей ввода. fotmState - это объект в котором содержится информация о состоянии формы. Также там лежит объект ошибок errors.

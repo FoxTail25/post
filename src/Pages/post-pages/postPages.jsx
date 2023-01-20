@@ -1,37 +1,44 @@
 import { Avatar, Badge, Button, Card, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material"
 import { useContext, useEffect, useState } from "react"
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { AllContextData } from "../../components/context/context"
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { AllContextData, allUserData } from "../../components/context/context"
+import { Link, useNavigate, useParams } from "react-router-dom";
+import PostComment from "../../components/PostCommentsList/PostCommentsList";
 import api from "../../utils/api"
 import dayjs from "dayjs";
-import { Link } from "react-router-dom";
 import s from './postPage.module.css'
+import BasicModal from "../../components/Modal/modal";
+import checkAvatar from "../../utils/avatar";
+
 
 export const PostPage = () => {
 
-    let p = window.location.pathname.slice(6)
+    const urlpage = useParams()
+
+    const user = useContext({ ...allUserData })
     const data = useContext(AllContextData)
+
     const changeStateLikedPost = data[1]
     const deletePost = data[2]
+    const postIdFromUrl = useParams()
+    const navigate = useNavigate()
 
-    const [singlePost, setSinglePost] = useState([])
-    useEffect(() => { api.getPostById(p).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, p])
+    const [singlePost, setSinglePost] = useState({})
+
+    useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
+
+    const { _id, author, created_at, image, title, text, likes, comments, tags } = singlePost
 
 
-
-
-
-    const { _id, author, created_at, image, title, text, likes, } = singlePost
 
     let color
 
     if (likes?.length > 0) { color = 'warning' }
 
-
     return (
-
         <>
-            {!singlePost ? console.log('stop') :
+            {!singlePost ? <></> :
                 <div className={s.mainpost}>
                     <div className={s.button__homepage_top}>
                         <Link to="/" className={s.btn__home}>
@@ -51,16 +58,23 @@ export const PostPage = () => {
                         }} >
                             <CardHeader
                                 avatar={
-                                    <Avatar >
-                                        {author?.avatar}
+                                    author && <Avatar aria-label="recipe" src={checkAvatar(author)}>
+                                        {checkAvatar(author)}
                                     </Avatar>
-                                } sx={{ minHeight: '7em' }}
-
+                                }
+                                sx={{ minHeight: '7em' }}
                                 title={author?.about + ' ' + author?.name}
-
                                 subheader={dayjs(created_at).format('HH:MM:s DD/MM/YYYY')}
-                            />
+                            >
 
+                            </CardHeader>
+                            {/* 
+                            {(tags?.length && (tags[0] !== ''))
+                                ? <div style={{display: 'flex'}}>
+                                <div style={{paddingLeft: 10}}>#tags:</div>{tags?.map((e,i) => <div key={i} style={{padding:"0px 4px"}}>{e}</div>)}
+                                </div>
+                                : null
+                            } */}
                             <CardMedia
                                 component="img"
                                 height="auto"
@@ -68,41 +82,57 @@ export const PostPage = () => {
                                 alt="Изображение"
                             >
                             </CardMedia>
+
+
                             <CardContent sx={{ flex: 1 }}>
+
                                 <Typography variant="h5" color="text.secondary">
                                     {title}
                                 </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                    {text}
-                                </Typography>
+
+                                <p dangerouslySetInnerHTML={{ __html: text }} />
+
                             </CardContent>
 
                             <div className={s.cart__bottom}>
+
                                 <IconButton aria-label="add to favorites" color={color} onClick={function (e) { e.stopPropagation(); changeStateLikedPost(likes, _id) }}>
                                     <Badge badgeContent={likes?.length} color="primary">
                                         <FavoriteIcon />
                                     </Badge>
                                 </IconButton>
-                                <Button variant="outlined" onClick={function (e) { e.stopPropagation(); deletePost(author, _id) }}>Удалить пост</Button>
+                       
+                                         < BasicModal urlpage={urlpage} singlePost={singlePost} />
+                                        
+                                
+                                {
+                                    user?.userData._id === author?._id
+                                        ? <IconButton onClick={() => deletePost(author, _id)}>
+                                            <DeleteForeverIcon />
+                                        </IconButton>
+                                        : null
+                                }
+
                             </div>
+
+                            {comments?.length
+                                ? <PostComment comments={comments} id={_id} />
+                                : null}
+                            {/* {tags?.length
+                                ? <PostComment comments={tags} id={_id} />
+                                : null} */}
 
                         </Card>}
 
-
-
-                        <div className={s.button__homepage_bottom}>
-                        <Link to="/" className={s.btn__home}>
-                            <Button variant="contained" >Вернуться на главную страницу</Button>
-                        </Link>
+                    <div className={s.button__homepage_bottom}>
+                        <Button variant="contained"
+                            onClick={() => navigate(-1)}
+                        >Вернуться на главную страницу</Button>
                     </div>
 
-
                 </div>
-                
 
-            
             }</>
-
     )
 
 }

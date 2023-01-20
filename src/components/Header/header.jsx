@@ -1,7 +1,11 @@
 import React from "react";
-import { AppBar, Container, Typography } from "@mui/material";
+import { AppBar, Avatar, CardHeader, Typography } from "@mui/material";
 import { useContext } from "react";
 import { allUserData } from "../context/context";
+import checkAvatar from "../../utils/avatar";
+import TransitionsModal from "../TransitModal/transitModal";
+import { useState } from "react";
+import s from './header.module.css';
 
 
 
@@ -9,66 +13,96 @@ import { allUserData } from "../context/context";
 export const Header = () => {
 
 
-    const userInfo = useContext(allUserData)
+    const { userData: userInfo, logOut } = useContext({ ...allUserData })
 
+    const [onpenUserModal, setOpenUserModal] = useState(false)
 
 
     return (
         <>
 
-            <AppBar position="static" sx={{
-                position: 'fixed',
-                top: '0',
-                width: '100%',
-               
-                zIndex: '2',
-            }}>
-                <Container sx={{
-                    maxwidth: '1600px',
-                    minWidth: '0px',
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                }}>
-                    <Container >
+            <AppBar position="fixed"
+                sx={{ display: 'flex', alignItems: 'space-around' }}
+            >
 
-                        <Typography variant="h6" component="div">
-                            "Посты" (2й дипломный проект)
-                        </Typography>
-
-
-                    </Container>
-
-                    <Container sx={{
+                <div
+                    style={{
                         display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'end',
-                        flexWrap: 'wrap'
-
+                        width: '100%',
+                        justifyContent: 'space-around',
+                    }}
+                >
+                    <div style={{
+                        display: 'flex',
+                        padding: '5px 10px',
                     }}>
 
-                        <Typography variant="h6" component="div" >
-
-                            {userInfo?.about}:
-
+                        <Typography
+                            className={s.projectName}
+                        >
+                            Project "Posts"
                         </Typography>
 
-                        <Typography variant="h6" component="div" noWrap sx={{ padding: '10px' }}>
 
-                            {userInfo?.name}
+                    </div>
 
-                        </Typography>
 
-                        <Typography variant="h6" component="div" noWrap>
+                    {
+                        Object.entries(userInfo).length > 0
 
-                            {userInfo?.email}
+                            ? <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                paddingRight: '5vw'
+                            }}>
 
-                        </Typography>
+                                <CardHeader className={s.headerUserData}
 
-                    </Container>
-                </Container>
 
-            </AppBar>
+                                    avatar={
+
+                                        userInfo && <Avatar aria-label="recipe" src={checkAvatar(userInfo)}
+                                        // classes={{width: '3vw'}}
+                                        //     sx = {{width: '4vw',
+                                        // height: '4vw'}}
+                                        >
+                                            {checkAvatar(userInfo)}
+                                        </Avatar>
+
+                                    }
+
+                                    titleTypographyProps={{
+                                        color: 'white',
+                                        //  fontSize: '1.2vw'
+                                    }}
+                                    title={userInfo?.about}
+                                    subheaderTypographyProps={{
+                                        color: 'whitesmoke',
+                                        // fontSize: '1.2vw'
+                                    }}
+                                    subheader={userInfo?.name}
+                                    onClick={() => setOpenUserModal(!onpenUserModal)}
+
+                                />
+
+
+                                <button className={s.logOutBtn} onClick={() => logOut()}>Log Out</button>
+
+
+                            </div>
+                            : null
+                        }
+
+
+                </div>
+
+
+
+
+            </AppBar >
+
+                <TransitionsModal onpenUserModal={onpenUserModal} setOpenUserModal={setOpenUserModal} />
+
         </>
     )
 }

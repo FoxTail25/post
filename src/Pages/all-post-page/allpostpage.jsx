@@ -1,17 +1,23 @@
 import { Pagination } from "@mui/material";
 import { Container, Stack } from "@mui/system";
-import { React,} from "react";
-import {Banner} from '../../components/Banner/banner'
-import {PostList} from '../../components/PostList/post-list'
+import { React, } from "react";
+import { Banner } from '../../components/Banner/banner'
+import { PostList } from '../../components/PostList/post-list'
 
 
 
-export default function AllPost({pagePostCount, setPageNumber}) {
+export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
+
+    // const { autorozation:autohorized } = useContext({ ...allUserData })
+
+    const displayPaginate = pagePostCount > 1
 
     return (
-
+        <>
+{/* { autohorized */}
+        {/* ?  */}
         <Stack>
-     
+
             <Container sx={{
                 display: "flex",
                 flexWrap: 'wrap',
@@ -20,7 +26,7 @@ export default function AllPost({pagePostCount, setPageNumber}) {
                 marginTop: '10px',
 
             }} maxWidth='xl'>
-                <Banner/>
+                <Banner />
 
             </Container>
             <Container sx={{
@@ -31,10 +37,18 @@ export default function AllPost({pagePostCount, setPageNumber}) {
                 mb: '1%',
             }}>
 
-                <Pagination count={pagePostCount} color="primary" onChange={(event, num) => setPageNumber(num)} sx={{
-                    background: 'white',
-                    borderRadius: '10px'
-                }} />
+                {displayPaginate
+                    ? <Pagination
+                        // defaultPage={pageNumber} 
+                        page={pageNumber}
+                        count={pagePostCount} color="primary" onChange={(event, num) =>
+                            paginatePage(num)
+                        } sx={{
+                            background: 'white',
+                            borderRadius: '10px'
+                        }} />
+                    : null
+                }
 
             </Container>
             <Container sx={{
@@ -50,6 +64,7 @@ export default function AllPost({pagePostCount, setPageNumber}) {
 
             </Container>
 
+
             <Container sx={{
                 display: "flex",
                 flexWrap: 'wrap',
@@ -58,8 +73,24 @@ export default function AllPost({pagePostCount, setPageNumber}) {
                 mb: '10%',
             }}>
 
+                {displayPaginate
+                    ? <Pagination
+                        // defaultPage={pageNumber} 
+                        page={pageNumber}
+                        count={pagePostCount} color="primary" onChange={(event, num) =>
+                            paginatePage(num)
+                        } sx={{
+                            background: 'white',
+                            borderRadius: '10px'
+                        }} />
+                    : null
+                }
+
             </Container >
 
         </Stack>
+        {/* : null */}
+    {/* } */}
+    </>
     )
 }
