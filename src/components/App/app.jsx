@@ -48,12 +48,12 @@ const App = () => {
     function singUp(userData) {  // регистрация
 
         alert('Данный функционал находится в разработке')
-        // console.log(userData)
-        // api.singUpUser(userData)
-            // .then((data) => singIn(data))
-            // authIsTru(data))
-            //  {console.log(data); singIn(data); })
-            // .catch((err) => setAuthErr(err.message))
+        const {email: userEmail, password: userPassword} = {...userData}
+        console.log(userEmail, userPassword, userData)
+        api.singUpUser(userData)
+            .then((res) =>  {console.log(res); singIn({email: userEmail, password: userPassword});})
+
+            .catch((err) => setAuthErr(err.message))
     }
 
     function authIsTru(data) {   // вход в приложение при успешной регистрации/авторизации
