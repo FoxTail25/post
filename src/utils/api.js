@@ -8,7 +8,6 @@ const onResponce = (res) => {
 
 class Api {
     constructor({ baseUrl }) {
-        // this._headers = headers;
         this._baseUrl = baseUrl;
     }
 
@@ -47,7 +46,6 @@ class Api {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('postApi')}`
             }
-            // headers: this._headers
         }).then(onResponce)
     }
     changeUserInfo(data) {
@@ -86,7 +84,6 @@ class Api {
                 'content-type': 'application/json',
                 Authorization: `Bearer ${localStorage.getItem('postApi')}`
             }
-            // headers: this._headers
 
         }).then(onResponce)
     }
@@ -172,12 +169,7 @@ class Api {
 
 const config = {
     baseUrl: 'https://api.react-learning.ru/v2/',
-    // baseUrl: 'https://api.react-learning.ru/v2/group-7',
-    // headers: {
-        // 'content-type': 'application/json',
-        // Authorization: token
-        // Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzZhNTEwNzU5Yjk4YjAzOGY3NzlkMjUiLCJncm91cCI6Imdyb3VwLTciLCJpYXQiOjE2Njc5MTE5NTAsImV4cCI6MTY5OTQ0Nzk1MH0.cjcOe0rjB3beNMR3s0mfo6geqWswLbsgNe7MSqYmx5s'
-    // }
+
 }
 
 const api = new Api(config);

@@ -7,8 +7,6 @@ import './index.css';
 
 export const Search = () => {
 
-
-
     const [inputText, setInputText] = useState('')
 
     const data = useContext(AllContextData)
@@ -36,8 +34,6 @@ export const Search = () => {
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder='Поиск по заголовкам постов'
             />
-
-
 
             <IconButton type='submit'
                 className='search__btn'>

@@ -15,7 +15,6 @@ const Banner = () => {
                 sx={{
                     height: '120px',
                     backgroundColor: 'aliceblue',
-                    // margin: '20px',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',

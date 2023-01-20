@@ -13,7 +13,6 @@ export const Footer = () => {
             position: 'fixed',
             bottom: '0',
             width: '100%',
-            // maxWidth: '100%',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -30,7 +29,6 @@ export const Footer = () => {
 
             <Link href="tel:+79057800777" sx={{
                 padding: '10px',
-
                 opacity: 0.7,
                 '&:hover': {
                     opacity: [0.8, 0.9, 1],

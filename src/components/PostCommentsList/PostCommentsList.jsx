@@ -15,7 +15,6 @@ export default function PostComment({ comments, id }) {
     
 const [postCommentState, setPostCommentState] = useState([])
 
-// console.log(comments)
 
 useEffect(() => { 
     if(id) api.getPostComments(id).then((data) => setPostCommentState(data))

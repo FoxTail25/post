@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { AuthForm } from '../AuthForm/form-auth'
-// import { RegForm } from '../RegForm/RegForm'
 import s from './attention.module.css'
 
 export const Attention = () => {

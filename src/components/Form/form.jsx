@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
 import { useContext } from "react";
-// import React from "react";
 import { useForm } from "react-hook-form";
 import api from "../../utils/api";
 import { AllContextData } from "../context/context";
@@ -9,15 +8,10 @@ import './form.css'
 
 export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
 
-
-
     const data = useContext(AllContextData)
-
     const addNewPostInState = data[3]
     const updatePostState = data[4]
     
-
-// console.log(rest)
       
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'onBlur',
@@ -30,7 +24,6 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
 
     const cbSubmit = (data ) => {
 
-        // console.log( data)
         Object.entries(rest).length 
         ? api.changePost(data, _id ).then((newPost) => updatePostState(newPost))
         : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
@@ -110,7 +103,3 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
 
 
 }
-
-
-
-// register -  это функция, которую необходимо подключить к каждому полю ввода. Она будет принимать и проверять значение введенное пользователем в каождое поле инпюта. handleSubmit - это функция высшего порядка, вызываемая при отправке формы. Она собирает данные из полей ввода. fotmState - это объект в котором содержится информация о состоянии формы. Также там лежит объект ошибок errors.
