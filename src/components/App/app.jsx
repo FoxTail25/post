@@ -51,10 +51,11 @@ const App = () => {
     }
     function singUp(userData) {  // регистрация
 
+        console.log(userData)
         api.singUpUser(userData)
-            .then((data) => {
-                api.singInUser(data);
-            })
+            .then((data) => singIn(data))
+            // authIsTru(data))
+            //  {console.log(data); singIn(data); })
             .catch((err) => setAuthErr(err.message))
     }
     function authIsTru(data) {   // вход в приложение при успешной регистрации/авторизации
