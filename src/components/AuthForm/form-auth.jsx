@@ -76,7 +76,7 @@ export const AuthForm = ({ authReg, setEnter }) => {
             </label>
 
             <label className={s.authfild}> {errors?.password?.message ? <p className={s.authfild}>{errors?.password?.message}</p> : 'Введите пароль'}
-                <input className={s.authfild}
+                <input className={s.authfild} 
                     {...register('password', {
                         required: {
                             value: true,
@@ -87,7 +87,7 @@ export const AuthForm = ({ authReg, setEnter }) => {
                             message: 'слишком коротко'
                         },
                     })}
-                    type='text'
+                    type='password'
                     placeholder="пароль не менее 7 сиволов"
 
                 ></input>
