@@ -1,0 +1,37 @@
+.mainpost {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 5vw;
+}
+
+
+.button__homepage_top {
+
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    /* margin-top: 25vh; */
+    
+}
+.button__homepage_bottom {
+
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    margin-bottom: 10vh;
+    
+}
+
+.btn__home{
+    text-decoration: none;
+    color: currentColor;
+}
+
+.cart__bottom {
+    display: flex;
+    padding: 0 5px 2px 5px;
+    justify-content: space-between;
+}
