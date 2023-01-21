@@ -2,11 +2,12 @@ import { Button } from "@mui/material";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import api from "../../utils/api";
+import { CHECK_EMAIL } from "../../utils/constants";
 import { AllContextData } from "../context/context";
 import './form.css'
 
 
-export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
+export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) => {
 
     const data = useContext(AllContextData)
     const addNewPostInState = data[3]
@@ -19,11 +20,14 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
             image: image,
             title: title,
             text: text,
+            tags: tags,
         }
     });
 
     const cbSubmit = (data ) => {
 
+        data.tags = data.tags.split(',')
+        // console.log(data.tags)
         Object.entries(rest).length 
         ? api.changePost(data, _id ).then((newPost) => updatePostState(newPost))
         : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
@@ -43,11 +47,11 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
                                 message: 'Поле обязательно для заполнения'
                             },
                             minLength: {
-                                value: 12,
-                                message: 'url адрес должен состоять не менее чем из 12 символов'
+                                value: 7,
+                                message: 'url адрес должен состоять не менее чем из 7 символов'
                             },
                             pattern: {
-                                value: /https:\/\//gm,
+                                value: 'https://',
                                 message: 'url адрес должен начинаться с https://'
                             }
 
@@ -90,6 +94,24 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
                         })}
                         type='text'
                         placeholder="сам текст"
+
+                    ></input>
+                </label>
+
+                <label className="labelfor"> {errors?.tags?.message ? <p className="paragrafor">{errors?.tags?.message}</p> : 'Список тегов'}
+                    <input className="inputfor"
+                        {...register('tags', {
+                            // required: {
+                            //     value: true,
+                            //     message: 'Поле обязательно для заполнения'
+                            // },
+                            // minLength: {
+                            //     value: 10,
+                            //     message: 'Имя должно состоять не менее чем из 10 символов'
+                            // },
+                        })}
+                        type='text'
+                        placeholder="tag1, tag2, tag3...."
 
                     ></input>
                 </label>

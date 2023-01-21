@@ -36,7 +36,7 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
         ? <Button variant='contained' onClick={handleOpen} startIcon={<PostAddIcon />}>добавить пост</Button>
         : user?.userData._id === singlePost?.author?._id
         ?
-        <IconButton aria-label="Отрадакировать пост" onClick={handleOpen}>
+        <IconButton aria-label="Отрадакировать пост" onClick={handleOpen} className='post_addComment_btn'>
           <div style={{fontSize: '15px'}}>
             редактировать пост...
           </div>
@@ -47,7 +47,7 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
 
 
       {urlpage.postId
-        ? <IconButton aria-label="добавить коммент" onClick={handleOpen2}>
+        ? <IconButton aria-label="добавить коммент" onClick={handleOpen2} className='post_addComment_btn'>
 
           
           <PostAddIcon />

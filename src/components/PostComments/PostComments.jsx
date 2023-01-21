@@ -24,6 +24,7 @@ export const PostComments = ({ postId, author, created_at, text, ...rest }) => {
   return (
     <div className='post-comment'>
       <CardHeader
+      sx={{width: '250px'}}
         avatar={
           <Avatar aria-label="recipe" src={checkAvatar(author)}>
             {checkAvatar(author)}
@@ -36,8 +37,8 @@ export const PostComments = ({ postId, author, created_at, text, ...rest }) => {
       <div className='comment-text'>
         {HTMLReactParser(text)}
       </div>
-      <IconButton onClick={()=> delComment()}>
-        <DeleteIcon />
+      <IconButton onClick={()=> delComment()} className='comment-deleteBtn-icon'>
+        <DeleteIcon className='comment-delete-icon'/>
       </IconButton>
 
     </div>

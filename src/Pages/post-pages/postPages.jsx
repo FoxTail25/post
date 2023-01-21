@@ -10,6 +10,7 @@ import dayjs from "dayjs";
 import s from './postPage.module.css'
 import BasicModal from "../../components/Modal/modal";
 import checkAvatar from "../../utils/avatar";
+import { PostTagList } from "../../components/PostTag/Post-tag";
 
 
 export const PostPage = () => {
@@ -28,8 +29,7 @@ export const PostPage = () => {
 
     useEffect(() => { api.getPostById(postIdFromUrl.postId).then((data) => { setSinglePost(data) }) }, [changeStateLikedPost, postIdFromUrl.postId])
 
-    const { _id, author, created_at, image, title, text, likes, comments } = singlePost
-
+    const { _id, author, created_at, image, title, text, likes, comments, tags } = singlePost
 
 
     let color
@@ -101,8 +101,8 @@ export const PostPage = () => {
 
                                 {
                                     user?.userData._id === author?._id
-                                        ? <IconButton onClick={() => deletePost(author, _id)}>
-                                            <DeleteForeverIcon />
+                                        ? <IconButton onClick={() => deletePost(author, _id)} className={s.post_deleteBtn_icon}>
+                                            <DeleteForeverIcon className={s.post_delete_icon}/>
                                         </IconButton>
                                         : null
                                 }
@@ -114,6 +114,13 @@ export const PostPage = () => {
                                 ? <PostComment comments={comments} id={_id} />
                                 : null
                             }
+                            {
+                                tags?.length
+                                ? <PostTagList tags={tags} id={_id} />
+                                : null
+                            }
+
+
 
 
                         </Card>}

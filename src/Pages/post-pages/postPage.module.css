@@ -34,3 +34,6 @@
     padding: 0 5px 2px 5px;
     justify-content: space-between;
 }
+.post_deleteBtn_icon:hover .post_delete_icon {
+    color: red;
+    }

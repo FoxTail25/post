@@ -11,9 +11,7 @@
 }
 
 .post:hover {
-    
     filter: drop-shadow(0 0 20px white);
-
 }
 
 .post__link {
@@ -35,3 +33,4 @@
 	bottom: 0;
 	right: 0;
 }
+
