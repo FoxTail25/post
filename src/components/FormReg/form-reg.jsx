@@ -1,43 +1,32 @@
-import { IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useContext } from 'react';
 import { allUserData } from '../context/context';
 import s from './form-auth.module.css'
+import { CHECK_EMAIL } from '../../utils/constants';
 
 
-export const AuthForm = ({ authReg, setEnter }) => {
+export const FormReg = ({authReg, handleClose , setAuthReg}) => {
 
-    const { singIn, singUp } = useContext({ ...allUserData })
+    const { singUp } = useContext({ ...allUserData })
 
 
-    let fildemail, fildpass;
-    if (authReg === 'auth') {
-        fildemail = 'test@fakepost.com';
-        fildpass = 'qwer1234';
-    } else {
-        fildemail = '';
-        fildpass = '';
-    }
 
     const { register, handleSubmit, formState: { errors, isValid } } = useForm({
         mode: 'all',
         defaultValues: {
-            email: fildemail,
-            password: fildpass,
+            group: 'group-7',
         }
 
     });
 
-    
 
     const cbSubmit = (data) => {
+        singUp(data)
+        handleClose()
 
-        authReg === 'auth'
-            ? singIn(data)
-            : singUp({ ...data, group: 'group-7' })
     }
 
 
@@ -47,11 +36,13 @@ export const AuthForm = ({ authReg, setEnter }) => {
 
         <form className={s.authFormStyle} onSubmit={handleSubmit(cbSubmit)}>
 
-            {
-                authReg === 'auth'
-                    ? <h5 className={s.authRegHeader}>Авторизация</h5>
-                    : <h5 className={s.authRegHeader}>Регистарция</h5>
-            }
+
+            <h5 className={s.authRegHeader}>
+                Регистарция
+                <br />
+                <p>(необходимо указать емаил, пароль и если желаете, изменить группу постов)</p>
+            </h5>
+
             <label className={s.authfild}> {errors?.email?.message ? <p className={s.authfild}>{errors?.email?.message}</p> : 'Ваш Email'}
                 <input className={s.authfild}
                     {...register('email', {
@@ -64,7 +55,7 @@ export const AuthForm = ({ authReg, setEnter }) => {
                             message: 'очень коротко'
                         },
                         pattern: {
-                            value: /@/gm,
+                            value: CHECK_EMAIL,
                             message: 'неверный емаил'
                         }
 
@@ -76,38 +67,61 @@ export const AuthForm = ({ authReg, setEnter }) => {
             </label>
 
             <label className={s.authfild}> {errors?.password?.message ? <p className={s.authfild}>{errors?.password?.message}</p> : 'Введите пароль'}
-                <input className={s.authfild} 
+                <input className={s.authfild}
                     {...register('password', {
                         required: {
                             value: true,
                             message: 'обязательное поле'
                         },
                         minLength: {
-                            value: 3,
+                            value: 8,
                             message: 'слишком коротко'
                         },
                     })}
                     type='password'
-                    placeholder="пароль не менее 7 сиволов"
+                    autoComplete="on"
+                    placeholder="пароль не менее 8 сиволов"
 
                 ></input>
             </label>
 
+            <label className={s.authfild}> {errors?.password?.message ? <p className={s.authfild}>{errors?.password?.message}</p> : 'Укажите группу'}
+                <input className={s.authfild}
+                    {...register('group', {
+                        required: {
+                            value: true,
+                            message: 'обязательное поле'
+                        },
+                        minLength: {
+                            value: 2,
+                            message: 'слишком коротко'
+                        },
+                        
+                    })}
+                    type='text'
+                    placeholder="не менее 2 символов"
+
+                ></input>
+            </label>
 
             <div className={s.authBtnBlock}>
 
-                <IconButton className={s.goBackBtn} onClick={() => { setEnter() }}>
-                    <KeyboardBackspaceIcon className={s.goBack} />
-                </IconButton>
+                <Button
+                    variant='outlined'
+                    onClick={() => { setAuthReg(!authReg) }}>
+                    авторизации
+                </Button>
 
-                <IconButton type='submit' className={s.authBtn} disabled={!isValid}>
-                    <VpnKeyIcon className={s.authIconTrue} />
-                </IconButton>
+                <Button type='submit'
+                    variant='contained'
+                    color='success'
+                    disabled={!isValid}>
+                    Регистрация
+                </Button>
 
             </div>
 
         </form>
-
 
     )
 }

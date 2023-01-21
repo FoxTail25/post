@@ -2,11 +2,13 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .authRegHeader {
     padding: 0;
     margin: 0;
+    text-align: center;
     filter: drop-shadow(0 0 5px gold);
 }
 
@@ -19,21 +21,10 @@
     width: 100%;
 }
 
-.authTrtuBtn {
-    filter: drop-shadow(0 0 10px gold);
-}
 
-.authIconTrue {
-    background: white;
-    color: inherit;
-    color: gold;
-}
-
-.goBackBtn {
-    transition: .3s;
-}
-
-.goBackBtn:hover {
-    color: blue;
-    transition: .3s;
+.authBtnBlock {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
 }

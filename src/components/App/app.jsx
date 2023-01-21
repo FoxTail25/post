@@ -17,7 +17,7 @@ import { Route, Routes } from 'react-router-dom';
 import { NotFound } from "../../Pages/not-found/notFound"
 import { PostPage } from "../../Pages/post-pages/postPages"
 import AllPost from "../../Pages/all-post-page/allpostpage"
-import { Attention } from "../Attention/Attention"
+import { Authorisation } from "../Attention/Authorisation"
 import { AuthError } from "../AuthError/AuthError"
 import { POST_QUANTITY } from "../../utils/constants"
 // import { HelloMessage } from "../HelloMessage/HelloMessage"
@@ -190,7 +190,7 @@ const App = () => {
                                 </Routes>
                             </main>
 
-                            : <Attention />
+                            : <Authorisation />
                     }
 
                     {
