@@ -12,11 +12,12 @@ export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) =>
     const data = useContext(AllContextData)
     const addNewPostInState = data[3]
     const updatePostState = data[4]
-    
-      
+
+    console.log(tags)
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'onBlur',
-            defaultValues: {
+        defaultValues: {
             image: image,
             title: title,
             text: text,
@@ -24,13 +25,18 @@ export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) =>
         }
     });
 
-    const cbSubmit = (data ) => {
+    const cbSubmit = (data) => {
 
-        data.tags = data.tags.split(',')
-        // console.log(data.tags)
-        Object.entries(rest).length 
-        ? api.changePost(data, _id ).then((newPost) => updatePostState(newPost))
-        : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
+        if (data.tags === '' || data.tags === ' ' || data.tags.length === 0) {
+            data.tags = []
+        } else {
+            data.tags = data.tags.split(',')
+        }
+
+        console.log(data.tags)
+        Object.entries(rest).length
+            ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
+            : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
 
         handleClose()
     }
@@ -58,7 +64,7 @@ export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) =>
                         })}
                         type='text'
                         placeholder="https://source.unsplash.com......." // https://source.unsplash.com/random/?nature"
-      
+
                     ></input>
                 </label>
 
