@@ -5,8 +5,8 @@ import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useContext } from 'react';
 import { allUserData } from '../context/context';
-import s from './form-auth.module.css'
 import { CHECK_EMAIL } from '../../utils/constants';
+import '../../formAuthReg.css'
 
 
 export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
@@ -30,20 +30,20 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
 
         return (
 
-            <form className={s.authFormStyle} onSubmit={handleSubmit(cbSubmit)}>
+            <form className='authRegForm' onSubmit={handleSubmit(cbSubmit)}>
 
-                <h5 className={s.authRegHeader}>
+                <h5 className='authRegForm__header'>
                     Авторизация
                     <br />
-                    <p>(По умолчанию указаны фейковые данные)</p>
+                    <p className='authRegForm__header_text'>(По умолчанию указаны фейковые данные)</p>
                 </h5>
 
-                <label className={s.authfild}> {errors?.email?.message ? <p className={s.authfild}>{errors?.email?.message}</p> : 'Ваш Email'}
-                    <input className={s.authfild}
+                <label className='authRegForm__leble'> {errors?.email?.message ? <p className='authRegForm__leble_error'>{errors?.email?.message}</p> : 'Ваш Email'}
+                    <input className='authRegForm__input'
                         {...register('email', {
                             required: {
                                 value: true,
-                                message: 'обязательное поле'
+                                message: ' обязательное поле'
                             },
                             // minLength: {
                             //     value: 7,
@@ -51,27 +51,26 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
                             // },
                             pattern: {
                                 value: CHECK_EMAIL,
-                                message: 'неверный емаил'
+                                message: ' неверный емаил'
                             }
 
                         })}
                         type='email'
-                        // suggested = "current-password"
                         placeholder="shla@Sobaka.poShosse"
 
                     ></input>
                 </label>
 
-                <label className={s.authfild}> {errors?.password?.message ? <p className={s.authfild}>{errors?.password?.message}</p> : 'Введите пароль'}
-                    <input className={s.authfild}
+                <label className='authRegForm__leble'> {errors?.password?.message ? <p className='authRegForm__leble_error'>{errors?.password?.message}</p> : 'Введите пароль'}
+                    <input className='authRegForm__input'
                         {...register('password', {
                             required: {
                                 value: true,
-                                message: 'обязательное поле'
+                                message: ' обязательное поле'
                             },
                             minLength: {
                                 value: 3,
-                                message: 'слишком коротко'
+                                message: ' слишком короткий пароль'
                             },
                         })}
                         type='password'
@@ -81,16 +80,19 @@ export const FormAuth = ({ authReg, handleClose, setAuthReg }) => {
                     ></input>
                 </label>
 
-                <div className={s.authBtnBlock}>
+                <div className='authRegForm__BtnBlock'>
 
                     <Button
                         variant='outlined'
+                        size='small'
                         onClick={() => { setAuthReg(!authReg) }}>
                         Регистрация
                     </Button>
 
                     <Button type='submit'
                         variant='contained'
+                        size='small'
+                        color='success'
                         disabled={!isValid}
                     >
                         Войти

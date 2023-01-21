@@ -1,14 +1,14 @@
-import { Button, IconButton } from '@mui/material';
+import { Button } from '@mui/material';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { useContext } from 'react';
 import { allUserData } from '../context/context';
-import s from './form-auth.module.css'
 import { CHECK_EMAIL } from '../../utils/constants';
+import '../../formAuthReg.css'
 
 
-export const FormReg = ({authReg, handleClose , setAuthReg}) => {
+export const FormReg = ({ authReg, handleClose, setAuthReg }) => {
 
     const { singUp } = useContext({ ...allUserData })
 
@@ -34,29 +34,26 @@ export const FormReg = ({authReg, handleClose , setAuthReg}) => {
     return (
 
 
-        <form className={s.authFormStyle} onSubmit={handleSubmit(cbSubmit)}>
+        <form className='authRegForm' onSubmit={handleSubmit(cbSubmit)}>
 
 
-            <h5 className={s.authRegHeader}>
-                Регистарция
+            <h5 className='authRegForm__header'>
+                Форма регистарции
                 <br />
-                <p>(необходимо указать емаил, пароль и если желаете, изменить группу постов)</p>
+                <p className='authRegForm__header_text'>(необходимо указать емаил, пароль и если желаете, изменить группу постов)</p>
             </h5>
 
-            <label className={s.authfild}> {errors?.email?.message ? <p className={s.authfild}>{errors?.email?.message}</p> : 'Ваш Email'}
-                <input className={s.authfild}
+            <label className='authRegForm__leble'> {errors?.email?.message ? <p className='authRegForm__leble_error'>{errors?.email?.message}</p> : 'Ваш Email'}
+                <input className='authRegForm__input'
                     {...register('email', {
                         required: {
                             value: true,
-                            message: 'обязательное поле'
+                            message: ' обязательное поле'
                         },
-                        minLength: {
-                            value: 7,
-                            message: 'очень коротко'
-                        },
+
                         pattern: {
                             value: CHECK_EMAIL,
-                            message: 'неверный емаил'
+                            message: ' неверный емаил'
                         }
 
                     })}
@@ -66,16 +63,16 @@ export const FormReg = ({authReg, handleClose , setAuthReg}) => {
                 ></input>
             </label>
 
-            <label className={s.authfild}> {errors?.password?.message ? <p className={s.authfild}>{errors?.password?.message}</p> : 'Введите пароль'}
-                <input className={s.authfild}
+            <label className='authRegForm__leble'> {errors?.password?.message ? <p className='authRegForm__leble_error'>{errors?.password?.message}</p> : 'Введите пароль'}
+                <input className='authRegForm__input'
                     {...register('password', {
                         required: {
                             value: true,
-                            message: 'обязательное поле'
+                            message: ' обязательное поле'
                         },
                         minLength: {
                             value: 8,
-                            message: 'слишком коротко'
+                            message: ' слишком коротко'
                         },
                     })}
                     type='password'
@@ -85,18 +82,18 @@ export const FormReg = ({authReg, handleClose , setAuthReg}) => {
                 ></input>
             </label>
 
-            <label className={s.authfild}> {errors?.password?.message ? <p className={s.authfild}>{errors?.password?.message}</p> : 'Укажите группу'}
-                <input className={s.authfild}
+            <label className='authRegForm__leble'> {errors?.password?.message ? <p className='authRegForm__leble_error'>{errors?.password?.message}</p> : 'Укажите группу'}
+                <input className='authRegForm__input'
                     {...register('group', {
                         required: {
                             value: true,
-                            message: 'обязательное поле'
+                            message: ' обязательное поле'
                         },
                         minLength: {
                             value: 2,
-                            message: 'слишком коротко'
+                            message: ' слишком коротко'
                         },
-                        
+
                     })}
                     type='text'
                     placeholder="не менее 2 символов"
@@ -104,17 +101,19 @@ export const FormReg = ({authReg, handleClose , setAuthReg}) => {
                 ></input>
             </label>
 
-            <div className={s.authBtnBlock}>
+            <div className='authRegForm__BtnBlock'>
 
                 <Button
                     variant='outlined'
+                    size='small'
                     onClick={() => { setAuthReg(!authReg) }}>
-                    авторизации
+                    авторизация
                 </Button>
 
                 <Button type='submit'
                     variant='contained'
                     color='success'
+                    size='small'
                     disabled={!isValid}>
                     Регистрация
                 </Button>
