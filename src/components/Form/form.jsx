@@ -2,9 +2,8 @@ import { Button } from "@mui/material";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import api from "../../utils/api";
-import { CHECK_EMAIL } from "../../utils/constants";
 import { AllContextData } from "../context/context";
-import './form.css'
+import '../../formAuthReg.css'
 
 
 export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) => {
@@ -33,7 +32,7 @@ export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) =>
             data.tags = data.tags.split(',')
         }
 
-        console.log(data.tags)
+        // console.log(data.tags)
         Object.entries(rest).length
             ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
             : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
@@ -43,10 +42,20 @@ export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) =>
 
     return (
         <>
-            <form onSubmit={handleSubmit(cbSubmit)} className='form'>
+            <form onSubmit={handleSubmit(cbSubmit)} className='authRegForm'>
 
-                <label className="labelfor"> {errors?.url?.message ? <p className="paragrafor">{errors?.url?.message}</p> : 'Введите URL изображения'}
-                    <input className="inputfor"
+            <h5 className='authRegForm__header'>
+                   {
+                   !Object.entries(rest).length
+                   ? 'Добавление поста'
+                   : 'Редактироание поста'
+                   } 
+                    <br />
+                    <p className='authRegForm__header_text'></p>
+                </h5>
+
+                <label className="authRegForm__leble"> {errors?.url?.message ? <p className="authRegForm__leble_error">{errors?.url?.message}</p> : 'Введите URL изображения'}
+                    <input className="authRegForm__input"
                         {...register('image', {
                             required: {
                                 value: true,
@@ -68,8 +77,8 @@ export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) =>
                     ></input>
                 </label>
 
-                <label className="labelfor"> {errors?.head?.message ? <p className="paragrafor">{errors?.head?.message}</p> : 'Введите заголовок поста'}
-                    <input className="inputfor"
+                <label className="authRegForm__leble"> {errors?.head?.message ? <p className="authRegForm__leble">{errors?.head?.message}</p> : 'Введите заголовок поста'}
+                    <input className="authRegForm__input"
                         {...register('title', {
                             required: {
                                 value: true,
@@ -86,8 +95,8 @@ export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) =>
                     ></input>
                 </label>
 
-                <label className="labelfor"> {errors?.body?.message ? <p className="paragrafor">{errors?.body?.message}</p> : 'Введите текст поста'}
-                    <input className="inputfor"
+                <label className="authRegForm__leble"> {errors?.body?.message ? <p className="authRegForm__leble">{errors?.body?.message}</p> : 'Введите текст поста'}
+                    <input className="authRegForm__input"
                         {...register('text', {
                             required: {
                                 value: true,
@@ -104,8 +113,8 @@ export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) =>
                     ></input>
                 </label>
 
-                <label className="labelfor"> {errors?.tags?.message ? <p className="paragrafor">{errors?.tags?.message}</p> : 'Список тегов'}
-                    <input className="inputfor"
+                <label className="authRegForm__leble"> {errors?.tags?.message ? <p className="authRegForm__leble">{errors?.tags?.message}</p> : 'Список тегов. Если их несаколько, то указывать через запятую'}
+                    <input className="authRegForm__input"
                         {...register('tags', {
                             // required: {
                             //     value: true,

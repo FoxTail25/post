@@ -10,10 +10,12 @@ export const NotFound = () => {
     const navigate = useNavigate()
     const data = useContext(AllContextData)
     const pagnatePage = data[5]
+    const setSearch = data[6]
 
     function checkurl() {
 
         navigate('/'); pagnatePage()
+        setSearch(false)
 
     }
 

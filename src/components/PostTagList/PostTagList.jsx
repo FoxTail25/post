@@ -2,6 +2,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Badge, Typography } from
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react'
 import { PostComments } from '../PostComments/PostComments'
+import { PostTag } from '../PostTag/PostTag';
 
 export const PostTagList = ({ tags, id }) => {
 
@@ -20,15 +21,10 @@ export const PostTagList = ({ tags, id }) => {
 
                 <AccordionDetails>
 
-                    <div >
-                        #tags:
+                    <div>
+                        Теги
                         {
-                            tags?.map((e, i) => <div key={i} style={{
-                                padding: '5px 5px',
-                                margin: '5px',
-                                border: '1px solid blue',
-                                borderRadius: '10px'
-                            }}>{`${i + 1}) ${e}`}</div>)
+                            tags?.map((tag, index) => <PostTag key={index} index={index} tag={tag}/>)
                         }
                     </div>
 

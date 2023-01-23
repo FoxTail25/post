@@ -25,6 +25,7 @@ import { POST_QUANTITY } from "../../utils/constants"
 
 const App = () => {
 
+    const[search, setSearch] = useState(false)
 
     const [autorozation, SetAutorization] = useState(false);    // Стейт авторизации
     const [authErr, setAuthErr] = useState('');   // стейт ошибок авторизации
@@ -157,7 +158,9 @@ const App = () => {
                 deletePost,
                 addNewPostInState,
                 updatePostState,
-                paginatePage
+                paginatePage,
+                setSearch,
+                search
             ]}>
                 <allUserData.Provider value={{  // Контекст данных пользователя
                     userData,
@@ -179,7 +182,7 @@ const App = () => {
                             ? <main className="main">
                                 <Routes>
                                     <Route index element={
-                                        <AllPost pagePostCount={pagePostCount} pageNumber={pageNumber} paginatePage={paginatePage} />
+                                        <AllPost pagePostCount={pagePostCount} pageNumber={pageNumber} paginatePage={paginatePage} search={search}/>
                                     } />
                                     <Route path='/post/:postId' element={
                                         <PostPage />

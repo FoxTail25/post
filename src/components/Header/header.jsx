@@ -6,6 +6,8 @@ import checkAvatar from "../../utils/avatar";
 import TransitionsModal from "../TransitModal/transitModal";
 import { useState } from "react";
 import s from './header.module.css';
+import dayjs from "dayjs";
+import { Clock } from "../Clock/Clock";
 
 
 
@@ -14,7 +16,6 @@ export const Header = () => {
 
 
     const { userData: userInfo, logOut } = useContext({ ...allUserData })
-
     const [onpenUserModal, setOpenUserModal] = useState(false)
 
 
@@ -24,7 +25,6 @@ export const Header = () => {
             <AppBar position="fixed"
                 sx={{ display: 'flex', alignItems: 'space-around' }}
             >
-
                 <div
                     style={{
                         display: 'flex',
@@ -32,6 +32,12 @@ export const Header = () => {
                         justifyContent: 'space-around',
                     }}
                 >
+                    {/* <Typography  
+                    className={s.projectName}
+                    > */}
+                        <Clock />
+                    {/* </Typography> */}
+
                     <div style={{
                         display: 'flex',
                         padding: '5px 10px',
@@ -49,26 +55,18 @@ export const Header = () => {
 
                     {
                         Object.entries(userInfo).length > 0
-
                             ? <div style={{
                                 display: 'flex',
                                 alignItems: 'center',
                                 paddingRight: '5vw'
                             }}>
-
                                 <CardHeader className={s.headerUserData}
-
-
                                     avatar={
-
                                         userInfo && <Avatar aria-label="recipe" src={checkAvatar(userInfo)}
-      
                                         >
                                             {checkAvatar(userInfo)}
                                         </Avatar>
-
                                     }
-
                                     titleTypographyProps={{
                                         color: 'white',
                                     }}
@@ -87,7 +85,7 @@ export const Header = () => {
 
                             </div>
                             : null
-                        }
+                    }
 
 
                 </div>
@@ -97,7 +95,7 @@ export const Header = () => {
 
             </AppBar >
 
-                <TransitionsModal onpenUserModal={onpenUserModal} setOpenUserModal={setOpenUserModal} />
+            <TransitionsModal onpenUserModal={onpenUserModal} setOpenUserModal={setOpenUserModal} />
 
         </>
     )

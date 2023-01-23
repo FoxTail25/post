@@ -8,16 +8,17 @@ import './index.css';
 export const Search = () => {
 
     const [inputText, setInputText] = useState('')
-
     const data = useContext(AllContextData)
-
     const paginatePage = data[5]
+    const setSearch = data[6]
+    const search = data[7]
 
 
 
     const formSubmit = (e) => {
         e.preventDefault()
         paginatePage(1, inputText)
+        setSearch(!search)
         setInputText('')
     }
 
@@ -40,7 +41,7 @@ export const Search = () => {
                 <SearchIcon />
             </IconButton>
 
-            <IconButton onClick={() => paginatePage()}
+            <IconButton onClick={() => {setSearch(false); paginatePage()}}
                 className='search__btn' >
                 <HomeIcon />
             </IconButton>

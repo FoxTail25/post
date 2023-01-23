@@ -7,10 +7,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import PostComment from "../../components/PostCommentsList/PostCommentsList";
 import api from "../../utils/api"
 import dayjs from "dayjs";
-import s from './postPage.module.css'
 import BasicModal from "../../components/Modal/modal";
 import checkAvatar from "../../utils/avatar";
-import { PostTagList } from "../../components/PostTag/Post-tag";
+import { PostTagList } from "../../components/PostTagList/PostTagList";
+import s from './postPage.module.css'
 
 
 export const PostPage = () => {
@@ -56,7 +56,8 @@ export const PostPage = () => {
                             flexDirection: 'column',
 
                         }} >
-                            <CardHeader
+                            <CardHeader 
+                            className='singlePost__card__header'
                                 avatar={
                                     author && <Avatar aria-label="recipe" src={checkAvatar(author)}>
                                         {checkAvatar(author)}
@@ -72,8 +73,10 @@ export const PostPage = () => {
                             <CardMedia
                                 component="img"
                                 height="auto"
+                                // width='auto'
                                 src={image}
                                 alt="Изображение"
+                                // sx={{maxWidth:'600px', alignSelf:'center'}}
                             >
                             </CardMedia>
 

@@ -33,7 +33,7 @@
     margin: 0;
 }
 .authRegForm__leble_error::before {
-    content: ' ⚠'
+    content: '⚠ '
 }
 .authRegForm__input {
     width: 100%;

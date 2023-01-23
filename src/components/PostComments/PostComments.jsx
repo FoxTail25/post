@@ -24,7 +24,8 @@ export const PostComments = ({ postId, author, created_at, text, ...rest }) => {
   return (
     <div className='post-comment'>
       <CardHeader
-      sx={{width: '250px'}}
+      sx={{maxWidth: '200px', 
+      padding: '5px'}}
         avatar={
           <Avatar aria-label="recipe" src={checkAvatar(author)}>
             {checkAvatar(author)}

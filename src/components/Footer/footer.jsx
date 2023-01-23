@@ -4,6 +4,7 @@ import { Link, Typography } from '@mui/material';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 export const Footer = () => {
 
@@ -27,15 +28,7 @@ export const Footer = () => {
 
             <Typography noWrap={true} sx={{ fontSize: '14px' }}> thisProjectAuthor: Foxtail25 </Typography>
 
-            <Link href="tel:+79057800777" sx={{
-                padding: '10px',
-                opacity: 0.7,
-                '&:hover': {
-                    opacity: [0.8, 0.9, 1],
-                },
-            }}><ContactPhoneIcon />
-            </Link>
-
+ 
             <Link href='https://t.me/Siverk' sx={{
                 padding: '10px',
                 opacity: 0.7,
@@ -52,6 +45,16 @@ export const Footer = () => {
                     opacity: [0.8, 0.9, 1],
                 },
             }}><AlternateEmailIcon />
+
+            </Link>
+
+            <Link href='https://github.com/FoxTail25/post' sx={{
+                padding: '10px',
+                opacity: 0.7,
+                '&:hover': {
+                    opacity: [0.8, 0.9, 1],
+                },
+            }}><GitHubIcon />
 
             </Link>
 

@@ -1,0 +1,18 @@
+.clock {
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+    align-self: center;
+    padding: 0 0 0 10px;
+    align-items: center;
+}
+
+.clock__time {
+    padding: 0 4px;
+}
+
+@media (max-width: 500px) {
+    .clock{
+        font-size: 2.5vw;
+    }
+}

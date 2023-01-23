@@ -33,4 +33,7 @@
 	bottom: 0;
 	right: 0;
 }
+.post__text__fild {
+	max-width: 290px;
+}
 

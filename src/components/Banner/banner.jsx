@@ -3,6 +3,7 @@ import React from "react"
 import { useParams } from "react-router-dom"
 import BasicModal from "../Modal/modal"
 import { Search } from "../Search/Search"
+import './banner.css'
 
 
 const Banner = () => {
@@ -19,16 +20,14 @@ const Banner = () => {
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     borderRadius: '10px',
-                    marginTop: 16,
-                    minWidth: '345px'
-
+                    marginTop: 8,
+                    marginLeft: 0,
+                    minWidth: '325px',
+                    // padding: '0',
                 }}
             >
 
-                <div style={{
-                    display: 'flex',
-                    flexShrink: '4'
-                }}>
+                <div className="banner__imgBlock">
 
                     <CardMedia
                         component="img"
