@@ -1,17 +1,15 @@
 .projectName {
-    font-size: 2vw;
+    font-size: 2em;
     align-self: center;
     padding: 0;
     margin: 0;
 }
-.clock {
+/* .clock {
     display: flex;
-    /* width: 200px; */
     font-size: 2vw;
     align-self: center;
     padding: 10px;
-    /* color: red; */
-}
+} */
 
 
 .logOutBtn {
@@ -37,4 +35,12 @@
 .headerUserData:hover {
     filter: drop-shadow(0 0 20px white);
     transition: .3s;
+}
+
+
+@media (max-width: 600px) {
+    .projectName {
+        font-size: 1em;
+        
+    }
 }

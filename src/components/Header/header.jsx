@@ -32,11 +32,9 @@ export const Header = () => {
                         justifyContent: 'space-around',
                     }}
                 >
-                    {/* <Typography  
-                    className={s.projectName}
-                    > */}
+                 
                         <Clock />
-                    {/* </Typography> */}
+       
 
                     <div style={{
                         display: 'flex',
