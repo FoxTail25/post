@@ -17,7 +17,7 @@ import { Route, Routes } from 'react-router-dom';
 import { NotFound } from "../../Pages/not-found/notFound"
 import { PostPage } from "../../Pages/post-pages/postPages"
 import AllPost from "../../Pages/all-post-page/allpostpage"
-import { Attention } from "../Attention/Attention"
+import { Authorisation } from "../Attention/Authorisation"
 import { AuthError } from "../AuthError/AuthError"
 import { POST_QUANTITY } from "../../utils/constants"
 // import { HelloMessage } from "../HelloMessage/HelloMessage"
@@ -25,6 +25,7 @@ import { POST_QUANTITY } from "../../utils/constants"
 
 const App = () => {
 
+    const[search, setSearch] = useState(false)
 
     const [autorozation, SetAutorization] = useState(false);    // Стейт авторизации
     const [authErr, setAuthErr] = useState('');   // стейт ошибок авторизации
@@ -157,7 +158,9 @@ const App = () => {
                 deletePost,
                 addNewPostInState,
                 updatePostState,
-                paginatePage
+                paginatePage,
+                setSearch,
+                search
             ]}>
                 <allUserData.Provider value={{  // Контекст данных пользователя
                     userData,
@@ -179,7 +182,7 @@ const App = () => {
                             ? <main className="main">
                                 <Routes>
                                     <Route index element={
-                                        <AllPost pagePostCount={pagePostCount} pageNumber={pageNumber} paginatePage={paginatePage} />
+                                        <AllPost pagePostCount={pagePostCount} pageNumber={pageNumber} paginatePage={paginatePage} search={search}/>
                                     } />
                                     <Route path='/post/:postId' element={
                                         <PostPage />
@@ -190,7 +193,7 @@ const App = () => {
                                 </Routes>
                             </main>
 
-                            : <Attention />
+                            : <Authorisation />
                     }
 
                     {

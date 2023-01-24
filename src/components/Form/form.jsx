@@ -3,63 +3,82 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import api from "../../utils/api";
 import { AllContextData } from "../context/context";
-import './form.css'
+import '../../formAuthReg.css'
 
 
-export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
+export const Form = ({ handleClose, image, title, text, _id, tags, ...rest }) => {
 
     const data = useContext(AllContextData)
     const addNewPostInState = data[3]
     const updatePostState = data[4]
-    
-      
+
+    console.log(tags)
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         mode: 'onBlur',
-            defaultValues: {
+        defaultValues: {
             image: image,
             title: title,
             text: text,
+            tags: tags,
         }
     });
 
-    const cbSubmit = (data ) => {
+    const cbSubmit = (data) => {
 
-        Object.entries(rest).length 
-        ? api.changePost(data, _id ).then((newPost) => updatePostState(newPost))
-        : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
+        if (data.tags === '' || data.tags === ' ' || data.tags.length === 0) {
+            data.tags = []
+        } else {
+            data.tags = data.tags.split(',')
+        }
+
+        // console.log(data.tags)
+        Object.entries(rest).length
+            ? api.changePost(data, _id).then((newPost) => updatePostState(newPost))
+            : api.addNewPost(data).then((newPost) => addNewPostInState(newPost))
 
         handleClose()
     }
 
     return (
         <>
-            <form onSubmit={handleSubmit(cbSubmit)} className='form'>
+            <form onSubmit={handleSubmit(cbSubmit)} className='authRegForm'>
 
-                <label className="labelfor"> {errors?.url?.message ? <p className="paragrafor">{errors?.url?.message}</p> : 'Введите URL изображения'}
-                    <input className="inputfor"
+            <h5 className='authRegForm__header'>
+                   {
+                   !Object.entries(rest).length
+                   ? 'Добавление поста'
+                   : 'Редактироание поста'
+                   } 
+                    <br />
+                    <p className='authRegForm__header_text'></p>
+                </h5>
+
+                <label className="authRegForm__leble"> {errors?.url?.message ? <p className="authRegForm__leble_error">{errors?.url?.message}</p> : 'Введите URL изображения'}
+                    <input className="authRegForm__input"
                         {...register('image', {
                             required: {
                                 value: true,
                                 message: 'Поле обязательно для заполнения'
                             },
                             minLength: {
-                                value: 12,
-                                message: 'url адрес должен состоять не менее чем из 12 символов'
+                                value: 7,
+                                message: 'url адрес должен состоять не менее чем из 7 символов'
                             },
                             pattern: {
-                                value: /https:\/\//gm,
+                                value: 'https://',
                                 message: 'url адрес должен начинаться с https://'
                             }
 
                         })}
                         type='text'
                         placeholder="https://source.unsplash.com......." // https://source.unsplash.com/random/?nature"
-      
+
                     ></input>
                 </label>
 
-                <label className="labelfor"> {errors?.head?.message ? <p className="paragrafor">{errors?.head?.message}</p> : 'Введите заголовок поста'}
-                    <input className="inputfor"
+                <label className="authRegForm__leble"> {errors?.head?.message ? <p className="authRegForm__leble">{errors?.head?.message}</p> : 'Введите заголовок поста'}
+                    <input className="authRegForm__input"
                         {...register('title', {
                             required: {
                                 value: true,
@@ -76,8 +95,8 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
                     ></input>
                 </label>
 
-                <label className="labelfor"> {errors?.body?.message ? <p className="paragrafor">{errors?.body?.message}</p> : 'Введите текст поста'}
-                    <input className="inputfor"
+                <label className="authRegForm__leble"> {errors?.body?.message ? <p className="authRegForm__leble">{errors?.body?.message}</p> : 'Введите текст поста'}
+                    <input className="authRegForm__input"
                         {...register('text', {
                             required: {
                                 value: true,
@@ -90,6 +109,24 @@ export const Form = ({ handleClose, image, title, text, _id, ...rest }) => {
                         })}
                         type='text'
                         placeholder="сам текст"
+
+                    ></input>
+                </label>
+
+                <label className="authRegForm__leble"> {errors?.tags?.message ? <p className="authRegForm__leble">{errors?.tags?.message}</p> : 'Список тегов. Если их несаколько, то указывать через запятую'}
+                    <input className="authRegForm__input"
+                        {...register('tags', {
+                            // required: {
+                            //     value: true,
+                            //     message: 'Поле обязательно для заполнения'
+                            // },
+                            // minLength: {
+                            //     value: 10,
+                            //     message: 'Имя должно состоять не менее чем из 10 символов'
+                            // },
+                        })}
+                        type='text'
+                        placeholder="tag1, tag2, tag3...."
 
                     ></input>
                 </label>

@@ -1,0 +1,12 @@
+
+
+.banner__imgBlock {
+    display: flex;
+    flex-shrink: 4;
+}
+
+@media (max-width: 500px) {
+    .banner__imgBlock {
+        display: none;
+    }
+}

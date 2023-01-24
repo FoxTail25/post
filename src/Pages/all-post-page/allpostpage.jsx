@@ -6,11 +6,11 @@ import { PostList } from '../../components/PostList/post-list'
 
 
 
-export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
+export default function AllPost({ pagePostCount, pageNumber, paginatePage,search }) {
 
-    // const { autorozation:autohorized } = useContext({ ...allUserData })
 
-    const displayPaginate = pagePostCount > 1
+    const displayPaginate = pagePostCount > 2
+ 
 
     return (
         <>
@@ -37,7 +37,7 @@ export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
                 mb: '1%',
             }}>
 
-                {displayPaginate
+                {displayPaginate 
                     ? <Pagination
                         page={pageNumber}
                         count={pagePostCount} color="primary" onChange={(event, num) =>
@@ -72,7 +72,7 @@ export default function AllPost({ pagePostCount, pageNumber, paginatePage }) {
                 mb: '10%',
             }}>
 
-                {displayPaginate
+                {displayPaginate 
                     ? <Pagination
                         page={pageNumber}
                         count={pagePostCount} color="primary" onChange={(event, num) =>

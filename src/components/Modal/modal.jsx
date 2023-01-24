@@ -26,6 +26,18 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
   const handleOpen2 = () => setOpen2(true);
   const handleClose2 = () => setOpen2(false);
 
+  const style = {
+    position: 'absolute',
+    top: '38%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+    borderRadius: '10px',
+  };
 
 
   return (
@@ -36,7 +48,7 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
         ? <Button variant='contained' onClick={handleOpen} startIcon={<PostAddIcon />}>добавить пост</Button>
         : user?.userData._id === singlePost?.author?._id
         ?
-        <IconButton aria-label="Отрадакировать пост" onClick={handleOpen}>
+        <IconButton aria-label="Отрадакировать пост" onClick={handleOpen} className='post_addComment_btn'>
           <div style={{fontSize: '15px'}}>
             редактировать пост...
           </div>
@@ -47,7 +59,7 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
 
 
       {urlpage.postId
-        ? <IconButton aria-label="добавить коммент" onClick={handleOpen2}>
+        ? <IconButton aria-label="добавить коммент" onClick={handleOpen2} className='post_addComment_btn'>
 
           
           <PostAddIcon />
@@ -63,7 +75,10 @@ export default function BasicModal({ urlpage, singlePost, setSinglePost }) {
         open={open}
         onClose={handleClose}
       >
-        <Box className='modalstule'>
+        <Box 
+         sx={style}
+        // className='modalstule'
+        >
           <Form handleClose={handleClose} {...singlePost} />
         </Box>
       </Modal>

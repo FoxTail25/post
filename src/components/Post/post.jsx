@@ -9,6 +9,7 @@ import { Link, } from "react-router-dom";
 import cN from "classnames";
 import checkAvatar from "../../utils/avatar";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import StyleIcon from '@mui/icons-material/Style';
 
 
 const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, text, created_at, updated_at, v }) => {
@@ -63,7 +64,7 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
           <Typography variant="h5" color="text.secondary">
             {title}
           </Typography>
-          <div dangerouslySetInnerHTML={{ __html: text }} style={{ overflow: 'hidden', LineClamp: 4, maxHeight: '50px' }} />
+          <div dangerouslySetInnerHTML={{ __html: text }} style={{ overflow: 'hidden', LineClamp: 4, maxHeight: '50px' }} className="post__text__fild"/>
         </CardContent>
       </Link >
       <div className="post__sticky post__sticky_type_bottom-left" >
@@ -82,13 +83,27 @@ const Post = ({ image, likes, comments, tags, isPublished, _id, title, author, t
             </IconButton>
           </Link>
           : null}
+
+        {tags.length ?
+          <Link to={`/post/${_id}`}>
+            <IconButton aria-label="go to comments" >
+              <Badge badgeContent={tags.length} color='primary'  >
+                <StyleIcon color='gray' />
+              </Badge>
+            </IconButton>
+          </Link>
+          : null}
+
+
+
+
       </div>
       <div className="post__sticky post__sticky_type_bottom-right" >
 
         {
           user.userData._id === author._id
-            ? <IconButton onClick={() => deletePost(author, _id)}>
-              <DeleteForeverIcon />
+            ? <IconButton onClick={() => deletePost(author, _id)} className='comment-deleteBtn-icon'>
+              <DeleteForeverIcon className='comment-delete-icon' />
             </IconButton>
             : null
         }

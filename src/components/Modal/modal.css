@@ -6,3 +6,6 @@
     width: 600px;
 
 }
+.post_addComment_btn:hover {
+    color: rgb(52, 101, 214);
+}
