@@ -8,7 +8,7 @@ export const Clock = () => {
     const [defis, setDefis] = useState(':')
 
     function watch() {
-        setClock(dayjs().format("hh:mm:ss DD/MM/YYYY"))
+        setClock(dayjs().format("HH:mm:ss DD/MM/YYYY"))
     }
 
     function puls() {

@@ -50,8 +50,8 @@ export const PostPage = () => {
                         ? <h1>dont worry</h1>
                         :
                         <Card sx={{
-                            maxWidth: '90vw',
-                            height: '100%',
+                            maxWidth: '800px',
+                            // height: '800px',
                             display: 'flex',
                             flexDirection: 'column',
 
@@ -70,13 +70,19 @@ export const PostPage = () => {
 
                             </CardHeader>
 
+
                             <CardMedia
                                 component="img"
-                                height="auto"
-                                // width='auto'
+                                // height="600"
+                                width='auto'
                                 src={image}
                                 alt="Изображение"
-                                // sx={{maxWidth:'600px', alignSelf:'center'}}
+                                sx={{
+                                    display: 'flex',
+                                    // maxHeight: '800px',
+                                    // maxWidth:'50%', 
+                                    alignSelf:'center'
+                                }}
                             >
                             </CardMedia>
 

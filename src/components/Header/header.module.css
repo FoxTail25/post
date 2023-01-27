@@ -40,7 +40,12 @@
 
 @media (max-width: 600px) {
     .projectName {
-        font-size: 1em;
+        /* font-size: 1vw; */
+        display: none;
         
+    }
+
+    .headerUserData {
+        font-size: .1em;
     }
 }
