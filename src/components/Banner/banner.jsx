@@ -27,7 +27,7 @@ const Banner = () => {
                 }}
             >
 
-                <div className="banner__imgBlock">
+                {/* <div className="banner__imgBlock">
 
                     <CardMedia
                         component="img"
@@ -46,7 +46,7 @@ const Banner = () => {
                     >
                     </CardMedia>
 
-                </div>
+                </div> */}
 
                 <Search />
 
